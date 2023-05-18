@@ -1,0 +1,110 @@
+{% block body %}
+
+<style>
+    :root {
+  --border-right: 6px;
+  --text-stroke-color: rgba(255,255,255,0.6);
+  --animation-color-html: #FF3D00;
+  --animation-color-css: #304FFE;
+  --animation-color-js: #FFD740;
+  --fs-size: 3em;
+}
+
+body {
+  background-color: #212121;
+}
+
+ul {
+  padding-top: 2rem;
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+}
+
+ul li {
+  margin: 0;
+  height: auto;
+  background: transparent;
+  padding: 0;
+  border: none;
+  letter-spacing: 3px;
+  text-decoration: none;
+  font-size: var(--fs-size);
+  font-family: 'Bruno Ace SC', cursive;
+  font-weight: bold;
+  position: relative;
+  text-transform: uppercase;
+  color: transparent;
+  -webkit-text-stroke: 1px var(--text-stroke-color);
+  cursor: pointer;
+}
+
+ul li .hover-text {
+  position: absolute;
+  box-sizing: border-box;
+  content: attr(data-text);
+  width: 0%;
+  inset: 0;
+  overflow: hidden;
+  transition: all .5s ease-in-out;
+}
+
+ul li:nth-child(1) .hover-text {
+  color: var(--animation-color-html);
+  border-right: var(--border-right) solid var(--animation-color-html);
+  -webkit-text-stroke: 1px var(--animation-color-html);
+}
+
+ul li:nth-child(2) .hover-text {
+  color: var(--animation-color-css);
+  border-right: var(--border-right) solid var(--animation-color-css);
+  -webkit-text-stroke: 1px var(--animation-color);
+}
+
+ul li:nth-child(3) .hover-text {
+  color: var(--animation-color-js);
+  border-right: var(--border-right) solid var(--animation-color-js);
+  -webkit-text-stroke: 1px var(--animation-color);
+}
+
+ul li:hover .hover-text {
+  width: 100%;
+}
+
+ul li:nth-child(1):hover .hover-text {
+  filter: drop-shadow(0 0 25px var(--animation-color-html))
+}
+
+ul li:nth-child(2):hover .hover-text {
+  filter: drop-shadow(0 0 25px var(--animation-color-css))
+}
+
+ul li:nth-child(3):hover .hover-text {
+  filter: drop-shadow(0 0 25px var(--animation-color-js))
+}
+</style>
+<!-- credit: https://codepen.io/chriiss/details/OJBgpQy -->
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bruno+Ace+SC&display=swap" rel="stylesheet">
+
+    <ul>
+      <li>
+        <span class="actual-text">&nbsp;Home&nbsp;</span>
+        <span class="hover-text" aria-hidden="true">&nbsp;Home&nbsp;</span>
+      </li>
+      <li>
+            <span class="actual-text">&nbsp;Gallery&nbsp;</span>
+            <span class="hover-text" onclick='redirect(this)' href="{% url 'gallery' %}" aria-hidden="true">&nbsp;Gallery&nbsp;</span>
+      </li>
+      <li>
+        <span class="actual-text">&nbsp;Shop&nbsp;</span>
+        <span class="hover-text" aria-hidden="true">&nbsp;Shop&nbsp;</span>
+      </li>
+    </ul>
+
+<script>
+function redirect(obs){
+    window.location.href=obs.getAttribute('href');
+}
+</script>
+{% endblock %}

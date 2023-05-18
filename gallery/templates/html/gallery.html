@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gallery</title>
+    {% load  static %}
+    <link rel="stylesheet" href="{% static 'css/gallery.css' %}">
+    <script src="{% static 'js/gallery.js' %}" defer></script>
+</head>
+<body>
+    <!-- https://www.youtube.com/watch?v=9HcxHDS2w1s Gallery -->
+    <!-- django or flask project gallery -->
+    <div class="container">
+        <h1>Video Game Gallery</h1>
+    </div>
+
+    <section aria-label="Newest Photos">
+        <div class="carousel" data-carousel>
+        <button class="carousel-button prev" data-carousel-button="prev">&#8592;</button>
+        <button class="carousel-button next" data-carousel-button="next">&#8594;</button>
+            <ul data-slides>
+                <!-- need for loop for each image -->
+                <li class="slide" data-active>
+                    <img src="https://picsum.photos/200" alt="Image 1">
+                </li>
+                <li class="slide">
+                    <img src="https://images.unsplash.com/photo-1617854818583-09e7f077a156?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8dXJsfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60" alt="Image 2">
+                </li>
+                <li class="slide">
+                    <img src="https://images.pexels.com/photos/14730102/pexels-photo-14730102.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Image 3">
+                </li>
+            </ul>
+        </div>
+    </section>
+
+</body>
+</html>
