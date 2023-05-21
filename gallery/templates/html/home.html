@@ -1,9 +1,20 @@
 {% include 'html/navbar.html'%}
 {% block body %}
 
+<style>
+    h1 {
+        color: white;
+    }
+</style>
+    {% if messages %}
+    {% for msg in messages %}
+        {{ msg }}
+    {% endfor %}
+    {% endif %}
+<h1>Here is html</h1>
 
 
-<p>Here is html</p>
+    <h1> JACK TEST 123</h1>
 
 
 {% endblock %}

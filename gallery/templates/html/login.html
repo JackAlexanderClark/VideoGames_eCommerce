@@ -1,4 +1,5 @@
-{% include 'html/navbar.html'%}
+
+<div class="row">
 {% block body %}
 
     <style>
@@ -32,6 +33,11 @@ body {
   color: #c7c7c7;
   font-weight: 500;
   text-transform: uppercase;
+  letter-spacing: 4px;
+}
+.form h4 {
+  color: red;
+  font-weight: 200;
   letter-spacing: 4px;
 }
 
@@ -94,20 +100,24 @@ body {
 }
     </style>
 
+    <!-- credit: https://codepen.io/osva-ocampo/details/wvBQbBO -->
+
     <form method="POST">
+     {% csrf_token %}
         <div class="form">
           <h2>Login</h2>
+                <h4>{{  message }}</h4>
           <div class="input">
             <div class="inputBox">
               <label>Username</label>
-              <input type="text" name="" placeholder="example@xyz.com"/>
+              <input type="text" name="username" placeholder="example@xyz.com"/>
             </div>
             <div class="inputBox">
               <label>Password</label>
-              <input type="password" name="" placeholder="&#8226;&#8226;&#8226;&#8226;&#8226;&#8226;&#8226;"/>
+              <input type="password" name="password" placeholder="&#8226;&#8226;&#8226;&#8226;&#8226;&#8226;&#8226;"/>
             </div>
             <div class="inputBox">
-              <input type="submit" name="" value="Sign In"/>
+              <input type="submit" name="submit" value="Sign In"/>
             </div>
           </div>
           <p class="forget">Forget Password ? <a href="#">Click Here</a></p>
@@ -115,3 +125,5 @@ body {
     </form>
 
 {% endblock %}
+
+</div>

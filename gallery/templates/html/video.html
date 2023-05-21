@@ -1,0 +1,78 @@
+{% include 'html/navbar.html'%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gallery</title>
+    {% load  static %}
+
+    <script src="{% static 'js/gallery.js' %}" defer></script>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Droid+Sans:400,700" rel="stylesheet">
+    <link rel="stylesheet" href="https://rawgit.com/LeshikJanz/libraries/master/Bootstrap/baguetteBox.min.css">
+    <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>Freebie: 4 Bootstrap Gallery Templates</title>
+    <link rel="stylesheet" href="{% static 'css/gallery.css' %}">
+</head>
+<body>
+
+<style>
+    .neon-glow {
+        background-color: #78beff;
+        color: #f0f0f0;
+        text-shadow: 4px 4px 2px rgba(0, 0, 0, 0.5);
+    }
+</style>
+
+<div class="container gallery-container">
+    <div class="tz-gallery">
+
+        <h1 class="neon-glow">Title: {{ game.name }}</h1>
+
+        <div class="row">
+            <div class="col-sm-6 col-md-4">
+                <a class="lightbox" href="video/{{ game.video_game_id }}">
+                    <img src=" {{ game.image_url.url }}" alt="{{ game.name }}" style="padding-left: 12px;">
+                </a>
+            </div>
+                        <div class="col-sm-6 col-md-4" style="padding-left: 50px;">
+                            <h3>Genre: {{ game.genre }}</h3>
+
+                            <h3>Price: {{ game.price }}</h3>
+
+{#                            <h3>Quantity: {{ game.quantity }}</h3>#}
+
+                            <h3>Description: {{ game.description }}</h3>
+
+                            <form method="POST">
+                                 {% csrf_token %}
+                                 <button type="button" class="btn btn-success btn-lg">Add to Cart <i class="fa fa-shopping-cart"></i></button>
+                            </form>
+
+                        </div>
+
+
+        </div>
+    </div>
+
+        <div class="row">
+            <div class="col-md-12" style="text-align: center;">
+                <button type="button" class="btn btn-primary btn-lg" onclick='redirect(this)' href="{% url 'gallery' %}">Go back to gallery <i class="fa fa-arrow-left"></i></button>
+            </div>
+        </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.8.1/baguetteBox.min.js"></script>
+<script>
+    baguetteBox.run('.tz-gallery');
+
+    function redirect(obs){
+        window.location.href=obs.getAttribute('href');
+    }
+</script>
+</body>
+</html>

@@ -1,81 +1,86 @@
-/* carousel code */
-*, *::before, *::after {
-    box-sizing: border-box;
-}
-
 body {
-    margin: 0;
+    background-color: black;
+    min-height: 100vh;
+    font: normal 16px sans-serif;
+    padding: 40px 0;
 }
 
-.carousel {
-    width: 100vw;
-    height: 100vh;
+.container.gallery-container {
+    background-color: #fff;
+    color: #35373a;
+    min-height: 100vh;
+    padding: 30px 50px;
+}
+
+.gallery-container h1 {
+    text-align: center;
+    margin-top: 50px;
+    font-family: 'Droid Sans', sans-serif;
+    font-weight: bold;
+}
+
+.gallery-container p.page-description {
+    text-align: center;
+    margin: 25px auto;
+    font-size: 18px;
+    color: #999;
+}
+
+.tz-gallery {
+    padding: 40px;
+}
+
+/* Override bootstrap column paddings */
+.tz-gallery .row > div {
+    padding: 2px;
+}
+
+.tz-gallery .lightbox img {
+    width: 100%;
+    border-radius: 0;
     position: relative;
 }
 
-.carousel > ul {
-    margin: 01;
-    padding: 0;
-    list-style: none;
-}
-
-.slide {
+.tz-gallery .lightbox:before {
     position: absolute;
-    inset: 0;
+    top: 50%;
+    left: 50%;
+    margin-top: -13px;
+    margin-left: -13px;
     opacity: 0;
-    transition: 200ms opacity ease-in-out;
-    transition-delay: 200ms;
+    color: #fff;
+    font-size: 26px;
+    font-family: FontAwesome;
+    content: '\f07a';
+    pointer-events: none;
+    z-index: 9000;
+    transition: 0.4s;
 }
 
-.slide > img {
-    display: block;
+
+.tz-gallery .lightbox:after {
+    position: absolute;
+    top: 0;
+    left: 0;
     width: 100%;
     height: 100%;
-    object-fit: cover;
-    object-position: center;
+    opacity: 0;
+    background-color: rgba(211, 211, 211, 0.3);
+    content: '';
+    transition: 0.4s;
 }
 
-.slide[data-active] {
+.tz-gallery .lightbox:hover:after,
+.tz-gallery .lightbox:hover:before {
     opacity: 1;
-    z-index: 1;
-    transition-delay: 0ms;
 }
 
-.carousel-button {
-    position: absolute;
-    z-index: 2;
-    background: none;
-    order: none;
-    font-size: 4rem;
-    top: 50%;
-    transform: translateY(-50%);
-    color: rgba(255, 255, 255, .5);
-    cursor: pointer;
-    border-radius: .25rem;
-    padding: 0 .5rem;
-    background-color: rgba(0, 0, 0, .1);
+.baguetteBox-button {
+    background-color: transparent !important;
 }
 
-.carousel-button:hover,
-.carousel-button:focus {
-    color: white;
-    background-color: rgba(0, 0, 0, .2);
-}
-
-.carousel-button:focus {
-    outline: 1px solid black;
-}
-
-.carousel-button.prev {
-    left: 1rem;
-}
-
-.carousel-button.next {
-    right: 1rem;
-}
-
-/* ------------------------------------ */
-h1 {
-    text-align: center;
-    justify-content: center;
+@media(max-width: 768px) {
+    body {
+        padding: 0;
+    }
 }

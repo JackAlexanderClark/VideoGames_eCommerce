@@ -1,3 +1,4 @@
+{% include 'html/navbar.html'%}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,34 +7,68 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gallery</title>
     {% load  static %}
-    <link rel="stylesheet" href="{% static 'css/gallery.css' %}">
+
     <script src="{% static 'js/gallery.js' %}" defer></script>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Droid+Sans:400,700" rel="stylesheet">
+    <link rel="stylesheet" href="https://rawgit.com/LeshikJanz/libraries/master/Bootstrap/baguetteBox.min.css">
+  <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
+    <title>Freebie: 4 Bootstrap Gallery Templates</title>
+        <link rel="stylesheet" href="{% static 'css/gallery.css' %}">
 </head>
 <body>
-    <!-- https://www.youtube.com/watch?v=9HcxHDS2w1s Gallery -->
-    <!-- django or flask project gallery -->
-    <div class="container">
-        <h1>Video Game Gallery</h1>
+
+<style>
+    @keyframes rainbow {
+        0% {color: red;}
+        10% {color: orange;}
+        20% {color: yellow;}
+        30% {color: lime;}
+        40% {color: green;}
+        50% {color: turquoise;}
+        60% {color: cyan;}
+        70% {color: blue;}
+        80% {color: purple;}
+        90% {color: magenta;}
+        100% {color: red;}
+    }
+
+    .rainbow-text {
+        animation: rainbow 10s linear infinite;
+        text-decoration: underline;
+    }
+</style>
+
+
+<div class="container gallery-container">
+
+    <h1 class="rainbow-text">Video Game Gallery</h1>
+
+    <p class="page-description text-center">Hover over a video game to select it for your shopping cart.</p>
+
+    <div class="tz-gallery">
+
+        <div class="row">
+            {% for image in images %}
+
+            <div class="col-sm-6 col-md-4">
+                <a class="lightbox" href="video/{{ image.video_game_id }}">
+                    <img src=" {{  image.image_url.url }}" alt="{{ image.name }}">
+                </a>
+            </div>
+
+            {% endfor %}
+
+        </div>
+
     </div>
 
-    <section aria-label="Newest Photos">
-        <div class="carousel" data-carousel>
-        <button class="carousel-button prev" data-carousel-button="prev">&#8592;</button>
-        <button class="carousel-button next" data-carousel-button="next">&#8594;</button>
-            <ul data-slides>
-                <!-- need for loop for each image -->
-                <li class="slide" data-active>
-                    <img src="https://picsum.photos/200" alt="Image 1">
-                </li>
-                <li class="slide">
-                    <img src="https://images.unsplash.com/photo-1617854818583-09e7f077a156?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8dXJsfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60" alt="Image 2">
-                </li>
-                <li class="slide">
-                    <img src="https://images.pexels.com/photos/14730102/pexels-photo-14730102.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Image 3">
-                </li>
-            </ul>
-        </div>
-    </section>
+</div>
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.8.1/baguetteBox.min.js"></script>
+<script>
+    baguetteBox.run('.tz-gallery');
+</script>
 </body>
 </html>
