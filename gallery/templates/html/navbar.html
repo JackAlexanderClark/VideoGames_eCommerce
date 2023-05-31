@@ -4,10 +4,12 @@
     :root {
   --border-right: 6px;
   --text-stroke-color: rgba(255,255,255,0.6);
-  --animation-color-html: #FF3D00;
-  --animation-color-css: #304FFE;
-  --animation-color-js: #FFD740;
-  --fs-size: 3em;
+  --color1: #FF3D00;
+  --color2: #304FFE;
+  --color3: #FFD740;
+  --color4: #30fe52;
+  --color5: #a340ff;
+  --fs-size: 2em;
 }
 
 body {
@@ -46,25 +48,35 @@ ul li .hover-text {
   width: 0%;
   inset: 0;
   overflow: hidden;
-  transition: all .5s ease-in-out;
+  transition: all .2s ease-in-out;
 }
 
 ul li:nth-child(1) .hover-text {
-  color: var(--animation-color-html);
-  border-right: var(--border-right) solid var(--animation-color-html);
-  -webkit-text-stroke: 1px var(--animation-color-html);
+  color: var(--color1);
+  border-right: var(--border-right) solid var(--color1);
+  -webkit-text-stroke: 1px var(--color1);
 }
 
 ul li:nth-child(2) .hover-text {
-  color: var(--animation-color-css);
-  border-right: var(--border-right) solid var(--animation-color-css);
-  -webkit-text-stroke: 1px var(--animation-color);
+  color: var(--color2);
+  border-right: var(--border-right) solid var(--color2);
+  -webkit-text-stroke: 1px var(--color2);
 }
 
 ul li:nth-child(3) .hover-text {
-  color: var(--animation-color-js);
-  border-right: var(--border-right) solid var(--animation-color-js);
-  -webkit-text-stroke: 1px var(--animation-color);
+  color: var(--color3);
+  border-right: var(--border-right) solid var(--color3);
+  -webkit-text-stroke: 1px var(--color3);
+}
+ul li:nth-child(4) .hover-text {
+  color: var(--color4);
+  border-right: var(--border-right) solid var(--color4);
+  -webkit-text-stroke: 1px var(--color4);
+}
+ul li:nth-child(5) .hover-text {
+  color: var(--color5);
+  border-right: var(--border-right) solid var(--color5);
+  -webkit-text-stroke: 1px var(--color5);
 }
 
 ul li:hover .hover-text {
@@ -72,15 +84,22 @@ ul li:hover .hover-text {
 }
 
 ul li:nth-child(1):hover .hover-text {
-  filter: drop-shadow(0 0 25px var(--animation-color-html))
+  filter: drop-shadow(0 0 25px var(--color1))
 }
 
 ul li:nth-child(2):hover .hover-text {
-  filter: drop-shadow(0 0 25px var(--animation-color-css))
+  filter: drop-shadow(0 0 25px var(--color2))
 }
 
 ul li:nth-child(3):hover .hover-text {
-  filter: drop-shadow(0 0 25px var(--animation-color-js))
+  filter: drop-shadow(0 0 25px var(--color3))
+}
+ul li:nth-child(4):hover .hover-text {
+  filter: drop-shadow(0 0 25px var(--color4))
+}
+
+ul li:nth-child(5):hover .hover-text {
+  filter: drop-shadow(0 0 25px var(--color5))
 }
 </style>
 <!-- credit: https://codepen.io/chriiss/details/OJBgpQy -->
@@ -100,6 +119,26 @@ ul li:nth-child(3):hover .hover-text {
         <span class="actual-text">&nbsp;Shop&nbsp;</span>
         <span class="hover-text" aria-hidden="true">&nbsp;Shop&nbsp;</span>
       </li>
+        {% if user.is_authenticated %}
+            <li>
+                <span class="actual-text" onclick='redirect(this)' href="{% url 'profile' %}" >&nbsp;{{ user.username }}&nbsp;</span>
+                <span class="hover-text" onclick='redirect(this)' href="{% url 'profile' %}" aria-hidden="true">&nbsp;{{ user.username }}&nbsp;</span>
+            </li>
+            <li>
+                <span class="actual-text" onclick='redirect(this)' href="{% url 'logout' %}" >&nbsp;Logout&nbsp;</span>
+                <span class="hover-text" onclick='redirect(this)' href="{% url 'logout' %}" aria-hidden="true">&nbsp;Logout&nbsp;</span>
+            </li>
+        {% else %}
+            <li>
+                <span class="actual-text" onclick='redirect(this)' href="{% url 'login' %}" >&nbsp;Login&nbsp;</span>
+                <span class="hover-text" onclick='redirect(this)' href="{% url 'login' %}" aria-hidden="true">&nbsp;Login&nbsp;</span>
+            </li>
+            <li>
+                <span class="actual-text" onclick='redirect(this)' href="{% url 'register' %}" >&nbsp;Register&nbsp;</span>
+                <span class="hover-text" onclick='redirect(this)' href="{% url 'register' %}" aria-hidden="true">&nbsp;Register&nbsp;</span>
+            </li>
+        {% endif %}
+
     </ul>
 </nav>
 

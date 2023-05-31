@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    {% if getShippingDetails == False %}
+        {{ shippingDetails }}
+{% else %}
+        <form name="shipping">
+        {% csrf_token %}
+        This is form
+        </form>
+{% endif %}
+</body>
+</html>

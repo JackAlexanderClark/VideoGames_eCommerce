@@ -10,8 +10,12 @@ from . import views
 urlpatterns = [
     path('', views.home, name='home'),
     path('gallery', views.gallery, name='gallery'),
-    path('login', views.login, name='login'),
-    path('logout', views.logout, name='logout'),
-    path('register', views.register, name='register'),
-    path('video/<int:id>',views.video,name='video')
+    path('cart', views.cart, name='cart'),
+    path('login', views.login_view, name='login'),
+    path('logout', views.logout_view, name='logout'),
+    path('buy', views.buy, name='buy'),
+    path('register', views.register_view, name='register'),
+    path('video/<int:id>',views.video,name='video'),
+    path('profile', views.profile, name='profile'),
+
 ]

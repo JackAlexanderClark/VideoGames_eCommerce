@@ -1,0 +1,121 @@
+{% include 'html/navbar.html'%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cart</title>
+    {% load  static %}
+
+    <script src="{% static 'js/cart.js' %}" defer></script>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Droid+Sans:400,700" rel="stylesheet">
+    <link rel="stylesheet" href="https://rawgit.com/LeshikJanz/libraries/master/Bootstrap/baguetteBox.min.css">
+    <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>Freebie: 4 Bootstrap Gallery Templates</title>
+    <link rel="stylesheet" href="{% static 'css/cart.css' %}">
+</head>
+<body>
+
+<style>
+    .neon-glow {
+        font-size: 2.5em;
+        font-weight: 900;
+        color: #FFD700;
+        text-shadow: 1px 1px 2px black, 0 0 25px gold, 0 0 5px darkgoldenrod;
+        text-transform: uppercase;
+    }
+
+    .header .cor-1 {
+      background:#f1c40f;
+    }
+
+    .header .cor-2 {
+      background:#e67e22;
+    }
+
+    .header .cor-3 {
+      background:#e74c3c;
+    }
+
+    .header .cor-4 {
+      background:#9b59b6;
+    }
+
+    .header .cor-5 {
+      background-color: hsla(10,40%,50%,1);
+    }
+
+    span {
+        color: white;
+    }
+</style>
+
+<header class="header">
+    <ul>
+        <li class="cor-1"></li>
+        <li class="cor-2"></li>
+        <li class="cor-3"></li>
+        <li class="cor-4"></li>
+        <li class="cor-5"></li>
+    </ul>
+</header>
+
+
+    <div class="container gallery-container">
+    <h1 class="neon-glow">Your Shopping Cart</h1>
+
+    <p class="page-description text-center">These are the items in your basket, press buy to proceed to shipping and payment section.</p>
+
+    <div class="tz-gallery">
+        <div class="container">
+            {% for order in orders %}
+                <div class="row">
+                    <div class="col-sm-3 col-md-3 col-lg-3 col-xl-3">
+                        <a href="video/{{ order.game_id.video_game_id }}">
+                            <img src="{{ order.game_id.image_url.url }}" alt="{{ order.game_id.name }}" class="img-fluid">
+                        </a>
+                    </div>
+                    <div class="col-sm-9 col-md-9 col-lg-9 col-xl-9">
+                        <p><span>Order ID: {{ order.order_id }}</span></p>
+                        <p><span>Order date: {{ order.order_date }}</span></p>
+                        <p><span>Order game: {{ order.game_id.image_url }}</span></p>
+                        <p><span>Order quantity: {{ order.quantity }}</span></p>
+                        <button class="btn btn-danger float-end" onclick="deleteItem({{ order.order_id }})">Delete</button>
+                    </div>
+                </div>
+                <hr>
+            {% endfor %}
+        </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+        <div class="row">
+            <div class="col-md-12" style="text-align: center;">
+                <button type="button" class="btn btn-primary btn-lg" onclick='redirect(this)' href="{% url 'buy' %}">Buy <i class="fa fa-arrow-right"></i></button>
+            </div>
+        </div>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.8.1/baguetteBox.min.js"></script>
+<script>
+    baguetteBox.run('.tz-gallery');
+
+    function redirect(obs){
+        window.location.href=obs.getAttribute('href');
+    }
+
+    function deleteItem(id) {
+        alert("Are you sure you wish to delete item id:" + id + " from your basket?");
+        return false;
+    }
+</script>
+</body>
+</html>

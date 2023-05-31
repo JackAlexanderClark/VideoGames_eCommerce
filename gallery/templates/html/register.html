@@ -95,23 +95,29 @@ body {
     </style>
 
     <form method="POST">
+    {% csrf_token %}
         <div class="form">
-          <h2>Login</h2>
+          <h2>Register</h2>
           <div class="input">
             <div class="inputBox">
               <label>Username</label>
-              <input type="text" name="" placeholder="example@xyz.com"/>
+              <input type="text" name="username" placeholder="example@xyz.com"/>
             </div>
             <div class="inputBox">
               <label>Password</label>
-              <input type="password" name="" placeholder="&#8226;&#8226;&#8226;&#8226;&#8226;&#8226;&#8226;"/>
+              <input type="password" name="password1" placeholder="&#8226;&#8226;&#8226;&#8226;&#8226;&#8226;&#8226;"/>
             </div>
             <div class="inputBox">
-              <input type="submit" name="" value="Sign In"/>
+              <label>Confirm Password</label>
+              <input type="password" name="password2" placeholder="&#8226;&#8226;&#8226;&#8226;&#8226;&#8226;&#8226;"/>
+            </div>
+            <div class="inputBox">
+              <input type="submit" name="" value="Register" on/>
             </div>
           </div>
           <p class="forget">Forget Password ? <a href="#">Click Here</a></p>
         </div>
     </form>
+
 
 {% endblock %}

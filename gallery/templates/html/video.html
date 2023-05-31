@@ -26,7 +26,40 @@
         color: #f0f0f0;
         text-shadow: 4px 4px 2px rgba(0, 0, 0, 0.5);
     }
+
+    h3 {
+        color: white;
+    }
+
+    .header .cor-1 {
+      background:#f1c40f;
+    }
+
+    .header .cor-2 {
+      background:#e67e22;
+    }
+
+    .header .cor-3 {
+      background:#e74c3c;
+    }
+
+    .header .cor-4 {
+      background:#9b59b6;
+    }
+
+    .header .cor-5 {
+      background-color: hsla(10,40%,50%,1);
+    }
 </style>
+
+<ul class="header">
+    <li class="cor-1"></li>
+    <li class="cor-2"></li>
+    <li class="cor-3"></li>
+    <li class="cor-4"></li>
+    <li class="cor-5"></li>
+</ul>
+
 
 <div class="container gallery-container">
     <div class="tz-gallery">
@@ -48,9 +81,11 @@
 
                             <h3>Description: {{ game.description }}</h3>
 
+                            <h3>Quantity: {{ game.quantity }}</h3>
+
                             <form method="POST">
                                  {% csrf_token %}
-                                 <button type="button" class="btn btn-success btn-lg">Add to Cart <i class="fa fa-shopping-cart"></i></button>
+                                 <button type="submit" class="btn btn-success btn-lg">Add to Cart <i class="fa fa-shopping-cart"></i></button>
                             </form>
 
                         </div>
