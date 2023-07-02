@@ -51,19 +51,19 @@ ul li .hover-text {
   transition: all .2s ease-in-out;
 }
 
-ul li:nth-child(1) .hover-text {
+ul li:nth-child(6) .hover-text {
   color: var(--color1);
   border-right: var(--border-right) solid var(--color1);
   -webkit-text-stroke: 1px var(--color1);
 }
 
-ul li:nth-child(2) .hover-text {
+ul li:nth-child(7) .hover-text {
   color: var(--color2);
   border-right: var(--border-right) solid var(--color2);
   -webkit-text-stroke: 1px var(--color2);
 }
 
-ul li:nth-child(3) .hover-text {
+ul li:nth-child(8) .hover-text {
   color: var(--color3);
   border-right: var(--border-right) solid var(--color3);
   -webkit-text-stroke: 1px var(--color3);
@@ -107,7 +107,9 @@ ul li:nth-child(5):hover .hover-text {
 <link href="https://fonts.googleapis.com/css2?family=Bruno+Ace+SC&display=swap" rel="stylesheet">
 <nav>
     <ul>
+        <li>   </li><li></li><li></li>
       <li>
+
         <span class="actual-text" onclick='redirect(this)' href="{% url 'home' %}" >&nbsp;Home&nbsp;</span>
         <span class="hover-text" onclick='redirect(this)' href="{% url 'home' %}" aria-hidden="true">&nbsp;Home&nbsp;</span>
       </li>
@@ -116,8 +118,8 @@ ul li:nth-child(5):hover .hover-text {
             <span class="hover-text" onclick='redirect(this)' href="{% url 'gallery' %}" aria-hidden="true">&nbsp;Gallery&nbsp;</span>
       </li>
       <li>
-        <span class="actual-text">&nbsp;Shop&nbsp;</span>
-        <span class="hover-text" aria-hidden="true">&nbsp;Shop&nbsp;</span>
+        <span class="actual-text" onclick='redirect(this)' href="{% url 'cart' %}">&nbsp;Shop&nbsp;</span>
+        <span class="hover-text" aria-hidden="true" onclick='redirect(this)' href="{% url 'cart' %}">&nbsp;Shop&nbsp;</span>
       </li>
         {% if user.is_authenticated %}
             <li>

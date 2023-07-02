@@ -21,7 +21,7 @@
 
 <style>
 
-    @import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Exo&display=swap');
 
     @keyframes rainbow {
         0% {color: red;}
@@ -40,10 +40,13 @@
     .rainbow-text {
         animation: rainbow 10s linear infinite;
         text-decoration: underline;
-        font-family: 'Montserrat', sans-serif;
+        font-family: 'Exo', sans-serif;
+        text-shadow: 3px 3px 5px rgb(207 164 255 / 50%);
     }
 
-    .header {
+
+
+.header {
   overflow: hidden;
   display:block;
   position:fixed;
@@ -86,6 +89,16 @@
     .header .cor-5 {
       background-color: hsla(10,40%,50%,1);
     }
+
+    .footer {
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        background-color: black;
+        color: white;
+        text-align: center;
+        padding: 15px 0;
+    }
 </style>
 <header class="header">
     <ul class="header">
@@ -111,7 +124,7 @@
 
             <div class="col-sm-6 col-md-4">
                 <a class="lightbox" href="video/{{ image.video_game_id }}">
-                    <img src=" {{  image.image_url.url }}" alt="{{ image.name }}">
+                    <img src=" {{ image.image_url.url }}" alt="{{ image.name }}">
                 </a>
             </div>
 
@@ -123,8 +136,24 @@
 
 </div>
 
+<footer class="footer">
+    <div class="container text-center" style="color: white;">
+        <p class="mb-2">This is some example footer text.</p>
+        <div>
+            <a href="#" class="mr-3"><i class="fab fa-facebook-f"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+        </div>
+    </div>
+</footer>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.8.1/baguetteBox.min.js"></script>
 <script>
+    window.onload = function() {
+        document.querySelector('h1.page-description').classList.add('slide-in');
+    };
+
     baguetteBox.run('.tz-gallery');
 </script>
 </body>

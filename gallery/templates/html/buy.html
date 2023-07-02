@@ -1,17 +1,427 @@
+{% include 'html/navbar.html'%}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Buy</title>
 </head>
+
+<style>
+/* --- source: https://codepen.io/atakan/pen/nPOZZR --- */
+/*custom font*/
+@import url(https://fonts.googleapis.com/css?family=Montserrat);
+
+/*basic reset*/
+* {
+    margin: 0;
+    padding: 0;
+}
+
+html {
+	height: 100%;
+	/*Image only BG fallback*/
+
+	/*background = gradient + image pattern combo*/
+	background:
+		linear-gradient(rgba(196, 102, 0, 0.6), rgba(155, 89, 182, 0.6));
+}
+
+body {
+	font-family: montserrat, arial, verdana;
+}
+/*form styles*/
+#msform {
+	width: 400px;
+	margin: 50px auto;
+	text-align: center;
+	position: relative;
+}
+#msform fieldset {
+	background: white;
+	border: 0 none;
+	border-radius: 3px;
+	box-shadow: 0 0 15px 1px rgba(0, 0, 0, 0.4);
+	padding: 20px 30px;
+	box-sizing: border-box;
+	width: 80%;
+	margin: 0 10%;
+
+	/*stacking fieldsets above each other*/
+	position: relative;
+}
+/*Hide all except first fieldset*/
+#msform fieldset:not(:first-of-type) {
+	display: none;
+}
+/*inputs*/
+/* same sizing for errors and messages */
+#msform input, #msform textarea, select, .message {
+	padding: 15px;
+	border: 1px solid #ccc;
+	border-radius: 3px;
+	margin-bottom: 10px;
+	width: 100%;
+	box-sizing: border-box;
+	font-family: montserrat;
+	color: #2C3E50;
+	font-size: 13px;
+}
+
+.message {
+    background-color: green;
+}
+
+.error {
+    background-color: orangered;
+}
+/*buttons*/
+#msform .action-button {
+	width: 100px;
+	background: #27AE60;
+	font-weight: bold;
+	color: white;
+	border: 0 none;
+	border-radius: 1px;
+	cursor: pointer;
+	padding: 10px;
+	margin: 10px 5px;
+  text-decoration: none;
+  font-size: 14px;
+}
+#msform .action-button:hover, #msform .action-button:focus {
+	box-shadow: 0 0 0 2px white, 0 0 0 3px #27AE60;
+}
+/*headings*/
+.fs-title {
+	font-size: 15px;
+	text-transform: uppercase;
+	color: #2C3E50;
+	margin-bottom: 10px;
+}
+.fs-subtitle {
+	font-weight: normal;
+	font-size: 13px;
+	color: #666;
+	margin-bottom: 20px;
+}
+/*progressbar*/
+#progressbar {
+	margin-bottom: 30px;
+	overflow: hidden;
+	/*CSS counters to number the steps*/
+	counter-reset: step;
+}
+#progressbar li {
+	list-style-type: none;
+	color: white;
+	text-transform: uppercase;
+	font-size: 9px;
+	width: 33.33%;
+	float: left;
+	position: relative;
+}
+#progressbar li:before {
+	content: counter(step);
+	counter-increment: step;
+	width: 20px;
+	line-height: 20px;
+	display: block;
+	font-size: 10px;
+	color: #333;
+	background: white;
+	border-radius: 3px;
+	margin: 0 auto 5px auto;
+}
+/*progressbar connectors*/
+#progressbar li:after {
+	content: '';
+	width: 100%;
+	height: 2px;
+	background: white;
+	position: absolute;
+	left: -50%;
+	top: 9px;
+	z-index: -1; /*put it behind the numbers*/
+}
+#progressbar li:first-child:after {
+	/*connector not needed before the first step*/
+	content: none;
+}
+/*marking active/completed steps green*/
+/*The number of the step and the connector before it = green*/
+#progressbar li.active:before,  #progressbar li.active:after{
+	background: #27AE60;
+	color: white;
+}
+
+
+</style>
 <body>
-    {% if getShippingDetails == False %}
-        {{ shippingDetails }}
+{% for msg in messages %}
+    <h3 style="color: white">{{ msg }}</h3>
+{% endfor %}
+{{ receipt }}
+
+{% if getShippingDetails == False %}
+    <form id="msform" method="post">
+    {% csrf_token %}
+      <ul id="progressbar">
+        <li class="active">Your Shipping Details</li>
+        <li>Payment Details</li>
+        <li>Shipping Options</li>
+      </ul>
+
+      <fieldset>
+        <h2 class="fs-title">Your Shipping Details</h2>
+        <h3 class="fs-subtitle">This is step 1</h3>
+          {% if messages %}
+              <div class="message">{{ message }}</div>
+          {% endif %}
+
+            <input hidden name="form" value="msform">
+        <label for="address">Address:</label>
+        <input type="text" id="address" name="address" tabindex="1" value="{{ shippingDetails.address_line }}" placeholder="Address" maxlength="200" required/>
+        <label for="postcode">Postcode:</label><br>
+        <input type="text" id="postcode" name="postcode" tabindex="2" value="{{ shippingDetails.postcode }}" placeholder="Postcode" maxlength="8" required/>
+        <label for="phone">Phone Number:</label><br>
+        <input type="tel" id="number" name="number" tabindex="3" value="{{ shippingDetails.phone_number }}" placeholder="Phone Number" required/>
+        <label for="country">Country:</label><br>
+        <select id="country" name="country" tabindex="4" placeholder="Country" required>
+            <option value="{{ shippingDetails.country }}">{{ shippingDetails.country }}</option>
+            <option value="United Kingdom">United Kingdom</option>
+            <option value="France">France</option>
+            <option value="Germany">Germany</option>
+            <option value="Italy">Italy</option>
+            <option value="Spain">Spain</option>
+            <option value="Portugal">Portugal</option>
+            <option value="Ireland">Ireland</option>
+            <option value="Poland">Poland</option>
+            <option value="Austria">Austria</option>
+            <option value="Belgium">Belgium</option>
+            <option value="Bulgaria">Bulgaria</option>
+            <option value="Croatia">Croatia</option>
+            <option value="Republic of Cyprus">Republic of Cyprus</option>
+            <option value="Czech Republic">Czech Republic</option>
+            <option value="Denmark">Denmark</option>
+            <option value="Estonia">Estonia</option>
+            <option value="Finland">Finland</option>
+            <option value="Greece">Greece</option>
+            <option value="Hungary">Hungary</option>
+            <option value="Latvia">Latvia</option>
+            <option value="Lithuania">Lithuania</option>
+            <option value="Luxembourg">Luxembourg</option>
+            <option value="Malta">Malta</option>
+            <option value="Netherlands">Netherlands</option>
+            <option value="Romania">Romania</option>
+            <option value="Slovakia">Slovakia</option>
+            <option value="Slovenia">Slovenia</option>
+            <option value="Sweden">Sweden</option>
+        </select>
+        <br>
+        <input type="button" name="next" class="next action-button" value="Next" />
+      </fieldset>
+      <fieldset>
+        <h2 class="fs-title">Payment Details</h2>
+        <h3 class="fs-subtitle">This is step 2</h3>
+        <label for="card_number">Card Number:</label>
+        <input type="text" id="card_number" name="card_number" value="{{ cardDetails.card_number }}" placeholder="Card Number" required>
+        <label for="exp_month">Exp Month:</label><br>
+        <input type="text" id="exp_month" name="exp_month" value="{{ cardDetails.exp_month }}" placeholder="Expiration Month" required>
+        <label for="exp_year">Exp Year:</label><br>
+        <input type="text" id="exp_year" name="exp_year" value="{{ cardDetails.exp_year }}" placeholder="Expiration Year" required>
+        <label for="cvc">CVC:</label><br>
+        <input type="text" id="cvc" name="cvc" value="{{ cardDetails.cvc }}" placeholder="CVC" required>
+        <input type="button" name="previous" class="previous action-button" value="Previous" />
+        <input type="button" name="next" class="next action-button" value="Next" />
+      </fieldset>
+      <fieldset>
+        <h2 class="fs-title">Shipping Options</h2>
+        <h3 class="fs-subtitle">This is step 3</h3>
+        <label for="shipping_speed">Shipping Speed:</label>
+        <br>
+        <select id="shipping_speed" name="shipping_speed" required>
+            <option value="">--Please choose an option--</option>
+            <option value="overnight">Ultra Fast</option>
+            <option value="2-day">2-Day</option>
+            <option value="standard">Slow</option>
+        </select>
+        <input type="button" name="previous" class="previous action-button" value="Previous" />
+        <button class="submit action-button" target="_top">Submit</button>
+      </fieldset>
+    </form>
+<br>
+
 {% else %}
-        <form name="shipping">
-        {% csrf_token %}
-        This is form
-        </form>
+
+    <form id="msform" method="post">
+  {% csrf_token %}
+        <input hidden name="form" value="msform">
+      <ul id="progressbar">
+        <li class="active">Your Shipping Details</li>
+        <li>Payment Details</li>
+        <li>Shipping Options</li>
+      </ul>
+
+      <fieldset>
+        <h2 class="fs-title">Your Shipping Details</h2>
+        <h3 class="fs-subtitle">This is step 1</h3>
+        <label for="address">Address:</label>
+        <input type="text" id="address" name="address" value="" placeholder="Address" maxlength="200" required/>
+        <label for="postcode">Postcode:</label><br>
+        <input type="text" id="postcode" name="postcode" value="" placeholder="Postcode" maxlength="8" required/>
+        <label for="phone">Phone Number:</label><br>
+        <input type="tel" id="number" name="number" value="" placeholder="Phone Number" required/>
+        <label for="country">Country:</label><br>
+        <select id="country" name="country" tabindex="4" placeholder="Country" required>
+            <option value="">Please Select a Country</option>
+            <option value="United Kingdom">United Kingdom</option>
+            <option value="France">France</option>
+            <option value="Germany">Germany</option>
+            <option value="Italy">Italy</option>
+            <option value="Spain">Spain</option>
+            <option value="Portugal">Portugal</option>
+            <option value="Ireland">Ireland</option>
+            <option value="Poland">Poland</option>
+            <option value="Austria">Austria</option>
+            <option value="Belgium">Belgium</option>
+            <option value="Bulgaria">Bulgaria</option>
+            <option value="Croatia">Croatia</option>
+            <option value="Republic of Cyprus">Republic of Cyprus</option>
+            <option value="Czech Republic">Czech Republic</option>
+            <option value="Denmark">Denmark</option>
+            <option value="Estonia">Estonia</option>
+            <option value="Finland">Finland</option>
+            <option value="Greece">Greece</option>
+            <option value="Hungary">Hungary</option>
+            <option value="Latvia">Latvia</option>
+            <option value="Lithuania">Lithuania</option>
+            <option value="Luxembourg">Luxembourg</option>
+            <option value="Malta">Malta</option>
+            <option value="Netherlands">Netherlands</option>
+            <option value="Romania">Romania</option>
+            <option value="Slovakia">Slovakia</option>
+            <option value="Slovenia">Slovenia</option>
+            <option value="Sweden">Sweden</option>
+        </select>
+        <br>
+        <input type="button" name="next" class="next action-button" value="Next" />
+      </fieldset>
+      <fieldset>
+        <h2 class="fs-title">Payment Details</h2>
+        <h3 class="fs-subtitle">This is step 2</h3>
+        <label for="card_number">Card Number:</label>
+        <input type="text" id="card_number" name="card_number" tabindex="1" value="" placeholder="Card Number" required>
+        <label for="exp_month">Exp Month:</label><br>
+        <input type="text" id="exp_month" name="exp_month" tabindex="2" value="" placeholder="Expiration Month" required>
+        <label for="exp_year">Exp Year:</label><br>
+        <input type="text" id="exp_year" name="exp_year" tabindex="3" value="" placeholder="Expiration Year" required>
+        <label for="cvc">CVC:</label><br>
+        <input type="text" id="cvc" name="cvc" tabindex="3" value="" placeholder="CVC" required>
+        <input type="button" name="previous" class="previous action-button" value="Previous" />
+        <input type="button" name="next" class="next action-button" value="Next" />
+      </fieldset>
+      <fieldset>
+        <h2 class="fs-title">Shipping Options</h2>
+        <h3 class="fs-subtitle">This is step 3</h3>
+        <label for="shipping_speed">Shipping Speed:</label>
+        <br>
+        <select id="shipping_speed" name="shipping_speed" required>
+            <option value="">--Please choose an option--</option>
+            <option value="overnight">Ultra Fast</option>
+            <option value="2-day">2-Day</option>
+            <option value="standard">Slow</option>
+        </select>
+        <input type="button" name="previous" class="previous action-button" value="Previous" />
+
+        <button class="submit action-button" target="_top">Submit</button>
+      </fieldset>
+    </form>
+<br>
 {% endif %}
 </body>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
+<script>
+
+//jQuery time
+var current_fs, next_fs, previous_fs; //fieldsets
+var left, opacity, scale; //fieldset properties which we will animate
+var animating; //flag to prevent quick multi-click glitches
+
+$(".next").click(function(){
+	if(animating) return false;
+	animating = true;
+
+	current_fs = $(this).parent();
+	next_fs = $(this).parent().next();
+
+	//activate next step on progressbar using the index of next_fs
+	$("#progressbar li").eq($("fieldset").index(next_fs)).addClass("active");
+
+	//show the next fieldset
+	next_fs.show();
+	//hide the current fieldset with style
+	current_fs.animate({opacity: 0}, {
+		step: function(now, mx) {
+			//as the opacity of current_fs reduces to 0 - stored in "now"
+			//1. scale current_fs down to 80%
+			scale = 1 - (1 - now) * 0.2;
+			//2. bring next_fs from the right(50%)
+			left = (now * 50)+"%";
+			//3. increase opacity of next_fs to 1 as it moves in
+			opacity = 1 - now;
+			current_fs.css({
+        'transform': 'scale('+scale+')',
+        'position': 'absolute'
+      });
+			next_fs.css({'left': left, 'opacity': opacity});
+		},
+		duration: 800,
+		complete: function(){
+			current_fs.hide();
+			animating = false;
+		},
+		//this comes from the custom easing plugin
+		easing: 'easeInOutBack'
+	});
+});
+
+$(".previous").click(function(){
+	if(animating) return false;
+	animating = true;
+
+	current_fs = $(this).parent();
+	previous_fs = $(this).parent().prev();
+
+	//de-activate current step on progressbar
+	$("#progressbar li").eq($("fieldset").index(current_fs)).removeClass("active");
+
+	//show the previous fieldset
+	previous_fs.show();
+	//hide the current fieldset with style
+	current_fs.animate({opacity: 0}, {
+		step: function(now, mx) {
+			//as the opacity of current_fs reduces to 0 - stored in "now"
+			//1. scale previous_fs from 80% to 100%
+			scale = 0.8 + (1 - now) * 0.2;
+			//2. take current_fs to the right(50%) - from 0%
+			left = ((1-now) * 50)+"%";
+			//3. increase opacity of previous_fs to 1 as it moves in
+			opacity = 1 - now;
+			current_fs.css({'left': left});
+			previous_fs.css({'transform': 'scale('+scale+')', 'opacity': opacity});
+		},
+		duration: 800,
+		complete: function(){
+			current_fs.hide();
+			animating = false;
+		},
+		//this comes from the custom easing plugin
+		easing: 'easeInOutBack'
+	});
+});
+</script>
 </html>

@@ -52,6 +52,32 @@
     span {
         color: white;
     }
+
+.center-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  min-height: 20vh;
+}
+
+#cart {
+      width: 50px;
+      max-width: 100%;
+      height: auto;
+}
+
+.footer {
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: black;
+    color: white;
+    text-align: center;
+    padding: 15px 0;
+}
+
 </style>
 
 <header class="header">
@@ -66,28 +92,41 @@
 
 
     <div class="container gallery-container">
-    <h1 class="neon-glow">Your Shopping Cart</h1>
+    <div class="center-content">
+        <img src="\media\templates\videogame_imgs\shoppingCart.png" id="cart">
+        <h1 class="neon-glow">Your Shopping Cart</h1>
+    </div>
 
     <p class="page-description text-center">These are the items in your basket, press buy to proceed to shipping and payment section.</p>
 
     <div class="tz-gallery">
         <div class="container">
             {% for order in orders %}
+                {% if order.quantity > 0 %}
                 <div class="row">
                     <div class="col-sm-3 col-md-3 col-lg-3 col-xl-3">
                         <a href="video/{{ order.game_id.video_game_id }}">
                             <img src="{{ order.game_id.image_url.url }}" alt="{{ order.game_id.name }}" class="img-fluid">
-                        </a>
+                        </a>1
                     </div>
                     <div class="col-sm-9 col-md-9 col-lg-9 col-xl-9">
                         <p><span>Order ID: {{ order.order_id }}</span></p>
                         <p><span>Order date: {{ order.order_date }}</span></p>
-                        <p><span>Order game: {{ order.game_id.image_url }}</span></p>
+                        <p><span>Order game: {{ order.game_id.name }}</span></p>
                         <p><span>Order quantity: {{ order.quantity }}</span></p>
                         <button class="btn btn-danger float-end" onclick="deleteItem({{ order.order_id }})">Delete</button>
+                        <button class="btn btn-success float-end" onclick="addAnItem({{ order.order_id }})">+1 Qty</button>
+                        <button class="btn btn-warning float-end" onclick="removeAnItem({{ order.order_id }})">-1 Qty</button>
                     </div>
                 </div>
                 <hr>
+                {% endif %}
+            {% empty %}
+                <div class="row">
+                    <div class="col-12">
+                        <p>No orders in your cart.</p>
+                    </div>
+                </div>
             {% endfor %}
         </div>
 
@@ -97,13 +136,25 @@
 
 </div>
 
-        <div class="row">
-            <div class="col-md-12" style="text-align: center;">
-                <button type="button" class="btn btn-primary btn-lg" onclick='redirect(this)' href="{% url 'buy' %}">Buy <i class="fa fa-arrow-right"></i></button>
-            </div>
+    <div class="row">
+        <div class="col-md-12" style="text-align: center;">
+            <button type="button" class="btn btn-primary btn-lg" onclick='redirect(this)' href="{% url 'gallery' %}"><i class="fa fa-arrow-left"></i> Go back to gallery</button>
+            <button type="button" class="btn btn-secondary btn-lg" onclick='redirect(this)' href="{% url 'buy' %}">Buy <i class="fa fa-arrow-right"></i></button>
         </div>
+    </div>
 
+<footer class="footer">
+    <div class="container text-center" style="color: white;">
+        <p class="mb-2">This is some example footer text.</p>
+        <div>
+            <a href="#" class="mr-3"><i class="fab fa-facebook-f"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+        </div>
+    </div>
+</footer>
 
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.8.1/baguetteBox.min.js"></script>
 <script>
     baguetteBox.run('.tz-gallery');
@@ -115,6 +166,33 @@
     function deleteItem(id) {
         alert("Are you sure you wish to delete item id:" + id + " from your basket?");
         return false;
+    }
+
+    function addAnItem(id) {
+        alert("Are you sure you wish to add 1 item id:" + id + " from your basket?");
+        return false;
+    }
+
+    function removeAnItem(orderId) {
+        $.ajax({
+            url: '/remove_game_item/',  // or whatever your url is
+            type: 'post',
+            data: {
+                'order_id': orderId,
+                'csrfmiddlewaretoken': '{{ csrf_token }}'
+            },
+            success: function(response) {
+                if(response.success)
+                    alert('1 item has been removed from your cart.');
+                    location.reload();
+                } else {
+                    alert('Item removed from cart.');
+                }
+            },
+            error: function(response) {
+                alert('An error has occured while removing an item from your cart.');
+            }
+        });
     }
 </script>
 </body>

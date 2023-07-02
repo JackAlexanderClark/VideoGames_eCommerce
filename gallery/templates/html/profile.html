@@ -1,0 +1,176 @@
+{% include 'html/navbar.html'%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Profile</title>
+</head>
+
+<style>
+    h1, p {
+        color: white;
+    }
+    body{
+        color: white;
+    }
+    th {
+        color: gold;
+    }
+</style>
+
+<body>
+<h1>Profile Receipts</h1>
+
+{%  for receipt in receipts %}
+    <hr>
+             <div class="row">
+                        <div class="col-lg-4">
+                        <div class="card" style="color: white !important;">
+                            <div class="card-body">
+
+        <div class="card-body p-0 table-responsive" style  ='color:white'>
+                                <h4 class="p-3 mb-0">Product Description ------ <b>Receipt {{ forloop.counter }}</b></h4>
+
+                                <table class="table mb-0">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">Description</th>
+                                            <th scope="col"></th>
+                                            <th scope="col">Quantity</th>
+                                            <th scope="col">Amount</th>
+                                            <th scope="col">Status</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+    {%  for item in receipt.items %}
+
+
+                                        <tr>
+                                            <th>
+                                                <img src="https://bootdey.com/img/Content/avatar/avatar6.png"
+                                                    alt="product" class="" width="80">
+                                            </th>
+                                            <td>{{ item }} items===========</td>
+                                            <td>$100 X 2</td>
+                                            <td><strong>$200</strong></td>
+                                            <td><span class="badge badge-warning">PENDING &#10006</span> ----  <span>SHIPPED &#10004</span></td>
+                                        </tr>
+
+
+    {% endfor %}
+
+
+                                    </tbody>
+                                </table>
+                                </div>
+                        </div>
+                        <div class="card mt-4">
+
+            </div>
+                        </div></div></div>
+
+                                            <tr>
+                                            <th colspan="2">
+                                                <span>Status:</span>
+                                                <span class="badge badge-success">PAID</span>
+                                            </th>
+                                            <td>
+                                                <span class="text-muted">Total Price</span>
+                                                <strong>$100</strong>
+                                            </td>
+                                            <td>
+                                                <span class="text-muted">Total Paid</span>
+                                                <strong>$100</strong>
+                                            </td>
+                                            <td>
+                                                <span class="text-muted">Due</span>
+                                                <strong>$100</strong>
+                                            </td>
+                                        </tr>
+    <p style="color: #FF00FF">{{ receipt.items }}</p>
+{# commented out code was here #}
+{% endfor %}
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{#                <div class="row">#}
+{#                    <div class="col-lg-4">#}
+{#                        <div class="card" style="color: white !important;">#}
+{#                            <div class="card-body">#}
+{##}
+{#        <div class="card-body p-0 table-responsive" style  ='color:white'>#}
+{#                                <h4 class="p-3 mb-0">Product Description</h4>#}
+{#                                <table class="table mb-0">#}
+{#                                    <thead>#}
+{#                                        <tr>#}
+{#                                            <th scope="col">Description</th>#}
+{#                                            <th scope="col"></th>#}
+{#                                            <th scope="col">Quantity</th>#}
+{#                                            <th scope="col">Amount</th>#}
+{#                                            <th scope="col">Status</th>#}
+{#                                        </tr>#}
+{#                                    </thead>#}
+{#                                    <tbody>#}
+{#                                        <tr>#}
+{##}
+{#                                            <th>#}
+{#                                                <img src="https://bootdey.com/img/Content/avatar/avatar6.png"#}
+{#                                                    alt="product" class="" width="80">#}
+{#                                            </th>#}
+{#                                            <td>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dolorem,#}
+{#                                                facilis.</td>#}
+{#                                            <td>$100 X 2</td>#}
+{#                                            <td><strong>$200</strong></td>#}
+{#                                            <td><span class="badge badge-warning">PENDING</span></td>#}
+{#                                        </tr>#}
+{#                                        <tr>#}
+{#                                            <th colspan="2">#}
+{#                                                <span>Status:</span>#}
+{#                                                <span class="badge badge-success">PAID</span>#}
+{#                                            </th>#}
+{#                                            <td>#}
+{#                                                <span class="text-muted">Total Price</span>#}
+{#                                                <strong>$100</strong>#}
+{#                                            </td>#}
+{#                                            <td>#}
+{#                                                <span class="text-muted">Total Paid</span>#}
+{#                                                <strong>$100</strong>#}
+{#                                            </td>#}
+{#                                            <td>#}
+{#                                                <span class="text-muted">Due</span>#}
+{#                                                <strong>$100</strong>#}
+{#                                            </td>#}
+{#                                        </tr>#}
+{#                                    </tbody>#}
+{#                                </table>#}
+{#                            </div>#}
+{#                        </div>#}
+{#                        <div class="card mt-4">#}
+{##}
+{#            </div>#}
+{#                        </div>#}
+{#                    </div>#}
+{#                </div>#}

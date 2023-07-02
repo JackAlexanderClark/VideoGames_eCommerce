@@ -1,0 +1,93 @@
+{% include 'html/navbar.html'%}
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        body {
+            background-color: grey;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            font-family: Arial, sans-serif;
+            flex-direction: column;
+        }
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+        }
+        table {
+            background-color: white;
+            color: black;
+            width: 100%;
+            max-width: 600px;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+        th, td {
+            padding: 15px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        @media screen and (max-width: 600px) {
+            th, td {
+                padding: 8px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        {% if messages %}
+        {% for msg in messages %}
+            {{ msg }}
+        {% endfor %}
+        {% endif %}
+        <h1>Receipt</h1>
+        <table>
+            <thead>
+                <tr>
+                    <th>total_amount</th>
+                    <th>receipt_id</th>
+                    <th>tax</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>{{total_amount}}</td>
+                    <td>{{ receipt_id }}</td>
+                    <td>{{ tax }}</td>
+                </tr>
+            </tbody>
+        </table>
+        <table>
+            <thead>
+                <tr>
+                    <th>Order Id</th>
+                    <th>Game Name</th>
+                    <th>Price</th>
+                    <th>Quantity</th>
+                    <th>Delivery Cost</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for item in items %}
+                    <tr>
+                    {% for prop in item %}
+                    <td>{{ prop }}</td>
+                        {% endfor %}
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <form method="post">
+            {% csrf_token %}
+            <button class="btn btn-success" id='confirm' name="button" type="submit" value="confirm">Confirm Purchase?</button>
+            <button class="btn btn-warning" id='cancel' name="button" type="submit" value="cancel">Cancel Order</button>
+        </form>
+    </div>
+</body>
+</html>

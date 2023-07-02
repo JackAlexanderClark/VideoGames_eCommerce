@@ -68,10 +68,6 @@ hr {
   background-color: hsla(10,40%,50%,1);
 }
 
-.wrap {
-  width: 950px;
-  margin:25px auto;
-}
 
 nav.menu ul {
   overflow:hidden;
@@ -108,10 +104,6 @@ nav.menu ul a:hover {
   text-decoration: underline;
 }
 
-.sidebar {
-  width:275px;
-  float:right;
-}
 
 .sidebar .widget {
   margin:0 0 25px;
@@ -140,21 +132,6 @@ nav.menu ul a:hover {
 
 .sidebar .widget p:last-child {
   margin:0;
-}
-
-.blog {
-  float:left;
-}
-
-.conteudo {
-  width:600px;
-  margin:25px auto;
-  padding:25px;
-  background: #fff;
-  border:1px solid #dedede;
-  -webkit-box-shadow: 1px 1px 1px 0px rgba(204,204,204,0.35);
-  -moz-box-shadow: 1px 1px 1px 0px rgba(204,204,204,0.35);
-  box-shadow: 1px 1px 1px 0px rgba(204,204,204,0.35);
 }
 
 .conteudo img {
@@ -186,13 +163,6 @@ nav.menu ul a:hover {
   margin-left:10px;
 }
 
-.post-info {
-  float: right;
-  margin: -10px 0 15px;
-  font-size: 12px;
-  text-transform: uppercase;
-}
-
 @media screen and (max-width: 960px) {
 
   .header {
@@ -221,15 +191,6 @@ nav.menu ul a {
   font-size: 16px;
   border-bottom:1px solid #16a085;
   border-top:1px solid #1abf9f;
-}
-
-.conteudo {
-  float:inherit;
-  width:101%;
-  padding:5%;
-  margin:0 auto 25px;
-  background: #fff;
-  border:1px solid #dedede;
 }
 
 .conteudo img {
@@ -321,6 +282,15 @@ img {
     transition: opacity 2s;
 }
 
+.footer {
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: black;
+    color: white;
+    text-align: center;
+    padding: 15px 0;
+}
 
 
 </style>
@@ -335,7 +305,7 @@ img {
     </header>
     {% if messages %}
     {% for msg in messages %}
-        {{ msg }}
+        <h1 style="text-align: center; color: white;">{{ msg }}</h1>
     {% endfor %}
     {% endif %}
 
@@ -347,15 +317,34 @@ img {
 
 <div class="two-column" id="fadeText">
     <p>Welcome to the art-work of the future. Please select a piece of artwork from the gallery.</p>
-    <p>If you wish to purchase a piece of artwork, select it and take it to your shopping cart when you can but in your payment details.</p>
+    <p> This visionary art gallery truly embodies the future of art, offering a provocative glimpse into the infinite potential of AI, using openAI's Dalle-2.</p>
+
+    <p>The AI, trained on centuries of artistic traditions, remixes styles and patterns to generate awe-inspiring, unique compositions that challenge our understanding of authorship and creativity in the digital age.</p>
+    <p>As you wander through this futuristic exhibition space, your senses are immersed in captivating masterpieces created by the symbiosis of machine learning algorithms and human imagination.</p>
 </div>
 
-<script defer src="https://use.fontawesome.com/releases/v5.0.13/js/all.js" integrity="sha384-xymdQtn1n3lH2wcu0qhcdaOpQwyoarkgLVxC/wZ5q7h9gHtxICrpcaSUfygqZGOe" crossorigin="anonymous"></script>
+<div class="row">
+    <div class="col-md-12">
+        <ul style="position: relative;">
+            <li>Art-work takes 1-3 days to be processed.</li>
+            <li>You can buy a piece of artwork by taking it to the shopping cart.</li>
+            <li>Enter your payment and shipping details.</li>
+        </ul>
+    </div>
+</div>
 
 
-<footer>
-            <p>This is the footer</p>
+<footer class="footer">
+    <div class="container text-center" style="color: white;">
+        <p class="mb-2">This is some example footer text.</p>
+        <div>
+            <a href="#" class="mr-3"><i class="fab fa-facebook-f"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+        </div>
+    </div>
 </footer>
+
+    <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/all.js" integrity="sha384-xymdQtn1n3lH2wcu0qhcdaOpQwyoarkgLVxC/wZ5q7h9gHtxICrpcaSUfygqZGOe" crossorigin="anonymous"></script>
 
     <script>
     window.onload = function() {

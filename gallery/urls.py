@@ -17,5 +17,6 @@ urlpatterns = [
     path('register', views.register_view, name='register'),
     path('video/<int:id>',views.video,name='video'),
     path('profile', views.profile, name='profile'),
-
+    path('receipt', views.receipt, name='receipt'),
+    path('remove_game_item/', views.remove_game_item, name='remove_game_item'),
 ]
