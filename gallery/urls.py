@@ -19,4 +19,5 @@ urlpatterns = [
     path('profile', views.profile, name='profile'),
     path('receipt', views.receipt, name='receipt'),
     path('remove_game_item/', views.remove_game_item, name='remove_game_item'),
+    path('edit_profile', views.edit_profile, name='edit_profile'),
 ]

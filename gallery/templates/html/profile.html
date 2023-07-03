@@ -1,14 +1,16 @@
 {% include 'html/navbar.html'%}
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Profile</title>
-</head>
 
+</head>
 <style>
-    h1, p {
+    h1, p, .row, table {
         color: white;
+        text-align: center;
     }
     body{
         color: white;
@@ -16,20 +18,54 @@
     th {
         color: gold;
     }
+    body{
+  padding: 2rem 0rem;
+}
+.avatar {
+  border: 0.3rem solid #ffffff;
+  margin-top: -6rem;
+  margin-bottom: 1rem;
+  max-width: 9rem;
+}
+
 </style>
 
 <body>
+<hr>
+<h1>Profile</h1>
+<br>
+<div class="container" style="padding-top: 30px">
+  <div class="row">
+      <div class="card">
+        <div class="card-body text-center">
+          <img class="avatar rounded-circle" src="\media\templates\videogame_imgs\user.png" alt="User Image">
+          <h4 class="card-title">{{ user.username }}</h4>
+          <h6 class="card-subtitle mb-2 text-muted">Your Profile Information</h6>
+          <p class="card-text">
+              <b>Email:</b> {{ user.email }} <br> <b>Username:</b> {{ user.username }} <br> <b>Date Joined:</b> {{ user.date_joined }} <br>
+              <b>Is user active?</b> {% if user.is_active %} Yes {% else %} No {% endif %} <br> <b>Is admin?</b> {% if user.is_superuser %} Yes {% else %} No {% endif %}
+          </p>
+          <a href="{% url 'edit_profile' %}" class="btn btn-info">Edit Profile?</a>
+        </div>
+      </div>
+    </div>
+</div>
+
+
+<hr>
 <h1>Profile Receipts</h1>
 
+
+<div class  ="row">
+
 {%  for receipt in receipts %}
-    <hr>
              <div class="row">
                         <div class="col-lg-4">
                         <div class="card" style="color: white !important;">
                             <div class="card-body">
 
-        <div class="card-body p-0 table-responsive" style  ='color:white'>
-                                <h4 class="p-3 mb-0">Product Description ------ <b>Receipt {{ forloop.counter }}</b></h4>
+                                <div class="card-body p-0 table-responsive" style  ='color:white'>
+                                <h4 class="p-3 mb-0">Product Description --- <b>Receipt {{ forloop.counter }}</b></h4>
 
                                 <table class="table mb-0">
                                     <thead>
@@ -43,23 +79,16 @@
                                     </thead>
                                     <tbody>
     {%  for item in receipt.items %}
-
-
                                         <tr>
                                             <th>
-                                                <img src="https://bootdey.com/img/Content/avatar/avatar6.png"
-                                                    alt="product" class="" width="80">
+                                                <img src="\media\templates\videogame_imgs\receipt.png" alt="receipt image" width="80">
                                             </th>
-                                            <td>{{ item }} items===========</td>
+                                            <td>{{ item }} items</td>
                                             <td>$100 X 2</td>
                                             <td><strong>$200</strong></td>
                                             <td><span class="badge badge-warning">PENDING &#10006</span> ----  <span>SHIPPED &#10004</span></td>
                                         </tr>
-
-
     {% endfor %}
-
-
                                     </tbody>
                                 </table>
                                 </div>
@@ -90,7 +119,7 @@
     <p style="color: #FF00FF">{{ receipt.items }}</p>
 {# commented out code was here #}
 {% endfor %}
-
+</div></div></div>
 </body>
 </html>
 

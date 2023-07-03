@@ -1,5 +1,4 @@
-
-    * {
+* {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -71,7 +70,7 @@ body {
 .form .input .inputBox input[type="submit"] {
   margin-top: 20px;
   background: black;
-  color: papayawhip;
+  color: #d8faff;
   box-shadow: -2px -2px 6px rgba(255, 255, 255, 0.1),
    2px 2px 6px rgba(0,0,0,0.8);
 }
