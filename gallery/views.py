@@ -207,7 +207,7 @@ def register_view(request):
 
         return redirect('home')
 
-    return render(request, 'html/register.html', context='context')
+    return render(request, 'html/register.html', context=context)
 
 
 def video(request, id):
