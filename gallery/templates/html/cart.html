@@ -15,10 +15,11 @@
     <link rel="stylesheet" href="https://rawgit.com/LeshikJanz/libraries/master/Bootstrap/baguetteBox.min.css">
     <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <title>Freebie: 4 Bootstrap Gallery Templates</title>
+    <title>Cart</title>
     <link rel="stylesheet" href="{% static 'css/cart.css' %}">
 </head>
 <body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.8.1/baguetteBox.min.js"></script>
 
 <style>
     .neon-glow {
@@ -89,6 +90,51 @@
         <li class="cor-5"></li>
     </ul>
 </header>
+<script>
+    baguetteBox.run('.tz-gallery');
+
+    function redirect(obs){
+        window.location.href=obs.getAttribute('href');
+    }
+
+    function deleteItem(id) {
+        alert("Are you sure you wish to delete item id:" + id + " from your basket?");
+        return send_request(id,'/delete_game_item/'+id,'delet');
+    }
+
+    function addAnItem(id) {
+        alert("Are you sure you wish to add 1 item id:" + id + " from your basket?");
+        return send_request(id,'/add_game_item/'+id,'add');
+    }
+
+    function removeAnItem(id) {
+        alert("Are you sure you wish to remove 1 item id:" + id + " from your basket?");
+        return send_request(id,'/remove_game_item/'+id,'remov');
+    }
+
+    // POST data via ajax with id
+    function send_request(orderId,url,action) {
+        $.ajax({
+            url: url,
+            type: 'post',
+            data: {
+                'order_id': orderId,
+                'csrfmiddlewaretoken': '{{ csrf_token }}'
+            },
+            success: function(response) {
+                if(response.success){
+                    alert('1 item has been '+ action+'ed from your cart.');
+                    location.reload();
+                } else {
+                    alert('Item'+action+'ed from cart.');
+                }
+            },
+            error: function(response) {
+                alert('An error has occured while '+action+'ing an item from your cart.');
+            }
+        });
+    }
+</script>
 
     <div class="container gallery-container">
     <div class="center-content">
@@ -116,6 +162,7 @@
                         <button class="btn btn-danger float-end" onclick="deleteItem({{ order.order_id }})">Delete</button>
                         <button class="btn btn-success float-end" onclick="addAnItem({{ order.order_id }})">+1 Qty</button>
                         <button class="btn btn-warning float-end" onclick="removeAnItem({{ order.order_id }})">-1 Qty</button>
+
                     </div>
                 </div>
                 <hr>
@@ -138,16 +185,16 @@
     <div class="row">
         <div class="col-md-12" style="text-align: center;">
             <button type="button" class="btn btn-primary btn-lg" onclick='redirect(this)' href="{% url 'gallery' %}"><i class="fa fa-arrow-left"></i> Go back to gallery</button>
-            <button type="button" class="btn btn-secondary btn-lg" onclick='redirect(this)' href="{% url 'buy' %}">Buy <i class="fa fa-arrow-right"></i></button>
+            <button type="button" class="btn btn-secondary btn-lg disable-btn" onclick='isCartEmpty(this)' href="{% url 'buy' %}" style="background-color: gold; color: white;">Buy <i class="fa fa-arrow-right"></i></button>
         </div>
     </div>
 
 <footer class="footer">
     <div class="container text-center" style="color: white;">
-        <p class="mb-2">This is some example footer text.</p>
+        <p class="mb-2">Art Gallery of the Future - 2023. Check us out on social media!</p>
         <div>
-            <a href="#" class="mr-3"><i class="fab fa-facebook-f"></i></a>
-            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="https://www.facebook.com/" class="mr-3"><i class="fab fa-facebook-f"></i></a>
+            <a href="https://twitter.com/"><i class="fab fa-twitter"></i></a>
         </div>
     </div>
 </footer>
@@ -155,44 +202,22 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.8.1/baguetteBox.min.js"></script>
-<script>
-    baguetteBox.run('.tz-gallery');
+<script type="text/javascript">
 
-    function redirect(obs){
-        window.location.href=obs.getAttribute('href');
+    // check if cart empty
+    var ordersLength = {{ orders|length }};
+
+    function isCartEmpty(button) {
+        if (ordersLength == 0) {
+            var buyButton = document.querySelector('.disable-btn');
+            alert("Your cart is empty please select items from the gallery.");
+            buyButton.disabled = true;
+        } else {
+            redirect(button);
+        }
     }
 
-    function deleteItem(id) {
-        alert("Are you sure you wish to delete item id:" + id + " from your basket?");
-        return false;
-    }
-
-    function addAnItem(id) {
-        alert("Are you sure you wish to add 1 item id:" + id + " from your basket?");
-        return false;
-    }
-
-    function removeAnItem(orderId) {
-        $.ajax({
-            url: '/remove_game_item/',  // or whatever your url is
-            type: 'post',
-            data: {
-                'order_id': orderId,
-                'csrfmiddlewaretoken': '{{ csrf_token }}'
-            },
-            success: function(response) {
-                if(response.success)
-                    alert('1 item has been removed from your cart.');
-                    location.reload();
-                } else {
-                    alert('Item removed from cart.');
-                }
-            },
-            error: function(response) {
-                alert('An error has occured while removing an item from your cart.');
-            }
-        });
-    }
 </script>
+
 </body>
 </html>

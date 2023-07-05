@@ -1,3 +1,4 @@
+{% load filters %}
 {% include 'html/navbar.html'%}
 <!DOCTYPE html>
 
@@ -27,12 +28,20 @@
   margin-bottom: 1rem;
   max-width: 9rem;
 }
+table{
+    justify-content: center;
+    display: flex;
+}
 
+.card{
+    justify-content: center;
+    display: flex;
+}
 </style>
 
 <body>
 <hr>
-<h1>Profile</h1>
+<h1>User Profile</h1>
 <br>
 <div class="container" style="padding-top: 30px">
   <div class="row">
@@ -45,7 +54,7 @@
               <b>Email:</b> {{ user.email }} <br> <b>Username:</b> {{ user.username }} <br> <b>Date Joined:</b> {{ user.date_joined }} <br>
               <b>Is user active?</b> {% if user.is_active %} Yes {% else %} No {% endif %} <br> <b>Is admin?</b> {% if user.is_superuser %} Yes {% else %} No {% endif %}
           </p>
-          <a href="{% url 'edit_profile' %}" class="btn btn-info">Edit Profile?</a>
+          <a href="{% url 'load_edit_profile' %}" class="btn btn-info">Edit Profile?</a>
         </div>
       </div>
     </div>
@@ -56,150 +65,75 @@
 <h1>Profile Receipts</h1>
 
 
-<div class  ="row">
+<div class="row">
 
 {%  for receipt in receipts %}
              <div class="row">
-                        <div class="col-lg-4">
-                        <div class="card" style="color: white !important;">
+                        <div class='col'>
+                        <div class="card " style="color: white !important;">
                             <div class="card-body">
 
-                                <div class="card-body p-0 table-responsive" style  ='color:white'>
+                                <div class="card-body p-0 table-responsive" style  ='color:white ; width: max-content'>
                                 <h4 class="p-3 mb-0">Product Description --- <b>Receipt {{ forloop.counter }}</b></h4>
 
-                                <table class="table mb-0">
-                                    <thead>
+                                <table class="table">
                                         <tr>
-                                            <th scope="col">Description</th>
                                             <th scope="col"></th>
+                                            <th scope="col">Name</th>
                                             <th scope="col">Quantity</th>
                                             <th scope="col">Amount</th>
                                             <th scope="col">Status</th>
                                         </tr>
-                                    </thead>
-                                    <tbody>
     {%  for item in receipt.items %}
+
                                         <tr>
-                                            <th>
+                                            <td>
                                                 <img src="\media\templates\videogame_imgs\receipt.png" alt="receipt image" width="80">
-                                            </th>
-                                            <td>{{ item }} items</td>
-                                            <td>$100 X 2</td>
-                                            <td><strong>$200</strong></td>
-                                            <td><span class="badge badge-warning">PENDING &#10006</span> ----  <span>SHIPPED &#10004</span></td>
+                                            </td>
+                                            <td>{{ item |myfunc }}</td>
+                                            <td>${{item|price}} X {{ item|quantity }}</td>
+                                            <td><strong>${{item|total}}</strong></td>
+
+                                            <td>{% if not item|processed %}
+                                                <span class="badge badge-warning" style="background-color: yellow ;color: black">
+                                                PENDING &#10006</span>
+                                                {% else %}
+                                                <span class="badge badge-success" style="background-color: lightgreen ;color: black">SHIPPED &#10004</span>
+                                                {% endif %}
+                                            </td>
                                         </tr>
     {% endfor %}
                                     </tbody>
                                 </table>
                                 </div>
                         </div>
-                        <div class="card mt-4">
-
-            </div>
                         </div></div></div>
-
+<table style="padding-bottom: 10px;">
                                             <tr>
-                                            <th colspan="2">
-                                                <span>Status:</span>
-                                                <span class="badge badge-success">PAID</span>
-                                            </th>
-                                            <td>
-                                                <span class="text-muted">Total Price</span>
-                                                <strong>$100</strong>
-                                            </td>
-                                            <td>
-                                                <span class="text-muted">Total Paid</span>
-                                                <strong>$100</strong>
-                                            </td>
-                                            <td>
-                                                <span class="text-muted">Due</span>
-                                                <strong>$100</strong>
-                                            </td>
-                                        </tr>
-    <p style="color: #FF00FF">{{ receipt.items }}</p>
-{# commented out code was here #}
+                                                <th colspan="2">
+                                                    <span>Status:</span>
+                                                    <span class="badge badge-success">PAID </span>
+                                                </th>
+                                                <td>
+                                                    <span class="text-muted">Total Price </span>
+                                                    <strong>${{ receipt.items| total_price }}</strong>
+                                                </td>
+                                                <td>
+                                                    <span class="text-muted">Total Quantity </span>
+                                                    <strong>{{ receipt.items| total_quantity }}</strong>
+                                                </td>
+                                            </tr></table>
+
 {% endfor %}
 </div></div></div>
 </body>
+<footer class="footer">
+    <div class="container text-center" style="color: white;">
+        <p class="mb-2">Art Gallery of the Future - 2023. Check us out on social media!</p>
+        <div>
+            <a href="https://www.facebook.com/" class="mr-3"><i class="fab fa-facebook-f"></i></a>
+            <a href="https://twitter.com/"><i class="fab fa-twitter"></i></a>
+        </div>
+    </div>
+</footer>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-{#                <div class="row">#}
-{#                    <div class="col-lg-4">#}
-{#                        <div class="card" style="color: white !important;">#}
-{#                            <div class="card-body">#}
-{##}
-{#        <div class="card-body p-0 table-responsive" style  ='color:white'>#}
-{#                                <h4 class="p-3 mb-0">Product Description</h4>#}
-{#                                <table class="table mb-0">#}
-{#                                    <thead>#}
-{#                                        <tr>#}
-{#                                            <th scope="col">Description</th>#}
-{#                                            <th scope="col"></th>#}
-{#                                            <th scope="col">Quantity</th>#}
-{#                                            <th scope="col">Amount</th>#}
-{#                                            <th scope="col">Status</th>#}
-{#                                        </tr>#}
-{#                                    </thead>#}
-{#                                    <tbody>#}
-{#                                        <tr>#}
-{##}
-{#                                            <th>#}
-{#                                                <img src="https://bootdey.com/img/Content/avatar/avatar6.png"#}
-{#                                                    alt="product" class="" width="80">#}
-{#                                            </th>#}
-{#                                            <td>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dolorem,#}
-{#                                                facilis.</td>#}
-{#                                            <td>$100 X 2</td>#}
-{#                                            <td><strong>$200</strong></td>#}
-{#                                            <td><span class="badge badge-warning">PENDING</span></td>#}
-{#                                        </tr>#}
-{#                                        <tr>#}
-{#                                            <th colspan="2">#}
-{#                                                <span>Status:</span>#}
-{#                                                <span class="badge badge-success">PAID</span>#}
-{#                                            </th>#}
-{#                                            <td>#}
-{#                                                <span class="text-muted">Total Price</span>#}
-{#                                                <strong>$100</strong>#}
-{#                                            </td>#}
-{#                                            <td>#}
-{#                                                <span class="text-muted">Total Paid</span>#}
-{#                                                <strong>$100</strong>#}
-{#                                            </td>#}
-{#                                            <td>#}
-{#                                                <span class="text-muted">Due</span>#}
-{#                                                <strong>$100</strong>#}
-{#                                            </td>#}
-{#                                        </tr>#}
-{#                                    </tbody>#}
-{#                                </table>#}
-{#                            </div>#}
-{#                        </div>#}
-{#                        <div class="card mt-4">#}
-{##}
-{#            </div>#}
-{#                        </div>#}
-{#                    </div>#}
-{#                </div>#}

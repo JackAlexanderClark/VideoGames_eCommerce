@@ -15,7 +15,7 @@
     <link rel="stylesheet" href="https://rawgit.com/LeshikJanz/libraries/master/Bootstrap/baguetteBox.min.css">
     <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <title>Freebie: 4 Bootstrap Gallery Templates</title>
+    <title>Video</title>
     <link rel="stylesheet" href="{% static 'css/gallery.css' %}">
 </head>
 <body>
@@ -50,6 +50,11 @@
     .header .cor-5 {
       background-color: hsla(10,40%,50%,1);
     }
+
+    .info {
+        text-decoration: underline;
+        font-weight: bold;
+    }
 </style>
 
 <ul class="header">
@@ -76,10 +81,10 @@
 
             <!-- Information column -->
             <div class="col-sm-6 col-md-5 col-lg-5" style="padding-left: 30px;">
-                <h3>Genre: {{ game.genre }}</h3>
-                <h3>Price: £{{ game.price }}</h3>
-                <h3>Description: {{ game.description }}</h3>
-                <h3>Quantity: {{ game.quantity }}</h3>
+                <h3><span class="info">Genre:</span> {{ game.genre }}</h3>
+                <h3><span class="info">Price:</span> £{{ game.price }}</h3>
+                <h3><span class="info">Description:</span> {{ game.description }}</h3>
+                <h3><span class="info">Quantity:</span> {{ game.quantity }}</h3>
             </div>
 
             <!-- Button column -->
@@ -99,6 +104,16 @@
         </div>
     </div>
 </div>
+
+<footer class="footer">
+    <div class="container text-center" style="color: white;">
+        <p class="mb-2">Art Gallery of the Future - 2023. Check us out on social media!</p>
+        <div>
+            <a href="https://www.facebook.com/" class="mr-3"><i class="fab fa-facebook-f"></i></a>
+            <a href="https://twitter.com/"><i class="fab fa-twitter"></i></a>
+        </div>
+    </div>
+</footer>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.8.1/baguetteBox.min.js"></script>
 <script>

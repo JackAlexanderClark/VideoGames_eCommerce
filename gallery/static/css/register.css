@@ -62,7 +62,7 @@ body {
   padding: 5px 15px;
   color: #fff;
   font-size: 18px;
-  color: #d8faff;
+  color: #ff0202;
   box-shadow: inset -2px -2px 6px rgba(255, 255, 255, 0.1),
    inset 2px 2px 6px rgba(0,0,0,0.8);
 }
@@ -70,7 +70,7 @@ body {
 .form .input .inputBox input[type="submit"] {
   margin-top: 20px;
   background: black;
-  color: #d8faff;
+  color: #ff0000;
   box-shadow: -2px -2px 6px rgba(255, 255, 255, 0.1),
    2px 2px 6px rgba(0,0,0,0.8);
 }

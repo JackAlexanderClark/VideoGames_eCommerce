@@ -1,8 +1,11 @@
-from django.test import Client, TestCase
 from django.urls import reverse
 from django.contrib.auth.models import User
 from unittest.mock import patch
 from django.shortcuts import render, redirect
+from django.test import TestCase, Client
+from django.urls import reverse
+from shipping.models import Order
+from django.contrib.auth.models import User
 
 
 class LoginViewTest(TestCase):
@@ -41,3 +44,5 @@ class LoginViewTest(TestCase):
 
         self.assertEqual(response.status_code, 200)
         self.assertTemplateUsed(response, 'html/login.html')
+
+

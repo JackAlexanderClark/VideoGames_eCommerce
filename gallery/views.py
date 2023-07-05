@@ -5,8 +5,9 @@ from shipping.models import Order, UserShippingDetails, Card,Receipt
 from django.contrib.auth.models import User
 from django.views.decorators.csrf import csrf_exempt
 from django.http import JsonResponse
-from  gallery.stripe_methods import generate_card_token, create_payment_charge
+from gallery.stripe_methods import generate_card_token, create_payment_charge
 from ast import literal_eval
+# from .forms import UpdateProfileForm
 import json
 import stripe
 import os
@@ -19,8 +20,10 @@ stripe.api_key=SECRET_KEY
 from django.contrib import messages
 
 def home(request):
-    messages.success(request, 'this is working')
+
     return render(request, 'html/home.html')
+
+
 
 def profile(request):
     # handle receipts for each user
@@ -55,7 +58,7 @@ def cart(request):
 
 def buy(request):
     # select the card
-    # address
+    # get address
     if request.method=='GET':
         shippingDetails=UserShippingDetails.objects.filter(user_id=request.user).all()
         cardDetails=Card.objects.filter(user_id=request.user).all()
@@ -125,7 +128,7 @@ def buy(request):
                 details.exp_year=request.POST['exp_year']
 
                 details.cvc=request.POST['cvc']
-                # This needs modification
+
                 is_card_valid=None
                 try:
                     is_card_valid=generate_card_token(stripe, details.card_number, details.exp_month, details.exp_year, details.cvc)
@@ -254,7 +257,8 @@ def receipt(request):
                 order.game_id,
                 item_price,
                 order.quantity,
-                order.delivery_cost
+                order.delivery_cost,
+                str(order.is_processed)
                 ])
             total_amount += item_price
         tax = 0.05 * total_amount
@@ -268,13 +272,12 @@ def receipt(request):
         # get the address
         shippingDetails = UserShippingDetails.objects.filter(user_id=request.user).all()
         cardDetails = Card.objects.filter(user_id=request.user).all()
-        context['shipping']=shippingDetails
-        context['card']=cardDetails
+        context['shipping'] = shippingDetails
+        context['card'] = cardDetails
         if shippingDetails and cardDetails:
             pass
         else:
             redirect('buy')
-        messages.success(request, 'order submitted and receipt generated')
         return render(request, 'html/receipt.html',context=context)
 
     if request.method == 'POST':
@@ -294,7 +297,8 @@ def receipt(request):
                     order.game_id.name,
                     item_price,
                     order.quantity,
-                    order.delivery_cost
+                    order.delivery_cost,
+                    str(order.is_processed)
                 ])
                 total_amount += item_price
             tax = 0.05 * total_amount
@@ -314,7 +318,7 @@ def receipt(request):
                 charged = create_payment_charge(stripe, generate_card_token(stripe, card.card_number, card.exp_month,
                                                                             card.exp_year, card.cvc), total_amount, 'VideoGames Payment')
                 messages.success(request, str(charged))
-                messages.success(request, "Order Placed")
+                messages.success(request, "Order Placed Successfully, check your profile for a receipt and status.")
                 return redirect('home')
             except stripe.error.CardError as e:
                 body = e.json_body
@@ -330,41 +334,76 @@ def receipt(request):
 
 
 @csrf_exempt
-def remove_game_item(request):
+def remove_game_item(request,id):
 
     # remove one from cart item when http sent from javascript
-    if request.method == 'POST':
-        order_id = request.POST.get('order_id')
-        game = VideoGame.objects.get(video_game_id=order_id)
+    if (request.method == 'POST'):
+        game=Order.objects.get(order_id=id)
         print(game.quantity)
         if game.quantity > 0:
             game.quantity -= 1
             game.save()
             return JsonResponse({"success": True}, status=200)
         else:
+
+            return JsonResponse({"success": False}, status=400)
+    return JsonResponse({"error": ""}, status=400)
+
+@csrf_exempt
+def add_game_item(request,id):
+
+    # remove one from cart item when http sent from javascript
+    if (request.method == 'POST'):
+        game=Order.objects.get(order_id=id)
+        print(game.quantity)
+        if game.quantity <5:
+            game.quantity += 1
+            game.save()
+            return JsonResponse({"success": True}, status=200)
+        else:
+            return JsonResponse({"message": "Upper limited reached"}, status=400)
+    return JsonResponse({"error": "Internal server error"}, status=400)
+
+@csrf_exempt
+def delete_game_item(request,id):
+
+    # remove one from cart item when http sent from javascript
+    if (request.method == 'POST'):
+        game=Order.objects.get(order_id=id)
+
+        print(game.quantity)
+        if game:
+            game.delete()
+            return JsonResponse({"success": True}, status=200)
+        else:
             return JsonResponse({"success": False}, status=400)
     return JsonResponse({"error": ""}, status=400)
 
 
+def load_edit_profile(request):
+
+    return render(request, 'html/editprofile.html')
+
 def edit_profile(request):
-    # update user table
     if request.method == 'POST':
-        username = request.POST['username']
-        password = request.POST['password1']
-        password2 = request.POST['password2']
-        email = request.POST['email']
-        # comment
-        # Ensure that user is authenticated and the username they enter is their current username.
-        if request.user.is_authenticated and username == request.user.username:
-            if password == password2:
-                current_user = User.objects.get(username=username)
-                current_user.set_password(password)
-                current_user.email = email
-                current_user.save()
-                update_session_auth_hash(request, current_user)  # Update the session, to keep the user logged in.
-                messages.success(request, 'User profile updated: '+username)
-            else:
-                messages.error(request, 'Passwords do not match')
+        form = UpdateProfileForm(request.POST, instance=request.user)
+
+        if form.is_valid():
+            user = form.save()
+
+            # update password
+            password = form.cleaned_data.get('password')
+            user.set_password(password)
+            user.save()
+
+            update_session_auth_hash(request, form.user)  # Important!
+
+            messages.success(request, 'Your profile was successfully updated!')
+            return redirect('profile')
         else:
-            messages.error(request, 'Incorrect user. Please login to the correct account.')
-    return redirect('home')
+            messages.error(request, 'Please correct the error below.')
+    else:
+        form = UpdateProfileForm(instance=request.user)
+    return render(request, 'edit_profile.html', {'form': form})
+
+

@@ -12,7 +12,6 @@ img {
 .container.gallery-container {
     background-color: black;
     color: #35373a;
-    min-height: 100vh;
     padding: 30px 50px;
 }
 

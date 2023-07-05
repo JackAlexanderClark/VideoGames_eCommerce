@@ -2,7 +2,6 @@
 <!DOCTYPE html>
 <html>
 <head>
-
     <style>
 
         .container {
@@ -35,25 +34,20 @@
 </head>
 <body>
     <div class="container">
-        {% if messages %}
-        {% for msg in messages %}
-            {{ msg }}
-        {% endfor %}
-        {% endif %}
         <h1>Receipt</h1>
         <table>
             <thead>
                 <tr>
-                    <th>total_amount</th>
-                    <th>receipt_id</th>
-                    <th>tax</th>
+                    <th>Total Amount</th>
+                    <th>Receipt Id</th>
+                    <th>Tax</th>
                 </tr>
             </thead>
             <tbody>
                 <tr>
-                    <td>{{total_amount}}</td>
+                    <td>£{{total_amount}}</td>
                     <td>{{ receipt_id }}</td>
-                    <td>{{ tax }}</td>
+                    <td>£{{ tax }}</td>
                 </tr>
             </tbody>
         </table>
@@ -65,6 +59,7 @@
                     <th>Price</th>
                     <th>Quantity</th>
                     <th>Delivery Cost</th>
+                    <th>Item Shipped</th>
                 </tr>
             </thead>
             <tbody>
@@ -73,7 +68,7 @@
                     {% for prop in item %}
                     <td>{{ prop }}</td>
                         {% endfor %}
-                </tr>
+                    </tr>
                 {% endfor %}
             </tbody>
         </table>
@@ -84,4 +79,14 @@
         </form>
     </div>
 </body>
+
+<footer class="footer">
+    <div class="container text-center" style="color: white;">
+        <p class="mb-2">Art Gallery of the Future - 2023. Check us out on social media!</p>
+        <div>
+            <a href="https://www.facebook.com/" class="mr-3"><i class="fab fa-facebook-f"></i></a>
+            <a href="https://twitter.com/"><i class="fab fa-twitter"></i></a>
+        </div>
+    </div>
+</footer>
 </html>

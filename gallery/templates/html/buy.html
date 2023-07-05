@@ -8,6 +8,29 @@
 </head>
 
 <style>
+    #demo {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-style: italic;
+    }
+
+#demo h5, #demo p {
+    text-align: center;
+}
+#demo-btn {
+    background-color: #4CAF50;
+    border: none;
+    color: #ffffff;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+}
+
 /* --- source: https://codepen.io/atakan/pen/nPOZZR --- */
 /*custom font*/
 @import url(https://fonts.googleapis.com/css?family=Montserrat);
@@ -158,10 +181,9 @@ body {
 
 </style>
 <body>
-{% for msg in messages %}
-    <h3 style="color: white">{{ msg }}</h3>
-{% endfor %}
-{{ receipt }}
+
+
+
 
 {% if getShippingDetails == False %}
     <form id="msform" method="post">
@@ -175,8 +197,20 @@ body {
       <fieldset>
         <h2 class="fs-title">Your Shipping Details</h2>
         <h3 class="fs-subtitle">This is step 1</h3>
+      <div class="container" id="demo"></div>
+            <button onclick="demoCard()" id="demo-btn">Click for Demo Card</button>
+
+            <div id="hideText" style="display: none;">
+              <h4>Stripe Test Card Details</h4>
+              <p>When testing interactively, use a card number, such as 4242 4242 4242 4242. Enter the card number in the Dashboard or in any payment form.<br>
+                Use a valid future date, such as 12/34.
+                Use any three-digit CVC (four digits for American Express cards).
+                Use any value you like for other form fields
+              </p>
+            </div>
+        </div>
           {% if messages %}
-              <div class="message">{{ message }}</div>
+              <div class="message">{{ message }} hello</div>
           {% endif %}
 
             <input hidden name="form" value="msform">
@@ -341,11 +375,30 @@ body {
 {% endif %}
 </body>
 
-
+<footer class="footer">
+    <div class="container text-center" style="color: white;">
+        <p class="mb-2">Art Gallery of the Future - 2023. Check us out on social media!</p>
+        <div>
+            <a href="https://www.facebook.com/" class="mr-3"><i class="fab fa-facebook-f"></i></a>
+            <a href="https://twitter.com/"><i class="fab fa-twitter"></i></a>
+        </div>
+    </div>
+</footer>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
 <script>
 
+function demoCard() {
+      var dropdownContent = document.getElementById("hideText");
+      if (dropdownContent.style.display === "none") {
+        dropdownContent.style.display = "block";
+      } else {
+        dropdownContent.style.display = "none";
+      }
+}
+// --- source: https://codepen.io/atakan/pen/nPOZZR ---
 //jQuery time
 var current_fs, next_fs, previous_fs; //fieldsets
 var left, opacity, scale; //fieldset properties which we will animate

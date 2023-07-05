@@ -21,7 +21,7 @@ def create_payment_charge(stripe,tokenid,amount,description):
                 description=description,
                 source=tokenid,
                 )
-    payment_check = payment['paid']    # return True for successful payment
+    payment_check = payment['paid']
     return payment_check
 
 if __name__=='__main__':

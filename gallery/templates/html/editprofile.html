@@ -29,15 +29,24 @@ form {
             </div>
             <div class="inputBox">
               <label>Email</label>
-              <input type="email" name="email" placeholder="{% if user.email %} {{ user.email }} {% else %} email@gmail.com {% endif %}}"/>
+              <input type="email" name="email" placeholder="{% if user.email %} {{ user.email }} {% else %} email@gmail.com {% endif %}"/>
             </div>
             <div class="inputBox">
               <input type="submit" name="" value="Update" on/>
             </div>
           </div>
-          <p class="forget">Forget Password ? <a href="#">Click Here</a></p>
         </div>
     </form>
+
+<footer class="footer" style='padding-top: 30px'>
+    <div class="container text-center" style="color: white;">
+        <p class="mb-2">Art Gallery of the Future - 2023. Check us out on social media!</p>
+        <div>
+            <a href="https://www.facebook.com/" class="mr-3"><i class="fab fa-facebook-f"></i></a>
+            <a href="https://twitter.com/"><i class="fab fa-twitter"></i></a>
+        </div>
+    </div>
+</footer>
 
 
 {% endblock %}
