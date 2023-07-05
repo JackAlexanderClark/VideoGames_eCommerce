@@ -1,5 +1,5 @@
 from django.db import models
-
+from  gallery.storage import OverwriteStorage
 from django import forms
 from django.contrib.auth.models import User
 
@@ -15,7 +15,7 @@ class VideoGame(models.Model):
     price = models.IntegerField()
     quantity = models.IntegerField()
     description = models.CharField(max_length=200, default='No description provided')
-    image_url = models.ImageField(upload_to='templates/videogame_imgs', default='imgs/videogames/Old_Harbour.png')
+    image_url = models.ImageField(upload_to='templates/videogame_imgs', default='imgs/videogames/Old_Harbour.png',storage=OverwriteStorage)
 
     def __str__(self):
         return self.name
