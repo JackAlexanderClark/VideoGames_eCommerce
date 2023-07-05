@@ -138,5 +138,6 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 MESSAGE_STORAGE = 'django.contrib.messages.storage.session.SessionStorage'
 
+CSRF_TRUSTED_ORIGINS =['https://art-gallery-django-5b7a338cde1a.herokuapp.com']
 
 django_heroku.settings(locals())
