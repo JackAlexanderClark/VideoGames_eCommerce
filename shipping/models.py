@@ -6,7 +6,7 @@ class UserShippingDetails(models.Model):
     user_id = models.ForeignKey(User, on_delete=models.CASCADE)
     address_line = models.CharField(max_length=512)
     postcode = models.CharField(max_length=10)
-    phone_number = models.IntegerField()
+    phone_number = models.BigIntegerField()
     country = models.CharField(max_length=50)
     speed=models.CharField(max_length=100, default="standard")
 
@@ -26,7 +26,7 @@ class Order(models.Model):
 
 class Card(models.Model):
     user_id = models.ForeignKey(User, on_delete=models.CASCADE)
-    card_number = models.IntegerField()
+    card_number = models.BigIntegerField()
     exp_month = models.IntegerField()
     exp_year = models.IntegerField()
     cvc=models.IntegerField()
