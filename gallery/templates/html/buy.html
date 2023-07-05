@@ -219,20 +219,20 @@ body {
             </div>
         </div>
 
-        {% messages %}
-          {% if message.tags == 'error' %}
-            {% if message.message.message_id == 'payment_error' %}
-
-              <div class="">{{ message.message.message }}</div>
-            {% else %}
-
-              <div class="error">{{ message.message.message }}</div>
-            {% endif %}
-          {% else %}
-
-            <div class="message">{{ message.message.message }}</div>
-          {% endif %}
-        {% endmessages %}
+{#        {% if messages %}#}
+{#          {% if message.tags == 'error' %}#}
+{#            {% if message.message.message_id == 'payment_error' %}#}
+{##}
+{#              <div class="">{{ message.message.message }}</div>#}
+{#            {% else %}#}
+{##}
+{#              <div class="error">{{ message.message.message }}</div>#}
+{#            {% endif %}#}
+{#          {% else %}#}
+{##}
+{#            <div class="message">{{ message.message.message }}</div>#}
+{#          {% endif %}#}
+{#        {% endif %}#}
 
 
             <input hidden name="form" value="msform">
