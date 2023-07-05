@@ -98,17 +98,17 @@
     }
 
     function deleteItem(id) {
-        alert("Are you sure you wish to delete item id:" + id + " from your basket?");
+        alert("Are you sure you wish to delete item (id:" + id + ") from your basket?");
         return send_request(id,'/delete_game_item/'+id,'delet');
     }
 
     function addAnItem(id) {
-        alert("Are you sure you wish to add 1 item id:" + id + " from your basket?");
+        alert("Are you sure you wish to add 1 item (id:" + id + ") to your basket?");
         return send_request(id,'/add_game_item/'+id,'add');
     }
 
     function removeAnItem(id) {
-        alert("Are you sure you wish to remove 1 item id:" + id + " from your basket?");
+        alert("Are you sure you wish to remove 1 item (id:" + id + ") from your basket?");
         return send_request(id,'/remove_game_item/'+id,'remov');
     }
 

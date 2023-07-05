@@ -178,11 +178,20 @@ body {
 	color: white;
 }
 
+/* unique messaging styles */
+    payment-error {
+        font-weight: bold;
+        color: red;
+    }
+
+    error {
+        font-style: italic;
+        color: yellow;
+    }
 
 </style>
+
 <body>
-
-
 
 
 {% if getShippingDetails == False %}
@@ -209,9 +218,22 @@ body {
               </p>
             </div>
         </div>
-          {% if messages %}
-              <div class="message">{{ message }} hello</div>
+
+        {% messages %}
+          {% if message.tags == 'error' %}
+            {% if message.message.message_id == 'payment_error' %}
+
+              <div class="">{{ message.message.message }}</div>
+            {% else %}
+
+              <div class="error">{{ message.message.message }}</div>
+            {% endif %}
+          {% else %}
+
+            <div class="message">{{ message.message.message }}</div>
           {% endif %}
+        {% endmessages %}
+
 
             <input hidden name="form" value="msform">
         <label for="address">Address:</label>

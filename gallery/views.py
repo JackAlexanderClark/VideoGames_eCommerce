@@ -7,7 +7,7 @@ from django.views.decorators.csrf import csrf_exempt
 from django.http import JsonResponse
 from gallery.stripe_methods import generate_card_token, create_payment_charge
 from ast import literal_eval
-# from .forms import UpdateProfileForm
+from .models import EditProfileForm
 import json
 import stripe
 import os
@@ -384,26 +384,24 @@ def load_edit_profile(request):
 
     return render(request, 'html/editprofile.html')
 
+
 def edit_profile(request):
+    # update user info for profile
     if request.method == 'POST':
-        form = UpdateProfileForm(request.POST, instance=request.user)
+        form = EditProfileForm(request.POST, instance=request.user)
 
         if form.is_valid():
+            username = form.cleaned_data.get('username')
+            if User.objects.filter(username=username).exclude(username=request.user.username).exists():
+                messages.error(request, 'Username already exists.')
+                return redirect('edit_profile')
+
             user = form.save()
-
-            # update password
-            password = form.cleaned_data.get('password')
-            user.set_password(password)
-            user.save()
-
-            update_session_auth_hash(request, form.user)  # Important!
-
-            messages.success(request, 'Your profile was successfully updated!')
             return redirect('profile')
-        else:
-            messages.error(request, 'Please correct the error below.')
+
     else:
-        form = UpdateProfileForm(instance=request.user)
-    return render(request, 'edit_profile.html', {'form': form})
+        form = EditProfileForm(instance=request.user)
+
+    return render(request, 'html/editprofile.html', {'form': form})
 
 
