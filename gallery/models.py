@@ -15,7 +15,7 @@ class VideoGame(models.Model):
     price = models.IntegerField()
     quantity = models.IntegerField()
     description = models.CharField(max_length=200, default='No description provided')
-    image_url = models.ImageField(upload_to='templates/videogame_imgs', default='imgs/videogames/Old_Harbour.png',storage=OverwriteStorage)
+    image_url = models.ImageField(max_length=100,upload_to='templates/videogame_imgs', default='imgs/videogames/Old_Harbour.png',storage=OverwriteStorage)
 
     def __str__(self):
         return self.name
