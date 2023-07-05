@@ -114,7 +114,7 @@ def buy(request):
 
             except Exception as e:
                 status=False
-                messages.error(request,str(e))
+                messages.error(request,"checkpoint 1 "+str(e))
             try:
                 details=Card.objects.filter(user_id=request.user)
                 if details:
@@ -133,8 +133,8 @@ def buy(request):
                 try:
                     is_card_valid=generate_card_token(stripe, details.card_number, details.exp_month, details.exp_year, details.cvc)
                 except Exception as e:
-                    messages.error(request,str(e))
-
+                    messages.error(request,"checkpoint 2 "+str(e))
+                    print("=======")
                 if is_card_valid:
                     details.save()
                 else:
@@ -143,7 +143,7 @@ def buy(request):
                 print('POST name: ',request.POST,type(request.POST),"end")
             except Exception as e:
                 status=False
-                messages.error(request,str(e))
+                messages.error(request,"checkpoint 3 "+str(e))
             if status:
                 messages.success(request,'Details Added Successfully')
                 return redirect("receipt")
