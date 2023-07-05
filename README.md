@@ -22,6 +22,13 @@ Similar, to CHAT-GPT another OpenAI product it is trained on large quantities of
 
 *** explain how it is trained using internet information
 
+Home Page:
+![image](https://github.com/JackAlexanderClark/VideoGames_eCommerce/assets/97599832/0841dd76-a60e-42a4-86fb-82133885df15)
+
+Gallery:
+![image](https://github.com/JackAlexanderClark/VideoGames_eCommerce/assets/97599832/23de3fd5-d708-4ff5-822f-77c620fca3a9)
+
+
 ## Section 2: Project Design and Planning
 
 - The project is a fictional art gallery using AI generated artwork. Users will be able to register an account, login and then browse the homepage which details the ethos and how DALLE-2 works.
@@ -35,5 +42,9 @@ Similar, to CHAT-GPT another OpenAI product it is trained on large quantities of
 - Once the user has chosen their shipping destination, entered their banking details and the shipping speed.
 
 - An order and receipt is generated which is stored within their profile, so they can track all their orders and their statuses.
+
+#### ERD Diagram and Database Scheme
+![image](https://github.com/JackAlexanderClark/VideoGames_eCommerce/assets/97599832/17cfa7f9-99f3-44ef-93c5-e6c94c40f035)
+
 
 ## Section 4 – Bugs and Testing
