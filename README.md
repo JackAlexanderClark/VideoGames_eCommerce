@@ -1,14 +1,16 @@
 # Milestone Project 4 – Django Project
 
-Title: Gallery of the Future
+### Title: Gallery of the Future
 
-Author: Jack Clark
+### Author: Jack Clark
 
-Email: jackalexanderclark@protonmail.com
+### Email: jackalexanderclark@protonmail.com
 
-Website Link to Heroku App: https://art-gallery-django-5b7a338cde1a.herokuapp.com/
+### Website Link to Heroku App: https://art-gallery-django-5b7a338cde1a.herokuapp.com/
 
-Contents:
+![all-devices-black (2)](https://github.com/JackAlexanderClark/VideoGames_eCommerce/assets/97599832/30dc84c8-5e79-48f1-acb2-e2f9fc71cbb6)
+
+<hr>
 
 ## Section 1: Introduction
 
@@ -46,27 +48,9 @@ Remove, Add or Delete the item from your shopping basket:
 Enter Details Page 1 of 3:
 ![image](https://github.com/JackAlexanderClark/VideoGames_eCommerce/assets/97599832/e5354148-9df2-4e8f-8067-9dbe56b501c1)
 
+<hr>
+
 ## Section 2: Project Design and Planning
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -85,7 +69,20 @@ Enter Details Page 1 of 3:
 ![image](https://github.com/JackAlexanderClark/VideoGames_eCommerce/assets/97599832/17cfa7f9-99f3-44ef-93c5-e6c94c40f035)
 - I have arranged the projects logic into two separate applications; gallery and shipping.
 - Firstly, gallery will house the majority of the frontend such as the homepage and the shop gallery.
-- Users can visit the gallery and click on an image to be taken to a page which will give information such as the price, quantity and description. 
+- Users can visit the gallery and click on an image to be taken to a page which will give information such as the price, quantity and description.
+- Once items are chosen in the basket and a purchase is confirmed, the
+
+
+#### Stripe Payment API
+- To safely handle payments, the stripe API is used. We can use dummy card details to test
+- Two functions are used, one to generate a card token, that stores the bank details such as account number, sort code and cvv.
+- The second function, will charge the card a defined amount in a chosen currency.
+- Below is a POST request of the card being charged successfully.
+
+![image](https://github.com/JackAlexanderClark/VideoGames_eCommerce/assets/97599832/db72a0dc-3f90-49a3-a5b0-84ac9d80e600)
+
+
+<hr>
 
 ## Section 3 - Tech Stack
 1. Front-end:
@@ -95,7 +92,7 @@ CSS specifies the visual elements of a web page such as colour, fonts, and layou
 
 JavaScript plays a crucial role in making the web interactive, by manipulating HTML and CSS elements based on user inputs and actions. Javascript can target particular elements on the webpage and then manipulate them in different ways, it can also respond to user input. Used for form validation, interactive maps, or dynamic content updates. While HTML, CSS, and JavaScript form the core of frontend web development, libraries and frameworks like Bootstrap make this process more efficient and responsive.
 
- Bootstrap is a potent CSS framework that helps in creating visually appealing and responsive designs with minimal effort. It comes with pre-designed components like navigation bars, dropdowns, forms, and buttons that speed up development and ensure a consistent and modern design across different browsers and devices. 
+ Bootstrap is a CSS framework that helps in creating visually appealing and responsive designs with minimal effort. It uses a grid structure with defined rows and columns to help organise the project and frontend UI. It comes with pre-designed components like navigation bars, dropdowns, forms, and buttons that speed up development and ensure a consistent and modern design across different browsers and devices. 
 
 2. Back-end:
 Django provideds a skeleton structure that has built in User models, admin backend and settings that assist in speeding up the development of a project. It is a web framework, acts as the middleware in a full-stack application and manages the communication between the frontend and the database. It plays a crucial role in handling requests from the frontend, processing data, and returning the appropriate responses. When a user interacts with the frontend of the website—say, by submitting a form or clicking a button—this action triggers an HTTP request. This request is sent to a URL, which Django maps to a specific view function through its URL dispatcher.
