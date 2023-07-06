@@ -146,11 +146,14 @@ Manual Testing (Unit Testing):
 ## Credits and Code Sources
 
 - Stripe API Code: https://stripe.com/gb
+- OpenAI Dalle-2 Artwork: https://labs.openai.com/
+- Code from stripe API stackoverflow: https://stackoverflow.com/questions/76229874/how-to-save-shipping-address-to-fill-it-automatically-every-time-i-go-to-strip
 ## Codepen
 I have used some front-end prepared templates from CodePen:
 - Login, register forms credit: https://codepen.io/osva-ocampo/details/wvBQbBO
 - Gallery Bootstrap credit: https://codepen.io/dashbouquetdevelopment/pen/mBvQrB
-- Payment forms credit: https://codepen.io/atakan/pen/nPOZZR 
+- Payment forms credit: https://codepen.io/atakan/pen/nPOZZR
+- Navigation bar credit: https://codepen.io/chriiss/details/OJBgpQy 
 
 
 
