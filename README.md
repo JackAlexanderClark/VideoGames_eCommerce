@@ -148,6 +148,8 @@ Manual Testing (Unit Testing):
 - Stripe API Code: https://stripe.com/gb
 - OpenAI Dalle-2 Artwork: https://labs.openai.com/
 - Code from stripe API stackoverflow: https://stackoverflow.com/questions/76229874/how-to-save-shipping-address-to-fill-it-automatically-every-time-i-go-to-strip
+- Stack overflow help with storing images: https://stackoverflow.com/questions/9522759/imagefield-overwrite-image-file-with-same-name
+
 ## Codepen
 I have used some front-end prepared templates from CodePen:
 - Login, register forms credit: https://codepen.io/osva-ocampo/details/wvBQbBO
