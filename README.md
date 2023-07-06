@@ -155,5 +155,7 @@ I have used some front-end prepared templates from CodePen:
 - Payment forms credit: https://codepen.io/atakan/pen/nPOZZR
 - Navigation bar credit: https://codepen.io/chriiss/details/OJBgpQy 
 
-
+## Acknowledgements
+- Huge thank you to Ben Smith - Code institute tutor for his ongoing support and feedback that has helped develop and refine my projects.
+- Friends and family for testing my app and providing user stories 
 
