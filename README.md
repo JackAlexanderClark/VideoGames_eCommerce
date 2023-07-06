@@ -8,6 +8,8 @@
 
 ### Website Link to Heroku App: https://art-gallery-django-5b7a338cde1a.herokuapp.com/
 
+<hr>
+
 ![all-devices-black (2)](https://github.com/JackAlexanderClark/VideoGames_eCommerce/assets/97599832/30dc84c8-5e79-48f1-acb2-e2f9fc71cbb6)
 
 <hr>
@@ -107,19 +109,19 @@ Receipts in profile and shipping statuses with option to edit your user profile
 
 ## Section 3 - Tech Stack
 1. Front-end:
-HTML (HyperText Markup Language) serves as the backbone of a website, dictating the structure and content of a web page. By organizing content into different elements like headers, paragraphs, lists, images, and links, HTML provides the basic layout and format for each page. This ties into the DOM (Document Object Model). CSS (Cascading Style Sheets) handles this structure with style and aesthetics. I used it in combination with chrome dev tools to test how an element would look before applying it. 
+- HTML (HyperText Markup Language) serves as the backbone of a website, dictating the structure and content of a web page. By organizing content into different elements like headers, paragraphs, lists, images, and links, HTML provides the basic layout and format for each page. This ties into the DOM (Document Object Model). CSS (Cascading Style Sheets) handles this structure with style and aesthetics. I used it in combination with chrome dev tools to test how an element would look before applying it. 
 
-CSS specifies the visual elements of a web page such as colour, fonts, and layout, allowing for complete control over the design and responsiveness across different devices. Together, HTML and CSS form the static components of a web page, but for an interactive and dynamic user experience.
+- CSS specifies the visual elements of a web page such as colour, fonts, and layout, allowing for complete control over the design and responsiveness across different devices. Together, HTML and CSS form the static components of a web page, but for an interactive and dynamic user experience.
 
-JavaScript plays a crucial role in making the web interactive, by manipulating HTML and CSS elements based on user inputs and actions. Javascript can target particular elements on the webpage and then manipulate them in different ways, it can also respond to user input. Used for form validation, interactive maps, or dynamic content updates. While HTML, CSS, and JavaScript form the core of frontend web development, libraries and frameworks like Bootstrap make this process more efficient and responsive.
+- JavaScript plays a crucial role in making the web interactive, by manipulating HTML and CSS elements based on user inputs and actions. Javascript can target particular elements on the webpage and then manipulate them in different ways, it can also respond to user input. Used for form validation, interactive maps, or dynamic content updates. While HTML, CSS, and JavaScript form the core of frontend web development, libraries and frameworks like Bootstrap make this process more efficient and responsive.
 
- Bootstrap is a CSS framework that helps in creating visually appealing and responsive designs with minimal effort. It uses a grid structure with defined rows and columns to help organise the project and frontend UI. It comes with pre-designed components like navigation bars, dropdowns, forms, and buttons that speed up development and ensure a consistent and modern design across different browsers and devices. 
+- Bootstrap is a CSS framework that helps in creating visually appealing and responsive designs with minimal effort. It uses a grid structure with defined rows and columns to help organise the project and frontend UI. It comes with pre-designed components like navigation bars, dropdowns, forms, and buttons that speed up development and ensure a consistent and modern design across different browsers and devices. 
 
 2. Back-end:
 - Django provideds a skeleton structure that has built in User models, admin backend and settings that assist in speeding up the development of a project. It is a web framework, acts as the middleware in a full-stack application and manages the communication between the frontend and the database. It plays a crucial role in handling requests from the frontend, processing data, and returning the appropriate responses. When a user interacts with the frontend of the website—say, by submitting a form or clicking a button—this action triggers an HTTP request. This request is sent to a URL, which Django maps to a specific view function through its URL dispatcher.
 
-- The view function, written in Python, handles the request and performs the necessary operations. It might fetch or update data in the database, or execute other logic based on the request's details, it will generate receipts and load pages. Django uses an Object-Relational Mapper (ORM) to interact with the database, which provides a high-level, Pythonic interface for database queries. Django also used Jinja templating and template rendering similar to Flask, however an advantage to Django is it has a lot more built in security, with pre-made functions fo ruser authentication and password hashing. This means data can be manipulated in Python without writing SQL code. Once the view has processed the request, it constructs an HTTP response, often rendering an HTML template with context data. This context data is the information fetched or processed from the database, which is then incorporated into the HTML sent back to the frontend. This cycle of request and response 
-enables a dynamic interaction between the user and the server, allowing the website to serve personalized and interactive content.
+- The view function, written in Python, handles the request and performs the necessary operations. It might fetch or update data in the database, or execute other logic based on the request's details, it will generate receipts and load pages. Django uses an Object-Relational Mapper (ORM) to interact with the database, which provides a high-level, Pythonic interface for database queries. Django also used Jinja templating and template rendering similar to Flask, however an advantage to Django is it has a lot more built in security, with pre-made functions fo ruser authentication and password hashing. This means data can be manipulated in Python without writing SQL code. Once the view has processed the request, it constructs an HTTP response, often rendering an HTML template with context data provided by the views.py file. This context data is the information fetched or processed from the database, which is then incorporated into the HTML sent back to the frontend.
+-  Request and responses enables handles interaction between the user and the server, allowing the website to serve personalized and interactive content depending on user actions.
 
 3. Databases:
 - The postgreSQL database stores all of your data such as user information, available artworks, and orders—in tables with predefined schemas/models defined in Django. Different tables will cater to the different aspects of the website, such as storing login details for users, the specifc art items and shipping details.
@@ -134,10 +136,18 @@ Bugs:
 
 
 Manual Testing (Unit Testing):
+- Unit test for testing Stripe API card token generation and card payment
+![image](https://github.com/JackAlexanderClark/VideoGames_eCommerce/assets/97599832/f1fbffb1-1d27-4888-9529-b9112db23f29)
+
+
 
 ## Credits and Code Sources
-I have used some front-end prepared templates from CodePen:
 
 - Stripe API Code: https://stripe.com/gb
-- Codepen:
+## Codepen
+I have used some front-end prepared templates from CodePen:
+- Login, register forms credit: https://codepen.io/osva-ocampo/details/wvBQbBO
+- Gallery Bootstrap credit: https://codepen.io/dashbouquetdevelopment/pen/mBvQrB
+
+
 
