@@ -141,7 +141,8 @@ Manual Testing (Unit Testing):
 - Unit test for testing Stripe API card token generation and card payment
 ![image](https://github.com/JackAlexanderClark/VideoGames_eCommerce/assets/97599832/f1fbffb1-1d27-4888-9529-b9112db23f29)
 
-
+## Section 5 - User Stories
+-
 
 ## Credits and Code Sources
 
