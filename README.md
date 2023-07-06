@@ -20,6 +20,7 @@ It uses AI generated art-work, using the cutting edge DALLE-2 (https://openai.co
 
 Similar, to CHAT-GPT another OpenAI product it is trained on large quantities of images.
 
+### A step by step guide through the app
 
 Home Page:
 ![image](https://github.com/JackAlexanderClark/VideoGames_eCommerce/assets/97599832/0841dd76-a60e-42a4-86fb-82133885df15)
@@ -48,6 +49,22 @@ Remove, Add or Delete the item from your shopping basket:
 Enter Details Page 1 of 3:
 ![image](https://github.com/JackAlexanderClark/VideoGames_eCommerce/assets/97599832/e5354148-9df2-4e8f-8067-9dbe56b501c1)
 
+
+Bank Details Page 2 of 3:
+![image](https://github.com/JackAlexanderClark/VideoGames_eCommerce/assets/97599832/32152f05-650e-482b-ae05-fb6d4f93cea7)
+
+
+Shipping Speed Page 3 of 3:
+![image](https://github.com/JackAlexanderClark/VideoGames_eCommerce/assets/97599832/966f363b-ddcd-42c8-8d1c-7e17dab4c7b7)
+
+
+Confirm Purchase and charge card screen with receipt generated
+![image](https://github.com/JackAlexanderClark/VideoGames_eCommerce/assets/97599832/e78eb23e-5990-4271-a51e-ccc2593af33e)
+
+
+Receipts in profile and shipping statuses with option to edit your user profile
+![image](https://github.com/JackAlexanderClark/VideoGames_eCommerce/assets/97599832/2775e88d-db08-4f96-a90b-30649a83b1b8)
+
 <hr>
 
 ## Section 2: Project Design and Planning
@@ -65,6 +82,7 @@ Enter Details Page 1 of 3:
 - Once the user has chosen their shipping destination, entered their banking details and the shipping speed.
 
 - An order and receipt is generated which is stored within their profile, so they can track all their orders and their statuses.
+
 #### ERD Diagram and Database Scheme
 ![image](https://github.com/JackAlexanderClark/VideoGames_eCommerce/assets/97599832/17cfa7f9-99f3-44ef-93c5-e6c94c40f035)
 - I have arranged the projects logic into two separate applications; gallery and shipping.
@@ -74,12 +92,17 @@ Enter Details Page 1 of 3:
 
 
 #### Stripe Payment API
-- To safely handle payments, the stripe API is used. We can use dummy card details to test
+- To safely handle payments, the stripe API is used. We can use dummy card details to test.
 - Two functions are used, one to generate a card token, that stores the bank details such as account number, sort code and cvv.
 - The second function, will charge the card a defined amount in a chosen currency.
 - Below is a POST request of the card being charged successfully.
 
 ![image](https://github.com/JackAlexanderClark/VideoGames_eCommerce/assets/97599832/db72a0dc-3f90-49a3-a5b0-84ac9d80e600)
+
+<br>
+
+- Here is the card token being generated when valid card details are provided. As we can see a 200 OK POST request is received meaning the data was successfully transmitted via API.
+![image](https://github.com/JackAlexanderClark/VideoGames_eCommerce/assets/97599832/79d7a0db-7778-4423-bf0a-c808758dfce9)
 
 
 <hr>
@@ -95,18 +118,25 @@ JavaScript plays a crucial role in making the web interactive, by manipulating H
  Bootstrap is a CSS framework that helps in creating visually appealing and responsive designs with minimal effort. It uses a grid structure with defined rows and columns to help organise the project and frontend UI. It comes with pre-designed components like navigation bars, dropdowns, forms, and buttons that speed up development and ensure a consistent and modern design across different browsers and devices. 
 
 2. Back-end:
-Django provideds a skeleton structure that has built in User models, admin backend and settings that assist in speeding up the development of a project. It is a web framework, acts as the middleware in a full-stack application and manages the communication between the frontend and the database. It plays a crucial role in handling requests from the frontend, processing data, and returning the appropriate responses. When a user interacts with the frontend of the website—say, by submitting a form or clicking a button—this action triggers an HTTP request. This request is sent to a URL, which Django maps to a specific view function through its URL dispatcher.
+- Django provideds a skeleton structure that has built in User models, admin backend and settings that assist in speeding up the development of a project. It is a web framework, acts as the middleware in a full-stack application and manages the communication between the frontend and the database. It plays a crucial role in handling requests from the frontend, processing data, and returning the appropriate responses. When a user interacts with the frontend of the website—say, by submitting a form or clicking a button—this action triggers an HTTP request. This request is sent to a URL, which Django maps to a specific view function through its URL dispatcher.
 
-The view function, written in Python, handles the request and performs the necessary operations. It might fetch or update data in the database, or execute other logic based on the request's details. Django uses an Object-Relational Mapper (ORM) to interact with the database, which provides a high-level, Pythonic interface for database queries. Django also used Jinja templating and template rendering similar to Flask, however an advantage to Django is it has a lot more built in security, with pre-made functions fo ruser authentication and password hashing. This means data can be manipulated in Python without writing SQL code. Once the view has processed the request, it constructs an HTTP response, often rendering an HTML template with context data. This context data is the information fetched or processed from the database, which is then incorporated into the HTML sent back to the frontend. This cycle of request and response 
+- The view function, written in Python, handles the request and performs the necessary operations. It might fetch or update data in the database, or execute other logic based on the request's details, it will generate receipts and load pages. Django uses an Object-Relational Mapper (ORM) to interact with the database, which provides a high-level, Pythonic interface for database queries. Django also used Jinja templating and template rendering similar to Flask, however an advantage to Django is it has a lot more built in security, with pre-made functions fo ruser authentication and password hashing. This means data can be manipulated in Python without writing SQL code. Once the view has processed the request, it constructs an HTTP response, often rendering an HTML template with context data. This context data is the information fetched or processed from the database, which is then incorporated into the HTML sent back to the frontend. This cycle of request and response 
 enables a dynamic interaction between the user and the server, allowing the website to serve personalized and interactive content.
 
 3. Databases:
-The postgreSQL database stores all of your data—like user information, available artworks, and orders—in tables with predefined schemas/models defined in Django. Different tables will cater to the different aspects of the website, such as storing login details for users, the specifc art items and shipping details.
+- The postgreSQL database stores all of your data such as user information, available artworks, and orders—in tables with predefined schemas/models defined in Django. Different tables will cater to the different aspects of the website, such as storing login details for users, the specifc art items and shipping details.
 
 ## Section 4 – Bugs and Testing
 
+Validators:
 
+
+
+Manual Testing (Unit Testing):
 
 ## Credits and Code Sources
-I have used some front-end prepared templates from CodePen
+I have used some front-end prepared templates from CodePen:
+
+- Stripe API Code: https://stripe.com/gb
+- Codepen:
 
