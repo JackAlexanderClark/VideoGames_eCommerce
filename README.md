@@ -29,10 +29,12 @@ Home Page:
 
 
 Gallery:
+
 ![image](https://github.com/JackAlexanderClark/VideoGames_eCommerce/assets/97599832/23de3fd5-d708-4ff5-822f-77c620fca3a9)
 
 
 Hovering on a image:
+
 ![image](https://github.com/JackAlexanderClark/VideoGames_eCommerce/assets/97599832/84d75dd6-fb44-4f84-a7c2-0b83a6cdf5b0)
 
 
@@ -148,6 +150,7 @@ Manual Testing (Unit Testing):
 I have used some front-end prepared templates from CodePen:
 - Login, register forms credit: https://codepen.io/osva-ocampo/details/wvBQbBO
 - Gallery Bootstrap credit: https://codepen.io/dashbouquetdevelopment/pen/mBvQrB
+- Payment forms credit: https://codepen.io/atakan/pen/nPOZZR 
 
 
 
