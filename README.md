@@ -18,7 +18,7 @@ For my fourth milestone project I have built a Django application in the Pycharm
 
 It uses AI generated art-work, using the cutting edge DALLE-2 (https://openai.com/dall-e-2), it can creates images from human text prompts. Attributes such as styles can be applied to mimic artists or effects.
 
-Similar, to CHAT-GPT another OpenAI product it is trained on large quantities of images.
+Similar, to CHAT-GPT another OpenAI product it is trained on large quantities of images and studies the relationship between objects.
 
 ### A step by step guide through the app
 
@@ -69,8 +69,6 @@ Receipts in profile and shipping statuses with option to edit your user profile
 
 ## Section 2: Project Design and Planning
 
-
-
 - The project is a fictional art gallery using AI generated artwork. Users will be able to register an account, login and then browse the homepage which details the ethos and how DALLE-2 works.
 
 - From there Users will be able to view the gallery with contains a variety of artwork, by hovering over and selecting a piece from the gallery – they can choose the piece they want and add it to their shopping basket. The quantities can be edited if they want multiple copies.
@@ -109,7 +107,7 @@ Receipts in profile and shipping statuses with option to edit your user profile
 
 ## Section 3 - Tech Stack
 1. Front-end:
-HTML (HyperText Markup Language) serves as the backbone of a website, dictating the structure and content of a web page. By organizing content into different elements like headers, paragraphs, lists, images, and links, HTML provides the basic layout and format for each page. This ties into the DOM (Document Object Model). CSS (Cascading Style Sheets) enhances this structure with style and aesthetics. I used it in combination with chrome dev tools to test how an element would look before applying it. 
+HTML (HyperText Markup Language) serves as the backbone of a website, dictating the structure and content of a web page. By organizing content into different elements like headers, paragraphs, lists, images, and links, HTML provides the basic layout and format for each page. This ties into the DOM (Document Object Model). CSS (Cascading Style Sheets) handles this structure with style and aesthetics. I used it in combination with chrome dev tools to test how an element would look before applying it. 
 
 CSS specifies the visual elements of a web page such as colour, fonts, and layout, allowing for complete control over the design and responsiveness across different devices. Together, HTML and CSS form the static components of a web page, but for an interactive and dynamic user experience.
 
@@ -130,6 +128,9 @@ enables a dynamic interaction between the user and the server, allowing the webs
 
 Validators:
 
+Bugs:
+- This bug was stopping builds of the project being built, it does recognise the import module.
+![image](https://github.com/JackAlexanderClark/VideoGames_eCommerce/assets/97599832/234d5444-2cd1-4bea-8e3e-e9ffd03d85c7)
 
 
 Manual Testing (Unit Testing):
