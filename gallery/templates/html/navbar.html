@@ -114,10 +114,10 @@ ul li:nth-child(5):hover .hover-text {
         <li></li>
         <li></li>
       <li>
-
         <span class="actual-text" onclick='redirect(this)' href="{% url 'home' %}" >&nbsp;Home&nbsp;</span>
         <span class="hover-text" onclick='redirect(this)' href="{% url 'home' %}" aria-hidden="true">&nbsp;Home&nbsp;</span>
       </li>
+      {% if user.is_authenticated %}
       <li>
             <span class="actual-text" onclick='redirect(this)' href="{% url 'gallery' %}">&nbsp;Gallery&nbsp;</span>
             <span class="hover-text" onclick='redirect(this)' href="{% url 'gallery' %}" aria-hidden="true">&nbsp;Gallery&nbsp;</span>
@@ -126,7 +126,6 @@ ul li:nth-child(5):hover .hover-text {
         <span class="actual-text" onclick='redirect(this)' href="{% url 'cart' %}">&nbsp;Shop&nbsp;</span>
         <span class="hover-text" aria-hidden="true" onclick='redirect(this)' href="{% url 'cart' %}">&nbsp;Shop&nbsp;</span>
       </li>
-        {% if user.is_authenticated %}
             <li>
                 <span class="actual-text" onclick='redirect(this)' href="{% url 'profile' %}" >&nbsp;{{ user.username }}&nbsp;</span>
                 <span class="hover-text" onclick='redirect(this)' href="{% url 'profile' %}" aria-hidden="true">&nbsp;{{ user.username }}&nbsp;</span>
