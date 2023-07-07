@@ -112,7 +112,7 @@ Receipts in profile and shipping statuses with option to edit your user profile
 - I have arranged the projects logic into two separate applications; gallery and shipping.
 - Firstly, gallery will house the majority of the frontend such as the homepage and the shop gallery.
 - Users can visit the gallery and click on an image to be taken to a page which will give information such as the price, quantity and description.
-- Once items are chosen in the basket and a purchase is confirmed, the
+- Once items are chosen in the basket and a purchase is confirmed, the order object is created and a receipt object is created.
 
 
 #### Stripe Payment API
