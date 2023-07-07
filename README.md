@@ -173,6 +173,11 @@ After fix:
 ![image](https://github.com/JackAlexanderClark/VideoGames_eCommerce/assets/97599832/77fc7708-cd96-4e6a-8ab9-802ecb03db3a)
 
 
+jQuery not recognised and function erroring.
+![image](https://github.com/JackAlexanderClark/VideoGames_eCommerce/assets/97599832/14c84bbf-1039-4586-92a2-70857315e035)
+
+Fix: Need to add relevant jQuery CDN library
+
 Manual Testing (Unit Testing):
 - Unit test for testing Stripe API card token generation and card payment
 ![image](https://github.com/JackAlexanderClark/VideoGames_eCommerce/assets/97599832/f1fbffb1-1d27-4888-9529-b9112db23f29)
