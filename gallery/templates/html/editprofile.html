@@ -17,11 +17,11 @@ form {
           <div class="input">
             <div class="inputBox">
               <label>Username</label>
-              <input type="text" name="username" placeholder="{% if user.username %} {{ user.username }} {% else %} username {% endif %}"/>
+              <input type="text" name="username" placeholder="{% if user.username %} {{ user.username }} {% else %} username {% endif %}" required/>
             </div>
             <div class="inputBox">
               <label>Email</label>
-              <input type="email" name="email" placeholder="{% if user.email %} {{ user.email }} {% else %} email@gmail.com {% endif %}"/>
+              <input type="email" name="email" placeholder="{% if user.email %} {{ user.email }} {% else %} email@gmail.com {% endif %}" required/>
             </div>
             <div class="inputBox">
               <input type="submit" name="" value="Update" on/>

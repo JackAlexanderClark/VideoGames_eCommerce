@@ -45,4 +45,41 @@ class LoginViewTest(TestCase):
         self.assertEqual(response.status_code, 200)
         self.assertTemplateUsed(response, 'html/login.html')
 
+# test stripe API
 
+
+import unittest
+from unittest.mock import patch, MagicMock
+import stripe_payment
+
+class TestStripePayment(unittest.TestCase):
+    @patch('stripe.Token.create')
+    def test_generate_card_token(self, mock_create):
+        mock_create.return_value = {'id': 'test_id'}
+
+        stripe = MagicMock()
+        cardnumber = 1234567812345678
+        expmonth = 11
+        expyear = 29
+        cvv = 233
+
+        result = stripe_payment.generate_card_token(stripe, cardnumber, expmonth, expyear, cvv)
+
+        self.assertEqual(result, 'test_id')
+
+    @patch('stripe.Charge.create')
+    def test_create_payment_charge(self, mock_create):
+        mock_create.return_value = {'paid': True}
+
+        stripe = MagicMock()
+        tokenid = 'test_id'
+        amount = 100
+        description = 'test'
+
+        result = stripe_payment.create_payment_charge(stripe, tokenid, amount, description)
+
+        self.assertEqual(result, True)
+
+
+if __name__ == '__main__':
+    unittest.main()
