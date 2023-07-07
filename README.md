@@ -26,15 +26,19 @@ Django provides an Admin superuser backend, this will act as the fictional shopk
 
 ### A step by step guide through the app:
 
+
 Register yourself as a User:
+
 ![image](https://github.com/JackAlexanderClark/VideoGames_eCommerce/assets/97599832/e378f5b2-6600-41e0-8951-bdd45e5e437e)
 
 
 Login if you have a user account:
+
 ![image](https://github.com/JackAlexanderClark/VideoGames_eCommerce/assets/97599832/9b93d71b-bc12-4e95-93bb-95a2d79b7e5a)
 
 
 Home Page:
+
 ![image](https://github.com/JackAlexanderClark/VideoGames_eCommerce/assets/97599832/0841dd76-a60e-42a4-86fb-82133885df15)
 
 
@@ -49,34 +53,42 @@ Hovering on a image:
 
 
 Selecting an Image:
+
 ![image](https://github.com/JackAlexanderClark/VideoGames_eCommerce/assets/97599832/38c14e92-8d04-490a-9ebf-e2ab237460ab)
 
 
 Add your Orders to the Shopping Basket:
+
 ![image](https://github.com/JackAlexanderClark/VideoGames_eCommerce/assets/97599832/329c0952-8d41-41e4-93ac-9b4708b767d3)
 
 
 Remove, Add or Delete the item from your shopping basket:
+
 ![image](https://github.com/JackAlexanderClark/VideoGames_eCommerce/assets/97599832/58135652-d45a-4d21-bb1c-211b8bdb630c)
 
 
 Enter Details Page 1 of 3:
+
 ![image](https://github.com/JackAlexanderClark/VideoGames_eCommerce/assets/97599832/e5354148-9df2-4e8f-8067-9dbe56b501c1)
 
 
 Bank Details Page 2 of 3:
+
 ![image](https://github.com/JackAlexanderClark/VideoGames_eCommerce/assets/97599832/32152f05-650e-482b-ae05-fb6d4f93cea7)
 
 
 Shipping Speed Page 3 of 3:
+
 ![image](https://github.com/JackAlexanderClark/VideoGames_eCommerce/assets/97599832/966f363b-ddcd-42c8-8d1c-7e17dab4c7b7)
 
 
-Confirm Purchase and charge card screen with receipt generated
+Confirm Purchase and charge card screen with receipt generated:
+
 ![image](https://github.com/JackAlexanderClark/VideoGames_eCommerce/assets/97599832/e78eb23e-5990-4271-a51e-ccc2593af33e)
 
 
 Receipts in profile and shipping statuses with option to edit your user profile
+
 ![image](https://github.com/JackAlexanderClark/VideoGames_eCommerce/assets/97599832/2775e88d-db08-4f96-a90b-30649a83b1b8)
 
 <hr>
