@@ -148,36 +148,36 @@ Manual Testing (Unit Testing):
 ![image](https://github.com/JackAlexanderClark/VideoGames_eCommerce/assets/97599832/f1fbffb1-1d27-4888-9529-b9112db23f29)
 
 ## Section 5 - User Stories
-Aims:
+### Aims:
 
-The system displays all items in a clean, easy-to-navigate interface.
-The system provides ways to filter and sort items.
-As a user, I want to view detailed information about an item so that I can make an informed purchasing decision.
-
-
-When I click on an item, the system displays detailed information including price, availability, specifications, and customer reviews.
-As a user, I want to add items to my shopping cart so that I can manage my potential purchases.
+- The system displays all items in a clean, easy-to-navigate interface.
+- The system provides ways to filter and sort items.
+- As a user, I want to view detailed information about an item so that I can make an informed purchasing decision.
 
 
-The system allows me to add items to a shopping cart from the item detail page.
-The system shows the number of items in my cart and total cost in the site header.
-As a user, I want to review my shopping cart so that I can confirm my choices before checkout.
+- When I click on an item, the system displays detailed information including price, availability, specifications, and customer reviews.
+- As a user, I want to add items to my shopping cart so that I can manage my potential purchases.
 
 
-The system provides a way to view the shopping cart, showing all items, quantities, and total cost.
-The system allows me to modify item quantities or remove items from my cart.
-As a user, I want to use a secure checkout process so that I can safely provide my payment details (STRIPE API)
-
-The system presents a secure, easy-to-understand checkout process.
-The system clearly displays the total cost before asking for payment details (RECEIPT).
-As a user, I want to pay for my items using Stripe so that I can complete my purchase.
+- The system allows me to add items to a shopping cart from the item detail page.
+- The system shows the number of items in my cart and total cost in the site header.
+- As a user, I want to review my shopping cart so that I can confirm my choices before checkout.
 
 
-The system provides a Stripe payment option at checkout.
-The system communicates with the Stripe API to securely handle my payment information.
-The system confirms my purchase after successful payment, and sends me a confirmation email.
-As a user, I want to receive a receipt after my purchase so that I have a record of my transaction.
-After a successful purchase, the system displays a receipt page with all relevant transaction details.
+- The system provides a way to view the shopping cart, showing all items, quantities, and total cost.
+- The system allows me to modify item quantities or remove items from my cart.
+- As a user, I want to use a secure checkout process so that I can safely provide my payment details (STRIPE API)
+
+- The system presents a secure, easy-to-understand checkout process.
+- The system clearly displays the total cost before asking for payment details (RECEIPT).
+- As a user, I want to pay for my items using Stripe so that I can complete my purchase.
+
+
+- The system provides a Stripe payment option at checkout.
+- The system communicates with the Stripe API to securely handle my payment information.
+- The system confirms my purchase after successful payment, and sends me a confirmation email.
+- As a user, I want to receive a receipt after my purchase so that I have a record of my transaction.
+- After a successful purchase, the system displays a receipt page with all relevant transaction details.
 
 ## Credits and Code Sources
 
