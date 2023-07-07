@@ -164,10 +164,16 @@ Bugs:
 - This bug was stopping builds of the project being built, it does recognise the import module.
 ![image](https://github.com/JackAlexanderClark/VideoGames_eCommerce/assets/97599832/234d5444-2cd1-4bea-8e3e-e9ffd03d85c7)
 
+- Rounding error with tax not being rounded to 2 decimal places.
+![image](https://github.com/JackAlexanderClark/VideoGames_eCommerce/assets/97599832/408e3d02-e295-423f-a542-5e3b5a4f0f6a)
+
+- To fix this I used javascript built in rounding functions to target the HTML.
+
 
 Manual Testing (Unit Testing):
 - Unit test for testing Stripe API card token generation and card payment
 ![image](https://github.com/JackAlexanderClark/VideoGames_eCommerce/assets/97599832/f1fbffb1-1d27-4888-9529-b9112db23f29)
+
 
 ## Section 5 - User Stories
 ### Aims:
