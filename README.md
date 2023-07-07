@@ -169,6 +169,9 @@ Bugs:
 
 - To fix this I used javascript built in rounding functions to target the HTML.
 
+After fix:
+![image](https://github.com/JackAlexanderClark/VideoGames_eCommerce/assets/97599832/77fc7708-cd96-4e6a-8ab9-802ecb03db3a)
+
 
 Manual Testing (Unit Testing):
 - Unit test for testing Stripe API card token generation and card payment
