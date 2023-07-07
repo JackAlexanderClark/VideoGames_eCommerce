@@ -22,6 +22,8 @@ It uses AI generated art-work, using the cutting edge DALLE-2 (https://openai.co
 
 Similar, to CHAT-GPT another OpenAI product it is trained on large quantities of images and studies the relationship between objects.
 
+Django provides an Admin superuser backend, this will act as the fictional shopkeeper who can add items to the database to be sold to users.
+
 ### A step by step guide through the app
 
 Home Page:
