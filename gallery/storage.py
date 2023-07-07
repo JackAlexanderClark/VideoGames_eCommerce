@@ -2,6 +2,8 @@ from django.core.files.storage import FileSystemStorage
 from django.conf import settings
 import os
 
+# allow images to be stored for heroku
+
 class OverwriteStorage(FileSystemStorage):
 
     def get_available_name(self, name,*args,**kwargs):
