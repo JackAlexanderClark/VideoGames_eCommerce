@@ -122,11 +122,10 @@ def buy(request):
                 else:
                     details = Card()
                     details.user_id=request.user
+
                 details.card_number=request.POST['card_number']
                 details.exp_month=request.POST['exp_month']
-
                 details.exp_year=request.POST['exp_year']
-
                 details.cvc=request.POST['cvc']
 
                 is_card_valid=None
@@ -134,12 +133,12 @@ def buy(request):
                     is_card_valid=generate_card_token(stripe, details.card_number, details.exp_month, details.exp_year, details.cvc)
                 except Exception as e:
                     messages.error(request,"checkpoint 2 "+str(e))
-                    print("=======")
                 if is_card_valid:
                     details.save()
                 else:
                     status=False
-                    messages.error(request,'Invalid Card Details')
+                    # give error to user payment failed
+                    messages.error(request,'Invalid Card Details - Payment Failed')
                 print('POST name: ',request.POST,type(request.POST),"end")
             except Exception as e:
                 status=False
@@ -150,12 +149,12 @@ def buy(request):
             messages.error(request,"Fill Details again")
             return redirect('buy')
 
-    # button
 
 def logout_view(request):
 
     logout(request)
     return redirect('home')
+
 
 def login_view(request):
 

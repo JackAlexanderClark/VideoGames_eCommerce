@@ -47,7 +47,7 @@
                 <tr>
                     <td>£{{total_amount}}</td>
                     <td>{{ receipt_id }}</td>
-                    <td>£{{ tax }}</td>
+                    <td id="tax">£{{ tax }}</td>
                 </tr>
             </tbody>
         </table>
@@ -89,4 +89,12 @@
         </div>
     </div>
 </footer>
+
+<script type="text/javascript">
+        // set to 2dp
+      let tax = parseFloat("{{ tax }}");
+      let roundedTax = tax.toFixed(2);
+
+      document.getElementById('tax').textContent = `£${roundedTax}`;
+</script>
 </html>

@@ -75,7 +75,7 @@
             <!-- Image column -->
             <div class="col-sm-6 col-md-5 col-lg-5" style="padding-left: 15px;">
                 <a class="lightbox" href="video/{{ game.video_game_id }}">
-                    <img src="{{ game.image_url.url }}" alt="{{ game.name }}" class="img-fluid" style="pointer-events: none;">
+                    <img src="{{ game.image_url.url }}" alt="{{ game.name }}" class="img-fluid" id="preventClick" style="pointer-events: none;">
                 </a>
             </div>
 
@@ -117,11 +117,21 @@
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.8.1/baguetteBox.min.js"></script>
 <script>
+
+    $(document).ready(function(){
+      $("#preventClick").click(function(event){
+        event.preventDefault();
+      });
+    });
+
     baguetteBox.run('.tz-gallery');
 
     function redirect(obs){
         window.location.href=obs.getAttribute('href');
     }
+
+
+
 </script>
 </body>
 </html>
