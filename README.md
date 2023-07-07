@@ -24,7 +24,15 @@ Similar, to CHAT-GPT another OpenAI product it is trained on large quantities of
 
 Django provides an Admin superuser backend, this will act as the fictional shopkeeper who can add items to the database to be sold to users.
 
-### A step by step guide through the app
+### A step by step guide through the app:
+
+Register yourself as a User:
+![image](https://github.com/JackAlexanderClark/VideoGames_eCommerce/assets/97599832/e378f5b2-6600-41e0-8951-bdd45e5e437e)
+
+
+Login if you have a user account:
+![image](https://github.com/JackAlexanderClark/VideoGames_eCommerce/assets/97599832/9b93d71b-bc12-4e95-93bb-95a2d79b7e5a)
+
 
 Home Page:
 ![image](https://github.com/JackAlexanderClark/VideoGames_eCommerce/assets/97599832/0841dd76-a60e-42a4-86fb-82133885df15)
