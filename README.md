@@ -115,6 +115,14 @@ Receipts in profile and shipping statuses with option to edit your user profile
 - Once items are chosen in the basket and a purchase is confirmed, the order object is created and a receipt object is created.
 
 
+#### Wireframes
+
+Image Gallery:
+
+![image](https://github.com/JackAlexanderClark/VideoGames_eCommerce/assets/97599832/c54320d4-128a-48d8-a9e7-41e13622beb3)
+
+
+
 #### Stripe Payment API
 - To safely handle payments, the stripe API is used. We can use dummy card details to test.
 - Two functions are used, one to generate a card token, that stores the bank details such as account number, sort code and cvv.
