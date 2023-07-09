@@ -14,6 +14,9 @@
 
 <hr>
 
+# Application and Business Idea
+### - The rise of AI technology has been unparalled, to explore and learn about these advancements I've chosen to recreate a gallery in which a shopkeeper can sell AI artwork. This will be cheap as it cuts out the need to pay artists for work and will be cheaper. They can be mass produced and by using prompts to design them, they can be highly customisable.  
+
 ## Section 1: Introduction
 
 For my fourth milestone project I have built a Django application in the Pycharm IDE, that utilises several applications such as the gallery, shipping and authentication.
@@ -22,7 +25,9 @@ It uses AI generated art-work, using the cutting edge DALLE-2 (https://openai.co
 
 Similar, to CHAT-GPT another OpenAI product it is trained on large quantities of images and studies the relationship between objects.
 
-Django provides an Admin superuser backend, this will act as the fictional shopkeeper who can add items to the database to be sold to users.
+Django provides an Admin superuser backend, this will act as the fictional shopkeeper who can add items to the database to be sold to users, they can switch items to being shipped and add new items to the gallery.
+
+Only the admin (shopkeeper) has access to the tables and users can not access it.
 
 ### A step by step guide through the app:
 
@@ -121,6 +126,8 @@ Image Gallery:
 
 ![image](https://github.com/JackAlexanderClark/VideoGames_eCommerce/assets/97599832/c54320d4-128a-48d8-a9e7-41e13622beb3)
 
+Item Purchase Screen:
+![image](https://github.com/JackAlexanderClark/VideoGames_eCommerce/assets/97599832/8bf89cce-49ce-4bfa-84f0-221b79b8b92c)
 
 
 #### Stripe Payment API
@@ -177,18 +184,19 @@ Bugs:
 
 - To fix this I used javascript built in rounding functions to target the HTML.
 
-After fix:
+- After fix:
 ![image](https://github.com/JackAlexanderClark/VideoGames_eCommerce/assets/97599832/77fc7708-cd96-4e6a-8ab9-802ecb03db3a)
 
 
-jQuery not recognised and function erroring.
+- jQuery not recognised and function erroring.
 ![image](https://github.com/JackAlexanderClark/VideoGames_eCommerce/assets/97599832/14c84bbf-1039-4586-92a2-70857315e035)
 
-Fix: Need to add relevant jQuery CDN library
+- Fix: Need to add relevant jQuery CDN library
 
 Manual Testing (Unit Testing):
 - Unit test for testing Stripe API card token generation and card payment
 ![image](https://github.com/JackAlexanderClark/VideoGames_eCommerce/assets/97599832/f1fbffb1-1d27-4888-9529-b9112db23f29)
+
 
 
 ## Section 5 - User Stories
@@ -211,6 +219,7 @@ Manual Testing (Unit Testing):
 - The system provides a way to view the shopping cart, showing all items, quantities, and total cost.
 - The system allows me to modify item quantities or remove items from my cart.
 - As a user, I want to use a secure checkout process so that I can safely provide my payment details (STRIPE API)
+
 
 - The system presents a secure, easy-to-understand checkout process.
 - The system clearly displays the total cost before asking for payment details (RECEIPT).
@@ -240,6 +249,16 @@ Manual Testing (Unit Testing):
 - To fix this I found a JavaScript library (SweetAlert2)  to add more customisation.
 
 ![image](https://github.com/JackAlexanderClark/VideoGames_eCommerce/assets/97599832/4e7021a2-e6ec-462d-8043-ffd9ed19c64c)
+
+3. Feedback 3: It was unclear to some users why they need to login and register, to make the rationale clearer, I have disabled users being able to buy from the shop unless they have a user account.
+
+![image](https://github.com/JackAlexanderClark/VideoGames_eCommerce/assets/97599832/747fb10b-ae21-483f-836d-99a46903704c)
+
+4. Feedback 4: The homepage image was too stretched on larger screens.
+
+- Fix CSS
+
+![image](https://github.com/JackAlexanderClark/VideoGames_eCommerce/assets/97599832/4936c203-23b2-449f-bb9a-55599e11873f)
 
 
 ## Credits and Code Sources
