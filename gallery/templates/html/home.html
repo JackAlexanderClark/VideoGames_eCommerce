@@ -104,6 +104,10 @@ nav.menu ul a:hover {
   text-decoration: underline;
 }
 
+/* prevent inherited css */
+ul.no-hover li {
+    cursor: default;
+}
 
 .sidebar .widget {
   margin:0 0 25px;
@@ -169,10 +173,6 @@ nav.menu ul a:hover {
   position:inherit;
 }
 
- .sidebar .widget {
-  padding:5%;
-}
-
   nav.menu ul {
   width: 100%;
 }
@@ -222,30 +222,19 @@ h1 {
     padding: 20px;
 }
 
-.image-container {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-}
-
-.image-container img {
-    width: 55%;
-}
-
 img {
     height: 400px;
 }
-.two-column {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    padding: 20px;
+.image-container img {
+    max-width: 90%;
+    height: auto;
+    margin: 0 auto;
 }
 
-.two-column p {
-    flex-basis: calc(50% - 20px);
-    text-align: justify;
-    margin-bottom: 20px;
+.two-column {
+    justify-content: center;
+    width: 80%;
+    margin: 0 auto;
 }
 
 @media (max-width: 600px) {
@@ -313,7 +302,7 @@ img {
 
 <div class="row">
     <div class="col-md-12">
-        <ul style="position: relative;">
+        <ul class="no-hover" style="position: relative; ">
             <li>Art-work takes 1-3 days to be processed.</li>
             <li>You can buy a piece of artwork by taking it to the shopping cart.</li>
             <li>Enter your payment and shipping details.</li>
