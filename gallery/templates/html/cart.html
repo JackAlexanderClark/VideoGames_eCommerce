@@ -99,6 +99,7 @@
     }
 
     function deleteItem(id) {
+        // use javascript library to handle alerts
         Swal.fire({
             title: 'Are you sure?',
             text: "You wish to delete item (id:" + id + ") from your basket?",
@@ -154,14 +155,33 @@
             },
             success: function(response) {
                 if(response.success){
-                    alert('1 item has been '+ action+'ed from your cart.');
-                    location.reload();
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Success',
+                        text: '1 item has been '+ action+'ed from your cart.',
+                        confirmButtonColor: '#3085d6',
+                    }).then((result) => {
+                        if (result.isConfirmed) {
+                            location.reload();
+                        }
+                    })
                 } else {
-                    alert('Item'+action+'ed from cart.');
+                    Swal.fire({
+                        icon: 'info',
+                        title: 'Info',
+                        text: 'Item'+action+'ed from cart.',
+                        confirmButtonColor: '#3085d6',
+                    })
                 }
             },
+            // handle error
             error: function(response) {
-                alert('An error has occured while '+action+'ing an item from your cart.');
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error',
+                    text: 'An error has occurred while '+action+'ing an item from your cart.',
+                    confirmButtonColor: '#d33',
+                })
             }
         });
     }
@@ -216,7 +236,11 @@
     <div class="row">
         <div class="col-md-12" style="text-align: center;">
             <button type="button" class="btn btn-primary btn-lg" onclick='redirect(this)' href="{% url 'gallery' %}"><i class="fa fa-arrow-left"></i> Go back to gallery</button>
-            <button type="button" class="btn btn-secondary btn-lg disable-btn" onclick='isCartEmpty(this)' href="{% url 'buy' %}" style="background-color: gold; color: white;">Buy <i class="fa fa-arrow-right"></i></button>
+            {% if user.is_authenticated %}
+                <button type="button" class="btn btn-secondary btn-lg disable-btn" onclick='isCartEmpty(this)' href="{% url 'buy' %}" style="background-color: gold; color: white;">Buy <i class="fa fa-arrow-right"></i></button>
+            {% else %}
+                <p>Please log in to be able to buy items.</p>
+            {% endif %}
         </div>
     </div>
 
@@ -240,6 +264,7 @@
 
     function isCartEmpty(button) {
         if (ordersLength == 0) {
+            // prevent users buying
             var buyButton = document.querySelector('.disable-btn');
             alert("Your cart is empty please select items from the gallery.");
             buyButton.disabled = true;
