@@ -90,6 +90,7 @@
         <li class="cor-5"></li>
     </ul>
 </header>
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11" defer></script>
 <script>
     baguetteBox.run('.tz-gallery');
 
@@ -98,18 +99,48 @@
     }
 
     function deleteItem(id) {
-        alert("Are you sure you wish to delete item (id:" + id + ") from your basket?");
-        return send_request(id,'/delete_game_item/'+id,'delet');
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "You wish to delete item (id:" + id + ") from your basket?",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#d33',
+            cancelButtonColor: '#3085d6',
+            confirmButtonText: 'Yes, delete it!'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                return send_request(id,'/delete_game_item/'+id,'delet');
+            }
+        })
     }
 
     function addAnItem(id) {
-        alert("Are you sure you wish to add 1 item (id:" + id + ") to your basket?");
-        return send_request(id,'/add_game_item/'+id,'add');
+        Swal.fire({
+            icon: 'success',
+            title: 'Successfully added',
+            text: "You have added 1 item (id:" + id + ") to your basket.",
+            confirmButtonColor: '#3085d6',
+        }).then((result) => {
+            if (result.isConfirmed) {
+                return send_request(id,'/add_game_item/'+id,'add');
+            }
+        })
     }
 
     function removeAnItem(id) {
-        alert("Are you sure you wish to remove 1 item (id:" + id + ") from your basket?");
-        return send_request(id,'/remove_game_item/'+id,'remov');
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "You wish to remove 1 item (id:" + id + ") from your basket?",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#d33',
+            cancelButtonColor: '#3085d6',
+            confirmButtonText: 'Yes, remove it!'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                return send_request(id,'/remove_game_item/'+id,'remov');
+            }
+        })
     }
 
     // POST data via ajax with id
