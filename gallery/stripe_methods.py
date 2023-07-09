@@ -15,7 +15,7 @@ def generate_card_token(stripe,cardnumber,expmonth,expyear,cvv):
 
 def create_payment_charge(stripe,tokenid,amount,description):
     payment = stripe.Charge.create(
-                    # use game.amount var
+                # use game.amount var
                 amount= int(amount)*100,
                 currency='eur',
                 description=description,

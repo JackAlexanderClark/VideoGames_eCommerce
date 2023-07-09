@@ -8,17 +8,17 @@
 </head>
 
 <style>
-    #demo {
+    #demoCard {
         display: flex;
         justify-content: center;
         align-items: center;
         font-style: italic;
     }
 
-#demo h5, #demo p {
+#demoCard h5, #demo p {
     text-align: center;
 }
-#demo-btn {
+#demoCard {
     background-color: #4CAF50;
     border: none;
     color: #ffffff;
@@ -206,18 +206,6 @@ body {
       <fieldset>
         <h2 class="fs-title">Your Shipping Details</h2>
         <h3 class="fs-subtitle">This is step 1</h3>
-      <div class="container" id="demo"></div>
-            <button onclick="demoCard()" id="demo-btn">Click for Demo Card</button>
-
-            <div id="hideText" style="display: none;">
-              <h4>Stripe Test Card Details</h4>
-              <p>When testing interactively, use a card number, such as 4242 4242 4242 4242. Enter the card number in the Dashboard or in any payment form.<br>
-                Use a valid future date, such as 12/34.
-                Use any three-digit CVC (four digits for American Express cards).
-                Use any value you like for other form fields
-              </p>
-            </div>
-        </div>
 
 {#        {% if messages %}#}
 {#          {% if message.tags == 'error' %}#}
@@ -235,7 +223,7 @@ body {
 {#        {% endif %}#}
 
 
-            <input hidden name="form" value="msform">
+        <input hidden name="form" value="msform">
         <label for="address">Address:</label>
         <input type="text" id="address" name="address" tabindex="1" value="{{ shippingDetails.address_line }}" placeholder="Address" maxlength="200" required/>
         <label for="postcode">Postcode:</label><br>
@@ -280,6 +268,7 @@ body {
       <fieldset>
         <h2 class="fs-title">Payment Details</h2>
         <h3 class="fs-subtitle">This is step 2</h3>
+        <input type="button" id="demoCard" value="Use Stripe Demo Card?" />
         <label for="card_number">Card Number:</label>
         <input type="text" id="card_number" name="card_number" value="{{ cardDetails.card_number }}" placeholder="Card Number" required>
         <label for="exp_month">Exp Month:</label><br>
@@ -366,6 +355,7 @@ body {
       <fieldset>
         <h2 class="fs-title">Payment Details</h2>
         <h3 class="fs-subtitle">This is step 2</h3>
+        <input type="button" id="demoCard" value="Use Stripe Demo Card?" />
         <label for="card_number">Card Number:</label>
         <input type="text" id="card_number" name="card_number" tabindex="1" value="" placeholder="Card Number" required>
         <label for="exp_month">Exp Month:</label><br>
@@ -412,14 +402,14 @@ body {
 
 <script>
 
-function demoCard() {
-      var dropdownContent = document.getElementById("hideText");
-      if (dropdownContent.style.display === "none") {
-        dropdownContent.style.display = "block";
-      } else {
-        dropdownContent.style.display = "none";
-      }
+document.getElementById("demoCard").onclick = function() {
+    // add test data to form
+    document.getElementById("card_number").value = "4242424242424242";
+    document.getElementById("exp_month").value = "12";
+    document.getElementById("exp_year").value = "2025";
+    document.getElementById("cvc").value = "123";
 }
+
 // --- source: https://codepen.io/atakan/pen/nPOZZR ---
 //jQuery time
 var current_fs, next_fs, previous_fs; //fieldsets
