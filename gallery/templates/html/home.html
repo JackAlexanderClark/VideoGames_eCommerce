@@ -109,6 +109,11 @@ ul.no-hover li {
     cursor: default;
 }
 
+.image-caption {
+    text-align: center;
+    font-style: italic;
+}
+
 .sidebar .widget {
   margin:0 0 25px;
   padding:25px;
@@ -177,7 +182,7 @@ ul.no-hover li {
   width: 100%;
 }
 
-    nav.menu ul {
+nav.menu ul {
   float:inherit;
 }
 
@@ -229,12 +234,14 @@ img {
     max-width: 90%;
     height: auto;
     margin: 0 auto;
+    display: block;
 }
 
-.two-column {
-    justify-content: center;
-    width: 80%;
+.image-container img {
+    max-width: 90%;
+    height: auto;
     margin: 0 auto;
+    display: block;
 }
 
 @media (max-width: 600px) {
@@ -288,8 +295,17 @@ img {
 
 <h1 id="title-text">Gallery of the Future</h1>
 
+    <div class="row">
+        <div class="col-md-12">
+            <ul class="no-hover" style="position: relative; ">
+                <li>Please sign in or register to visit the shop.</li>
+            </ul>
+        </div>
+    </div>
+
 <div class="image-container">
-    <img src="media/templates/videogame_imgs/landscape.png" alt="Your Image Description">
+    <img src="media/templates/videogame_imgs/landscape.png" alt="Mountain Range">
+    <p class="image-caption"><em>A sample image of a fictional landscape of mountains, using DALLE-2.</em></p>
 </div>
 
 <div class="two-column" id="fadeText">
