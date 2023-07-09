@@ -223,6 +223,25 @@ Manual Testing (Unit Testing):
 - As a user, I want to receive a receipt after my purchase so that I have a record of my transaction.
 - After a successful purchase, the system displays a receipt page with all relevant transaction details.
 
+
+## User Feedback and Stories
+1. Feedback 1: The card payment system was unclear in how the dates, sort code and account number were to be formatted or inputted.
+
+![image](https://github.com/JackAlexanderClark/VideoGames_eCommerce/assets/97599832/d99113dd-442b-428c-9f8c-bfce71be7d40)
+
+- To fix this I added a demo card button that automatically fills in the form with the test card and added placeholders for the format required. 
+
+![image](https://github.com/JackAlexanderClark/VideoGames_eCommerce/assets/97599832/35f76f80-488d-4827-ba01-f521c1e3d5e2)
+
+2. Feedback 2: Basic javascript alerts, users said were not aesthetically pleasing and basic.
+
+![image](https://github.com/JackAlexanderClark/VideoGames_eCommerce/assets/97599832/3f552541-4384-4d23-9a92-5e77c788a68b)
+
+- To fix this I found a JavaScript library (SweetAlert2)  to add more customisation.
+
+![image](https://github.com/JackAlexanderClark/VideoGames_eCommerce/assets/97599832/4e7021a2-e6ec-462d-8043-ffd9ed19c64c)
+
+
 ## Credits and Code Sources
 
 - Stripe API Code: https://stripe.com/gb
