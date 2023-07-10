@@ -266,8 +266,16 @@
         if (ordersLength == 0) {
             // prevent users buying
             var buyButton = document.querySelector('.disable-btn');
-            alert("Your cart is empty please select items from the gallery.");
-            buyButton.disabled = true;
+            Swal.fire({
+                icon: 'warning',
+                title: 'Warning',
+                text: 'Your cart is empty please select items from the gallery.',
+                confirmButtonColor: '#d33',
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    buyButton.disabled = true;
+                }
+            })
         } else {
             redirect(button);
         }

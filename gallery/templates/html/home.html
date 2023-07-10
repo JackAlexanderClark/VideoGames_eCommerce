@@ -230,12 +230,6 @@ h1 {
 img {
     height: 400px;
 }
-.image-container img {
-    max-width: 90%;
-    height: auto;
-    margin: 0 auto;
-    display: block;
-}
 
 .image-container img {
     max-width: 90%;
@@ -252,6 +246,13 @@ img {
     .image-container img {
         width: 100%;
     }
+}
+
+.two-column {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 20px;
 }
 
 #title-text {
@@ -307,7 +308,7 @@ img {
     <img src="media/templates/videogame_imgs/landscape.png" alt="Mountain Range">
     <p class="image-caption"><em>A sample image of a fictional landscape of mountains, using DALLE-2.</em></p>
 
-    <div class="two-column" id="fadeText">
+    <div class="two-column" id="fadeText" style="text-align: center;">
         <p>Welcome to the art-work of the future. Please select a piece of artwork from the gallery.</p>
         <p> This visionary art gallery truly embodies the future of art, offering a provocative glimpse into the infinite potential of AI, using openAI's Dalle-2.</p>
 
