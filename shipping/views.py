@@ -52,7 +52,7 @@ def buy(request):
             'getCardDetails':getcardDetails,
             'receipt':receipt
         }
-        return render(request, 'shipping/html/buy.html', context=context)
+        return render(request, 'shipping/templates/html/buy.html', context=context)
     else:
         if request.POST['form']=='msform':
             status=True
@@ -116,7 +116,7 @@ def cart(request):
 
         orders=Order.objects.filter(user_id=user_id)
         context={"orders":orders}
-        return render(request, 'shipping/html/cart.html', context=context)
+        return render(request, 'shipping/templates/html/cart.html', context=context)
     messages.info(request,'Login Required for Cart')
     return redirect('home')
 
@@ -167,7 +167,7 @@ def receipt(request):
             pass
         else:
             redirect('buy')
-        return render(request, 'shipping/html/receipt.html', context=context)
+        return render(request, 'shipping/templates/html/receipt.html', context=context)
 
     if request.method == 'POST':
         if request.POST['button'] == 'confirm':
