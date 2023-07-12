@@ -17,6 +17,7 @@
             --fs-size: 2em;
             --navbar-direction: row;
             --navbar-justify: space-between;
+            --navbar-padding: 2rem;
         }
 
         body {
@@ -24,7 +25,7 @@
         }
 
         ul {
-            padding: 2rem;
+            padding-top: var(--navbar-padding);
             display: flex;
             flex-direction: var(--navbar-direction);
             justify-content: var(--navbar-justify);
@@ -159,18 +160,13 @@
     @media (max-width: 600px) {
       :root {
         --fs-size: 1.5em;
+        --navbar-padding: 1rem;
         --navbar-direction: column;
         --navbar-justify: center;
       }
     }
-`
-        @media (max-width: 600px) {
-            :root {
-                --fs-size: 1.5em;
-                --navbar-direction: column;
-                --navbar-justify: center;
-            }
-        }
+
+
     </style>
 
 <!-- credit: https://codepen.io/chriiss/details/OJBgpQy -->
