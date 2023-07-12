@@ -59,6 +59,13 @@
     padding: 15px 0;
 }
 
+@media (max-width: 768px) {
+
+    div {
+        font-size: 0.75em;
+    }
+}
+
 </style>
 
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@11" defer></script>
@@ -171,12 +178,12 @@
             {% for order in orders %}
                 {% if order.quantity > 0 %}
                 <div class="row">
-                    <div class="col-sm-3 col-md-3 col-lg-3 col-xl-3">
+                    <div class="col-12 col-md-3">
                         <a href="video/{{ order.game_id.video_game_id }}">
                             <img src="{{ order.game_id.image_url.url }}" alt="{{ order.game_id.name }}" class="img-fluid">
-                        </a>1
+                        </a>
                     </div>
-                    <div class="col-sm-9 col-md-9 col-lg-9 col-xl-9">
+                    <div class="col-12 col-md-9">
                         <p><span>Order ID: {{ order.order_id }}</span></p>
                         <p><span>Order date: {{ order.order_date }}</span></p>
                         <p><span>Order game: {{ order.game_id.name }}</span></p>
