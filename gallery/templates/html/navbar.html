@@ -7,6 +7,7 @@
 
     <style>
         :root {
+            /* centre and create variables */
             --border-right: 6px;
             --text-stroke-color: rgba(255,255,255,0.6);
             --color1: #FF3D00;
@@ -18,6 +19,8 @@
             --navbar-direction: row;
             --navbar-justify: space-between;
             --navbar-padding: 2rem;
+            --navbar-align-items: flex-start;
+             --navbar-justify-content: center;
         }
 
         body {
@@ -29,6 +32,9 @@
             display: flex;
             flex-direction: var(--navbar-direction);
             justify-content: var(--navbar-justify);
+            flex-direction: var(--navbar-direction);
+            justify-content: var(--navbar-justify-content);
+            align-items: var(--navbar-align-items);
             gap: 2rem;
         }
 
@@ -163,6 +169,8 @@
         --navbar-padding: 1rem;
         --navbar-direction: column;
         --navbar-justify: center;
+        --navbar-justify-content: center;
+        --navbar-align-items: center;
       }
     }
 
