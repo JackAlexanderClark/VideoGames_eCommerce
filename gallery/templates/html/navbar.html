@@ -5,129 +5,174 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 </head>
 
-<style>
+    <style>
+        :root {
+            --border-right: 6px;
+            --text-stroke-color: rgba(255,255,255,0.6);
+            --color1: #FF3D00;
+            --color2: #304FFE;
+            --color3: #FFD740;
+            --color4: #30fe52;
+            --color5: #a340ff;
+            --fs-size: 2em;
+            --navbar-direction: row;
+            --navbar-justify: space-between;
+        }
+
+        body {
+            background-color: #212121;
+        }
+
+        ul {
+            padding: 2rem;
+            display: flex;
+            flex-direction: var(--navbar-direction);
+            justify-content: var(--navbar-justify);
+            gap: 2rem;
+        }
+
+        ul li {
+            margin: 0;
+            height: auto;
+            background: transparent;
+            padding: 0;
+            border: none;
+            letter-spacing: 3px;
+            text-decoration: none;
+            font-size: var(--fs-size);
+            font-family: 'Bruno Ace SC', cursive;
+            font-weight: bold;
+            position: relative;
+            text-transform: uppercase;
+            color: transparent;
+            -webkit-text-stroke: 1px var(--text-stroke-color);
+            cursor: pointer;
+        }
+
     :root {
-  --border-right: 6px;
-  --text-stroke-color: rgba(255,255,255,0.6);
-  --color1: #FF3D00;
-  --color2: #304FFE;
-  --color3: #FFD740;
-  --color4: #30fe52;
-  --color5: #a340ff;
-  --fs-size: 2em;
-}
-
-body {
-  background-color: #212121;
-}
-
-ul {
-  padding-top: 2rem;
-  display: flex;
-  justify-content: center;
-  gap: 2rem;
-}
-
-ul li {
-  margin: 0;
-  height: auto;
-  background: transparent;
-  padding: 0;
-  border: none;
-  letter-spacing: 3px;
-  text-decoration: none;
-  font-size: var(--fs-size);
-  font-family: 'Bruno Ace SC', cursive;
-  font-weight: bold;
-  position: relative;
-  text-transform: uppercase;
-  color: transparent;
-  -webkit-text-stroke: 1px var(--text-stroke-color);
-  cursor: pointer;
-}
-
-ul li .hover-text {
-  position: absolute;
-  box-sizing: border-box;
-  content: attr(data-text);
-  width: 0%;
-  inset: 0;
-  overflow: hidden;
-  transition: all .2s ease-in-out;
-}
-
-ul li:nth-child(6) .hover-text {
-  color: var(--color1);
-  border-right: var(--border-right) solid var(--color1);
-  -webkit-text-stroke: 1px var(--color1);
-}
-
-ul li:nth-child(7) .hover-text {
-  color: var(--color2);
-  border-right: var(--border-right) solid var(--color2);
-  -webkit-text-stroke: 1px var(--color2);
-}
-
-ul li:nth-child(8) .hover-text {
-  color: var(--color3);
-  border-right: var(--border-right) solid var(--color3);
-  -webkit-text-stroke: 1px var(--color3);
-}
-ul li:nth-child(4) .hover-text {
-  color: var(--color4);
-  border-right: var(--border-right) solid var(--color4);
-  -webkit-text-stroke: 1px var(--color4);
-}
-ul li:nth-child(5) .hover-text {
-  color: var(--color5);
-  border-right: var(--border-right) solid var(--color5);
-  -webkit-text-stroke: 1px var(--color5);
-}
-
-ul li:hover .hover-text {
-  width: 100%;
-}
-
-ul li:nth-child(1):hover .hover-text {
-  filter: drop-shadow(0 0 25px var(--color1))
-}
-
-ul li:nth-child(2):hover .hover-text {
-  filter: drop-shadow(0 0 25px var(--color2))
-}
-
-ul li:nth-child(3):hover .hover-text {
-  filter: drop-shadow(0 0 25px var(--color3))
-}
-ul li:nth-child(4):hover .hover-text {
-  filter: drop-shadow(0 0 25px var(--color4))
-}
-
-ul li:nth-child(5):hover .hover-text {
-  filter: drop-shadow(0 0 25px var(--color5))
-}
-
-/* `add media queries to deal with responsiveness */
-@media only screen and (max-width: 600px) {
-    :root {
-        --fs-size: 1em;
+      --border-right: 6px;
+      --text-stroke-color: rgba(255,255,255,0.6);
+      --color1: #FF3D00;
+      --color2: #304FFE;
+      --color3: #FFD740;
+      --color4: #30fe52;
+      --color5: #a340ff;
+      --fs-size: 2em;
+      --navbar-direction: row;
+      --navbar-justify: space-between;
     }
-}
 
-@media only screen and (min-width: 601px) and (max-width: 900px) {
-    :root {
+    body {
+      background-color: #212121;
+    }
+
+    ul {
+      padding: 2rem;
+      display: flex;
+      flex-direction: var(--navbar-direction);
+      justify-content: var(--navbar-justify);
+      gap: 2rem;
+    }
+
+    ul li {
+      margin: 0;
+      height: auto;
+      background: transparent;
+      padding: 0;
+      border: none;
+      letter-spacing: 3px;
+      text-decoration: none;
+      font-size: var(--fs-size);
+      font-family: 'Bruno Ace SC', cursive;
+      font-weight: bold;
+      position: relative;
+      text-transform: uppercase;
+      color: transparent;
+      -webkit-text-stroke: 1px var(--text-stroke-color);
+      cursor: pointer;
+    }
+
+    ul li .hover-text {
+      position: absolute;
+      box-sizing: border-box;
+      content: attr(data-text);
+      width: 0%;
+      inset: 0;
+      overflow: hidden;
+      transition: all .2s ease-in-out;
+    }
+
+    ul li:nth-child(6) .hover-text {
+      color: var(--color1);
+      border-right: var(--border-right) solid var(--color1);
+      -webkit-text-stroke: 1px var(--color1);
+    }
+
+    ul li:nth-child(7) .hover-text {
+      color: var(--color2);
+      border-right: var(--border-right) solid var(--color2);
+      -webkit-text-stroke: 1px var(--color2);
+    }
+
+    ul li:nth-child(8) .hover-text {
+      color: var(--color3);
+      border-right: var(--border-right) solid var(--color3);
+      -webkit-text-stroke: 1px var(--color3);
+    }
+
+    ul li:nth-child(4) .hover-text {
+      color: var(--color4);
+      border-right: var(--border-right) solid var(--color4);
+      -webkit-text-stroke: 1px var(--color4);
+    }
+
+    ul li:nth-child(5) .hover-text {
+      color: var(--color5);
+      border-right: var(--border-right) solid var(--color5);
+      -webkit-text-stroke: 1px var(--color5);
+    }
+
+    ul li:hover .hover-text {
+      width: 100%;
+    }
+
+    ul li:nth-child(1):hover .hover-text {
+      filter: drop-shadow(0 0 25px var(--color1));
+    }
+
+    ul li:nth-child(2):hover .hover-text {
+      filter: drop-shadow(0 0 25px var(--color2));
+    }
+
+    ul li:nth-child(3):hover .hover-text {
+      filter: drop-shadow(0 0 25px var(--color3));
+    }
+
+    ul li:nth-child(4):hover .hover-text {
+      filter: drop-shadow(0 0 25px var(--color4));
+    }
+
+    ul li:nth-child(5):hover .hover-text {
+      filter: drop-shadow(0 0 25px var(--color5));
+    }
+
+    @media (max-width: 600px) {
+      :root {
         --fs-size: 1.5em;
+        --navbar-direction: column;
+        --navbar-justify: center;
+      }
     }
-}
+`
+        @media (max-width: 600px) {
+            :root {
+                --fs-size: 1.5em;
+                --navbar-direction: column;
+                --navbar-justify: center;
+            }
+        }
+    </style>
 
-@media only screen and (min-width: 901px) {
-    :root {
-        --fs-size: 2em;
-    }
-}
-
-
-</style>
 <!-- credit: https://codepen.io/chriiss/details/OJBgpQy -->
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bruno+Ace+SC&display=swap" rel="stylesheet">
