@@ -103,6 +103,26 @@ ul li:nth-child(5):hover .hover-text {
   filter: drop-shadow(0 0 25px var(--color5))
 }
 
+/* `add media queries to deal with responsiveness */
+@media only screen and (max-width: 600px) {
+    :root {
+        --fs-size: 1em;
+    }
+}
+
+@media only screen and (min-width: 601px) and (max-width: 900px) {
+    :root {
+        --fs-size: 1.5em;
+    }
+}
+
+@media only screen and (min-width: 901px) {
+    :root {
+        --fs-size: 2em;
+    }
+}
+
+
 </style>
 <!-- credit: https://codepen.io/chriiss/details/OJBgpQy -->
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
