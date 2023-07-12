@@ -117,7 +117,7 @@ def video(request, id):
             print("user exist")
             olduser.quantity += 1
             olduser.save()
-            messages.add_message(request, messages.SUCCESS, "Added :"+game.name)
+            messages.add_message(request, messages.SUCCESS, "Added "+game.name)
         else:
             newOrder = Order(user_id=User, game_id=game, delivery_cost=delivery_cost,
                            delivery_option='slow')
