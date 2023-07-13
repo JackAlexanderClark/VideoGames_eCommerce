@@ -301,13 +301,15 @@ a i.fab.fa-facebook-f, a i.fab.fa-twitter {
 
 <h1 id="title-text">Gallery of the Future</h1>
 
-    <div class="row">
-        <div class="col-md-12">
-            <h3 class="no-hover" style="position: relative;text-align:center; justify-content: center;">
-                Please sign-in/register to visit the shop.
-            </h3>
+    {% if not user.is_authenticated %}
+        <div class="row">
+            <div class="col-md-12">
+                <h3 class="no-hover" style="position: relative;text-align:center; justify-content: center;">
+                    Please sign-in/register to visit the shop.
+                </h3>
+            </div>
         </div>
-    </div>
+    {% endif %}
 
 <div class="image-container">
     <img src="media/templates/videogame_imgs/landscape.png" alt="Mountain Range">

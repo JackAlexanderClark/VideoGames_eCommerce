@@ -53,7 +53,7 @@ table{
               <b>Email:</b> {{ user.email }} <br> <b>Username:</b> {{ user.username }} <br> <b>Date Joined:</b> {{ user.date_joined }} <br>
               <b>Is user active?</b> {% if user.is_active %} Yes {% else %} No {% endif %} <br> <b>Is admin?</b> {% if user.is_superuser %} Yes {% else %} No {% endif %}
           </p>
-          <a href="{% url 'load_edit_profile' %}" class="btn btn-info">Edit Profile?</a>
+          <a href="{% url 'load_edit_profile' %}" class="btn btn-info">Edit Profile</a>
         </div>
       </div>
     </div>

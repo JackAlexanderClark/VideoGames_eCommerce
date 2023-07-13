@@ -173,6 +173,11 @@
       }
     }
 
+    /* prevent horizontal scroll bar */
+    body {
+        overflow-x: hidden;
+    }
+
 
     </style>
 
@@ -195,8 +200,8 @@
             <span class="hover-text" onclick='redirect(this)' href="{% url 'gallery' %}" aria-hidden="true">&nbsp;Gallery&nbsp;</span>
       </li>
       <li>
-        <span class="actual-text" onclick='redirect(this)' href="{% url 'cart' %}">&nbsp;Shop&nbsp;</span>
-        <span class="hover-text" aria-hidden="true" onclick='redirect(this)' href="{% url 'cart' %}">&nbsp;Shop&nbsp;</span>
+        <span class="actual-text" onclick='redirect(this)' href="{% url 'cart' %}">&nbsp;Cart&nbsp;</span>
+        <span class="hover-text" aria-hidden="true" onclick='redirect(this)' href="{% url 'cart' %}">&nbsp;Cart&nbsp;</span>
       </li>
             <li>
                 <span class="actual-text" onclick='redirect(this)' href="{% url 'profile' %}" >&nbsp;{{ user.username }}&nbsp;</span>
