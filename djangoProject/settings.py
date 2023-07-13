@@ -126,6 +126,10 @@ STATIC_URL = '/static/'
 
 MEDIA_URL   ='/media/'
 
+# favicon link
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'media/templates/videogame_imgs'),
+]
 
 
 MEDIA_ROOT =os.path.join(BASE_DIR,'media/')
