@@ -50,7 +50,7 @@ class LoginViewTest(TestCase):
 
 import unittest
 from unittest.mock import patch, MagicMock
-import stripe_payment
+import stripe_payment   # noqa
 
 class TestStripePayment(unittest.TestCase):
     @patch('stripe.Token.create')

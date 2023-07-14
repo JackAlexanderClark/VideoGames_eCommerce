@@ -190,6 +190,12 @@ body {
 
 <body>
 
+    {% if messages %}
+        {% for msg in messages %}
+            <h1 style="text-align: center; color: white;">{{ msg }}</h1>
+        {% endfor %}
+    {% endif %}
+
 
 {% if getShippingDetails == False %}
     <form id="msform" method="post">
