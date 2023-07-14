@@ -129,6 +129,9 @@ Image Gallery:
 Item Purchase Screen:
 ![image](https://github.com/JackAlexanderClark/VideoGames_eCommerce/assets/97599832/8bf89cce-49ce-4bfa-84f0-221b79b8b92c)
 
+Receipts and Profile:
+![image](https://github.com/JackAlexanderClark/VideoGames_eCommerce/assets/97599832/ff9d8f41-698b-4bb7-9c1b-423d61e56920)
+
 
 #### Stripe Payment API
 - To safely handle payments, the stripe API is used. We can use dummy card details to test.
@@ -175,7 +178,6 @@ Item Purchase Screen:
   
 ## Section 4 – Bugs and Testing
 
-Validators:
 
 Bugs:
 - This bug was stopping builds of the project being built, it does recognise the import module.
@@ -223,7 +225,7 @@ Manual Testing (Unit Testing):
 - As a user, I want to use a secure checkout process so that I can safely provide my payment details (STRIPE API)
 
 
-- The system presents a secure, easy-to-understand checkout process.
+- The system presents a secure checkout process after cart.
 - The system clearly displays the total cost before asking for payment details (RECEIPT).
 - As a user, I want to pay for my items using Stripe so that I can complete my purchase.
 
