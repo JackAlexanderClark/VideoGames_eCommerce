@@ -163,7 +163,7 @@ Receipts and Profile:
 2. Back-end:
 - Django provideds a skeleton structure that has built in User models, admin backend and settings that assist in speeding up the development of a project. It is a web framework, acts as the middleware in a full-stack application and manages the communication between the frontend and the database. It plays a crucial role in handling requests from the frontend, processing data, and returning the appropriate responses. When a user interacts with the frontend of the website—say, by submitting a form or clicking a button—this action triggers an HTTP request. Errors are handled in the backend and threaded back to the frontend. This request is sent to a URL, which Django maps to a specific view function through its URL dispatcher.
 
-- The view function, written in Python, handles the request and performs the necessary operations. It might fetch or update data in the database, or execute other logic based on the request's details, it will generate receipts and load pages. Django uses an Object-Relational Mapper (ORM) to interact with the database, which provides a high-level, Python interface for database queries. Django also used Jinja templating and template rendering similar to Flask, however an advantage to Django is it has a lot more built in security, with pre-made functions for user authentication and password hashing. This means data can be manipulated in Python without writing SQL code. Once the view has processed the request, it constructs an HTTP response, often rendering an HTML template with context data provided by the views.py file. This context data is the information fetched or processed from the database, which is then incorporated into the HTML sent back to the frontend.
+- The view function, written in Python, handles the request and performs the necessary operations. It might fetch or update data in the database (PostreSQL) for this project, or execute other logic based on the request's details, it will generate receipts and load pages. Django uses an Object-Relational Mapper (ORM) to interact with the database, which provides a high-level, Python interface for database queries, it also has a backend for the shopkeeper/admin to alter the inventory and items. Django also used Jinja templating and template rendering similar to Flask, however an advantage to Django is it has a lot more built in security, with pre-made functions for user authentication and password hashing. This means data can be manipulated in Python without writing SQL code. Once the view has processed the request, it constructs an HTTP response, often rendering an HTML template with context data provided by the views.py file. This context data is the information fetched or processed from the database, which is then incorporated into the HTML sent back to the frontend.
 
 -  Request and responses enables handles interaction between the user and the server, allowing the website to serve personalized and interactive content depending on user actions. I have also incorporated the Stripe API into the backend to POST data such as amounts and card details.
 
@@ -216,7 +216,7 @@ Manual Testing (Unit Testing):
 
 
 - The system allows me to add items to a shopping cart from the item detail page.
-- The system shows the number of items in my cart and total cost in the site header.
+- The system shows the number of items in my cart and costs in total.
 - As a user, I want to review my shopping cart so that I can confirm my choices before checkout.
 
 
@@ -231,10 +231,8 @@ Manual Testing (Unit Testing):
 
 
 - The system provides a Stripe payment option at checkout.
-- The system communicates with the Stripe API to securely handle my payment information.
-- The system confirms my purchase after successful payment, and sends me a confirmation email.
 - As a user, I want to receive a receipt after my purchase so that I have a record of my transaction.
-- After a successful purchase, the system displays a receipt page with all relevant transaction details.
+- After a successful purchase, the system displays a receipt page with all relevant transaction details, including taxes and delivery speed.
 
 
 ## User Feedback and Stories
