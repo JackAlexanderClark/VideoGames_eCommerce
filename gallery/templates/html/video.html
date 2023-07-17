@@ -8,7 +8,6 @@
     <title>Gallery</title>
     {% load  static %}
 
-    <script src="{% static 'js/gallery.js' %}" defer></script>
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link href="https://fonts.googleapis.com/css?family=Droid+Sans:400,700" rel="stylesheet">
@@ -57,7 +56,6 @@
                 <h3><span class="info">Genre:</span> {{ game.genre }}</h3>
                 <h3><span class="info">Price:</span> £{{ game.price }}</h3>
                 <h3><span class="info">Description:</span> {{ game.description }}</h3>
-                <h3><span class="info">Quantity:</span> {{ game.quantity }}</h3>
             </div>
 
             <!-- Button column -->
