@@ -94,14 +94,11 @@
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td data-label="Order Id">{{ item.order_id }}</td>
-                    <td data-label="Game Name">{{ item.game_name }}</td>
-                    <td data-label="Price">{{ item.price }}</td>
-                    <td data-label="Quantity">{{ item.quantity }}</td>
-                    <td data-label="Delivery Cost">{{ item.delivery_cost }}</td>
-                    <td data-label="Item Shipped">{{ item.item_shipped }}</td>
-                </tr>
+                    <tr>
+                        {% for prop in item %}
+                            <td data-label="{{prop.name}}">{{ prop }}</td>
+                        {% endfor %}
+                    </tr>
             </tbody>
         </table>
         <form method="post">
