@@ -29,6 +29,10 @@
                     padding: 5px;
                     word-wrap: break-word;
                 }
+                img {
+                    width: 100%;
+                    height: auto;
+                }
             }
             /* Styles for larger screens */
             @media screen and (min-width: 500px) {
@@ -39,12 +43,24 @@
                 th, td {
                     padding: 10px;
                 }
+                 img {
+                    max-width: 400px;
+                    height: auto;
+                }
             }
+             .center-div {
+                    text-align: center;
+                    padding: 10px;
+                }
     </style>
 </head>
 <body>
     <div class="container">
         <h1>Receipt</h1>
+
+        <div class="center-div">
+            <img src="\media\templates\videogame_imgs\framed.png" alt="Framed Painting">
+        </div>
         <table>
             <thead>
                 <tr>
