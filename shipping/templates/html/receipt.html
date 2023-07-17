@@ -27,10 +27,39 @@
         }
         @media screen and (max-width: 600px) {
             th, td {
-                padding: 8px;
+                padding: 4px;
             }
         }
-    </style>
+        @media screen and (max-width: 600px) {
+            table {
+                width: 100%;
+            }
+            thead {
+                display: none;
+        }
+        tr {
+            margin-bottom: 10px;
+            display: block;
+            border-bottom: 2px solid #ddd;
+        }
+        td {
+            display: block;
+            text-align: right;
+            font-size: 13px;
+            border-bottom: 1px dotted #ccc;
+        }
+        td:last-child {
+            border-bottom: 0;
+        }
+        td:before {
+            content: attr(data-label);
+            float: left;
+            text-transform: uppercase;
+            font-weight: bold;
+        }
+    }
+</style>
+
 </head>
 <body>
     <div class="container">
@@ -45,9 +74,9 @@
             </thead>
             <tbody>
                 <tr>
-                    <td>£{{total_amount}}</td>
-                    <td>{{ receipt_id }}</td>
-                    <td id="tax">£{{ tax }}</td>
+                    <td data-label="Total Amount">£{{total_amount}}</td>
+                    <td data-label="Receipt Id">{{ receipt_id }}</td>
+                    <td data-label="Tax" id="tax">£{{ tax }}</td>
                 </tr>
             </tbody>
         </table>
@@ -65,8 +94,8 @@
             <tbody>
                 {% for item in items %}
                     <tr>
-                    {% for prop in item %}
-                    <td>{{ prop }}</td>
+                        {% for prop in item %}
+                            <td data-label="{{prop.name}}">{{ prop }}</td>
                         {% endfor %}
                     </tr>
                 {% endfor %}
