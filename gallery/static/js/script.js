@@ -1,11 +1,13 @@
 $(document).ready(function() {
-  $('.password-toggle').click(function() {
-    // Get the password field
-    var passwordField = $(this).siblings('.password');
+    $(".password-toggle").on('click', function() {
 
-    var passwordFieldType = passwordField.attr('type');
-    passwordField.attr('type', passwordFieldType === 'password' ? 'text' : 'password');
+        $(this).toggleClass("fa-eye fa-eye-slash");
+        var input = $($(this).attr("toggle"));
 
-    $(this).toggleClass('fa-eye fa-eye-slash');
-  });
+        if (input.attr("type") == "password") {
+            input.attr("type", "text");
+        } else {
+            input.attr("type", "password");
+        }
+    });
 });
