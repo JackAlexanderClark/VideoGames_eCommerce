@@ -1,7 +1,7 @@
 $(document).ready(function() {
     $(".password-toggle").on('click', function() {
 
-        $(this).toggleClass("fa-eye fa-eye-slash");
+        $(this).toggleClass("fa fa-eye password-toggle");
         var input = $($(this).attr("toggle"));
 
         if (input.attr("type") == "password") {
