@@ -1,10 +1,10 @@
+{% load  static %}
 {% include 'html/navbar.html'%}
 
 <div class="row">
 {% block body %}
     <script src="{% static 'js/script.js' %}" defer></script>
-    {% load  static %}
-        <link rel="stylesheet" href="{% static 'css/login.css' %}">
+    <link rel="stylesheet" href="{% static 'css/login.css' %}">
 <style>
 form {
     display: flex;
