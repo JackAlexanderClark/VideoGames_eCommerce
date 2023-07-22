@@ -2,6 +2,7 @@
 
 <div class="row">
 {% block body %}
+    <script src="{% static 'js/script.js' %}" defer></script>
     {% load  static %}
         <link rel="stylesheet" href="{% static 'css/login.css' %}">
 <style>
@@ -22,11 +23,13 @@ form {
           <div class="input">
             <div class="inputBox">
               <label>Username</label>
-              <input type="text" name="username" placeholder="example@xyz.com" required/>
+              <input type="text" name="username" placeholder="Enter your username" required/>
             </div>
             <div class="inputBox">
               <label>Password</label>
-              <input type="password" name="password" placeholder="&#8226;&#8226;&#8226;&#8226;&#8226;&#8226;&#8226;" required/>
+              <input type="password" name="password" placeholder="Enter your password" required/>
+              <input type="password" name="password" class="password" placeholder="&#8226;&#8226;&#8226;&#8226;&#8226;&#8226;&#8226;" required/>
+              <i class="fa fa-eye password-toggle"></i>
             </div>
             <div class="inputBox">
               <input type="submit" name="submit" value="Sign In"/>

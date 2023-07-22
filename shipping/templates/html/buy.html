@@ -5,6 +5,9 @@
 <head>
     <meta charset="UTF-8">
     <title>Buy</title>
+    {% load  static %}
+
+    <script src="{% static 'js/buy.js' %}" defer></script>
 </head>
 
 <style>
@@ -216,7 +219,7 @@ body {
         <label for="postcode">Postcode:</label><br>
         <input type="text" id="postcode" name="postcode" tabindex="2" value="{{ shippingDetails.postcode }}" placeholder="Postcode" maxlength="10" required/>
         <label for="phone">Phone Number:</label><br>
-        <input type="tel" id="number" name="number" tabindex="3" value="{{ shippingDetails.phone_number }}" placeholder="Phone Number" required/>
+        <input type="tel" id="number" name="number" tabindex="3" value="{{ shippingDetails.phone_number }}" placeholder="Phone Number" maxlength="10" required/>
         <label for="country">Country:</label><br>
         <select id="country" name="country" tabindex="4" placeholder="Country" required>
             <option value="{{ shippingDetails.country }}">{{ shippingDetails.country }}</option>
