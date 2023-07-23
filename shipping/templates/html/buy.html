@@ -215,11 +215,11 @@ body {
 
         <input hidden name="form" value="msform">
         <label for="address">Address:</label>
-        <input type="text" id="address" name="address" tabindex="1" value="{{ shippingDetails.address_line }}" placeholder="Address" maxlength="200" required/>
+        <input type="text" id="address" name="address" tabindex="1" value="{{ shippingDetails.address_line }}" placeholder="Enter Address" maxlength="200" required/>
         <label for="postcode">Postcode:</label><br>
-        <input type="text" id="postcode" name="postcode" tabindex="2" value="{{ shippingDetails.postcode }}" placeholder="Postcode" maxlength="10" required/>
+        <input type="text" id="postcode" name="postcode" tabindex="2" value="{{ shippingDetails.postcode }}" placeholder="Enter Postcode" maxlength="10" required/>
         <label for="phone">Phone Number:</label><br>
-        <input type="tel" id="number" name="number" tabindex="3" value="{{ shippingDetails.phone_number }}" placeholder="Phone Number" maxlength="10" required/>
+        <input type="tel" id="number" name="number" tabindex="3" value="{{ shippingDetails.phone_number }}" placeholder="Enter Phone Number" maxlength="10" required/>
         <label for="country">Country:</label><br>
         <select id="country" name="country" tabindex="4" placeholder="Country" required>
             <option value="{{ shippingDetails.country }}">{{ shippingDetails.country }}</option>
@@ -260,13 +260,13 @@ body {
         <h3 class="fs-subtitle">This is step 2</h3>
         <input type="button" id="demoCard" value="Use Stripe Demo Card?" />
         <label for="card_number">Card Number:</label>
-        <input type="text" id="card_number" name="card_number" value="{{ cardDetails.card_number }}" placeholder="Card Number" required>
+        <input type="text" id="card_number" name="card_number" value="{{ cardDetails.card_number }}" placeholder="Enter 16 digit # (no spaces)" maxlength="16" required>
         <label for="exp_month">Exp Month:</label><br>
-        <input type="text" id="exp_month" name="exp_month" value="{{ cardDetails.exp_month }}" placeholder="Expiration Month" required>
+        <input type="text" id="exp_month" name="exp_month" value="{{ cardDetails.exp_month }}" placeholder="Expiration Month (e.g 12)" maxlength="2" required>
         <label for="exp_year">Exp Year:</label><br>
-        <input type="text" id="exp_year" name="exp_year" value="{{ cardDetails.exp_year }}" placeholder="Expiration Year" required>
+        <input type="text" id="exp_year" name="exp_year" value="{{ cardDetails.exp_year }}" placeholder="Expiration Year (e.g 24)" maxlength="2" required>
         <label for="cvc">CVC:</label><br>
-        <input type="text" id="cvc" name="cvc" value="{{ cardDetails.cvc }}" placeholder="CVC" required>
+        <input type="text" id="cvc" name="cvc" value="{{ cardDetails.cvc }}" placeholder="CVC" maxlength="3" required>
         <input type="button" name="previous" class="previous action-button" value="Previous" />
         <input type="button" name="next" class="next action-button" value="Next" />
       </fieldset>
@@ -302,11 +302,11 @@ body {
         <h2 class="fs-title">Your Shipping Details</h2>
         <h3 class="fs-subtitle">This is step 1</h3>
         <label for="address">Address:</label>
-        <input type="text" id="address" name="address" value="" placeholder="Address" maxlength="200" required/>
+        <input type="text" id="address" name="address" value="" placeholder="Enter your Address" maxlength="200" required/>
         <label for="postcode">Postcode:</label><br>
-        <input type="text" id="postcode" name="postcode" value="" placeholder="Postcode" maxlength="10" required/>
+        <input type="text" id="postcode" name="postcode" value="" placeholder="Enter Postcode" maxlength="10" required/>
         <label for="phone">Phone Number:</label><br>
-        <input type="tel" id="number" name="number" value="" placeholder="Phone Number" required/>
+        <input type="tel" id="number" name="number" value="" placeholder="Enter Phone Number" maxlength="11" required/>
         <label for="country">Country:</label><br>
         <select id="country" name="country" tabindex="4" placeholder="Country" required>
             <option value="">Please Select a Country</option>
@@ -347,11 +347,11 @@ body {
         <h3 class="fs-subtitle">This is step 2</h3>
         <input type="button" id="demoCard" value="Use Stripe Demo Card?" />
         <label for="card_number">Card Number:</label>
-        <input type="text" id="card_number" name="card_number" tabindex="1" maxlength="16"  value="" placeholder="Card Number" required>
+        <input type="text" id="card_number" name="card_number" tabindex="1" maxlength="16"  value="" placeholder="Enter 16 digit Card # (no spaces)" required>
         <label for="exp_month">Exp Month:</label><br>
-        <input type="text" id="exp_month" name="exp_month" tabindex="2" maxlength="2" value="" placeholder="Expiration Month" required>
+        <input type="text" id="exp_month" name="exp_month" tabindex="2" maxlength="2" value="" placeholder="Expiration Month (e.g 12)" required>
         <label for="exp_year">Exp Year:</label><br>
-        <input type="text" id="exp_year" name="exp_year" tabindex="3" maxlength="2" value="" placeholder="Expiration Year" required>
+        <input type="text" id="exp_year" name="exp_year" tabindex="3" maxlength="2" value="" placeholder="Expiration Year (e.g 23)" required>
         <label for="cvc">CVC:</label><br>
         <input type="text" id="cvc" name="cvc" tabindex="3" maxlength="3" value="" placeholder="CVC" required>
         <input type="button" name="previous" class="previous action-button" value="Previous" />
