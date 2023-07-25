@@ -209,7 +209,7 @@ footer {
       <fieldset>
         <h2 class="fs-title">Your Shipping Details</h2>
         <h3 class="fs-subtitle">This is step 1</h3>
-
+        <input type="button" id="demoAddress" value="Use Test Address Details?" />
         <input hidden name="form" value="msform">
         <label for="address">Address:</label>
         <input type="text" id="address" name="address" tabindex="1" value="{{ shippingDetails.address_line }}" placeholder="Enter Address" maxlength="200" required/>
@@ -298,6 +298,7 @@ footer {
       <fieldset>
         <h2 class="fs-title">Your Shipping Details</h2>
         <h3 class="fs-subtitle">This is step 1</h3>
+        <input type="button" id="demoAddress" value="Use Test Address Details?" />
         <label for="address">Address:</label>
         <input type="text" id="address" name="address" value="" placeholder="Enter your Address" maxlength="200" required/>
         <label for="postcode">Postcode:</label><br>
@@ -397,6 +398,14 @@ document.getElementById("demoCard").onclick = function() {
     document.getElementById("exp_month").value = "12";
     document.getElementById("exp_year").value = "25";
     document.getElementById("cvc").value = "123";
+}
+
+document.getElementById("demoAddress").onclick = function() {
+    // add dummy address fields
+    document.getElementById("address").value = "4 Test Street";
+    document.getElementById("postcode").value = "B37 2ER";
+    document.getElementById("number").value = "7700 900077";
+    document.getElementById("country").value = "United Kingdom";
 }
 
 // add an alert if fields aren't filled out
