@@ -1,16 +1,19 @@
 $(document).ready(function() {
-    // disable next button until form has data
-    $('.next').attr('disabled', 'disabled');
-    $('input, select').on('keyup change', function() {
-        var currentFieldset = $(this).parents('fieldset');
-        var inputs = currentFieldset.find('input, select');
-        var empty = inputs.filter(function() {
-            return !this.value;
-        });
-        if (!empty.length) {
-            currentFieldset.find('.next').removeAttr('disabled');
-        } else {
-            currentFieldset.find('.next').attr('disabled', 'disabled');
-        }
-    });
+    if ($('#msform').length) {  // check user has form
+        $('.next').attr('disabled', 'disabled');
+
+        setInterval(function() {
+            $('fieldset').each(function() {
+                var inputs = $(this).find('input, select');
+                var empty = inputs.filter(function() {
+                    return !this.value;
+                });
+                if (!empty.length) {
+                    $(this).find('.next').removeAttr('disabled');
+                } else {
+                    $(this).find('.next').attr('disabled', 'disabled');
+                }
+            });
+        }, 1000);
+    }
 });

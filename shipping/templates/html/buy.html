@@ -346,13 +346,13 @@ body {
         <h2 class="fs-title">Payment Details</h2>
         <h3 class="fs-subtitle">This is step 2</h3>
         <input type="button" id="demoCard" value="Use Stripe Demo Card?" />
-        <label for="card_number">Card Number:</label>
+        <label for="card_number">Card Number: <small>Format: 1111111111111111</small></label>
         <input type="text" id="card_number" name="card_number" tabindex="1" maxlength="16"  value="" placeholder="Enter 16 digit Card # (no spaces)" required>
-        <label for="exp_month">Exp Month:</label><br>
+        <label for="exp_month">Exp Month: <small>Format: 12</small></label><br>
         <input type="text" id="exp_month" name="exp_month" tabindex="2" maxlength="2" value="" placeholder="Expiration Month (e.g 12)" required>
-        <label for="exp_year">Exp Year:</label><br>
+        <label for="exp_year">Exp Year: <small>Format: 23</small></label><br>
         <input type="text" id="exp_year" name="exp_year" tabindex="3" maxlength="2" value="" placeholder="Expiration Year (e.g 23)" required>
-        <label for="cvc">CVC:</label><br>
+        <label for="cvc">CVC: <small>Format: 123</small></label><br>
         <input type="text" id="cvc" name="cvc" tabindex="3" maxlength="3" value="" placeholder="CVC" required>
         <input type="button" name="previous" class="previous action-button" value="Previous" />
         <input type="button" name="next" class="next action-button" value="Next" />
