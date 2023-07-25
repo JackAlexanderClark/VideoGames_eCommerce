@@ -47,6 +47,25 @@
     text-align: center;
 }
 
+.input-prefix {
+  display: inline-flex;
+  align-items: center;
+  border: 1px solid #ccc;
+}
+
+.input-prefix span {
+  padding: 0 10px;
+  background-color: #eee;
+  border-right: 1px solid #ccc;
+}
+
+.input-prefix input {
+  flex-grow: 1;
+  border: none;
+  outline: none;
+}
+
+
 /* --- source: https://codepen.io/atakan/pen/nPOZZR --- */
 /*custom font*/
 @import url(https://fonts.googleapis.com/css?family=Montserrat);
@@ -236,7 +255,10 @@ footer {
         <label for="postcode">Postcode:</label><br>
         <input type="text" id="postcode" name="postcode" tabindex="2" value="{{ shippingDetails.postcode }}" placeholder="Enter Postcode" maxlength="10" required/>
         <label for="phone">Phone Number:</label><br>
-        <input type="tel" id="number" name="number" tabindex="3" value="{{ shippingDetails.phone_number }}" placeholder="Enter Phone Number" maxlength="10" required/>
+        <div class="input-prefix">
+          <span>+44</span>
+          <input type="tel" id="number" name="number" value="{{ shippingDetails.phone_number }}" placeholder="Enter Phone Number" maxlength="12" required/>
+        </div>
         <label for="country">Country:</label><br>
         <select id="country" name="country" tabindex="4" placeholder="Country" required>
             <option value="{{ shippingDetails.country }}">{{ shippingDetails.country }}</option>
@@ -324,7 +346,10 @@ footer {
         <label for="postcode">Postcode:</label><br>
         <input type="text" id="postcode" name="postcode" value="" placeholder="Enter Postcode" maxlength="10" required/>
         <label for="phone">Phone Number:</label><br>
-        <input type="tel" id="number" name="number" value="" placeholder="Enter Phone Number" maxlength="12" required/>
+        <div class="input-prefix">
+          <span>+44</span>
+          <input type="tel" id="number" name="number" value="" placeholder="Enter Phone Number" maxlength="12" required/>
+        </div>
         <label for="country">Country:</label><br>
         <select id="country" name="country" tabindex="4" placeholder="Country" required>
             <option value="">Please Select a Country</option>
@@ -424,7 +449,7 @@ document.getElementById("demoAddress").onclick = function() {
     // add dummy address fields
     document.getElementById("address").value = "4 Test Street";
     document.getElementById("postcode").value = "B37 2ER";
-    document.getElementById("number").value = "7700 900077";
+    document.getElementById("number").value = "7700900077";
     document.getElementById("country").value = "United Kingdom";
 }
 
