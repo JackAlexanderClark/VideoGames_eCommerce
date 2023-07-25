@@ -38,13 +38,9 @@
 }
 
 html {
-	height: 100%;
-	/*Image only BG fallback*/
-
-	/*background = gradient + image pattern combo*/
-	background:
-		linear-gradient(rgba(196, 102, 0, 0.6), rgba(155, 89, 182, 0.6));
+    height: 100%;
 }
+
 
 body {
 	font-family: montserrat, arial, verdana;
@@ -395,6 +391,17 @@ document.getElementById("demoCard").onclick = function() {
     document.getElementById("exp_year").value = "25";
     document.getElementById("cvc").value = "123";
 }
+
+$(".next").click(function(){
+  // Get the parent fieldset
+  var parent_fieldset = $(this).parent();
+  if (parent_fieldset.find('input,select').filter(function() {
+    return $.trim(this.value).length === 0;
+  }).length) {
+    alert('Please fill out all fields before proceeding');
+    return false;
+  }
+});
 
 // --- source: https://codepen.io/atakan/pen/nPOZZR ---
 //jQuery time
