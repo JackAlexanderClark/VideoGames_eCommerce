@@ -45,6 +45,11 @@ html {
 body {
 	font-family: montserrat, arial, verdana;
 }
+
+/* -- make sure footer is below the form -- */
+footer {
+    margin-top: auto;
+}
 /*form styles*/
 #msform {
 	width: 400px;
@@ -191,7 +196,7 @@ body {
         {% endfor %}
     {% endif %}
 
-
+<main>
 {% if getShippingDetails == False %}
     <form id="msform" method="post">
     {% csrf_token %}
@@ -366,6 +371,7 @@ body {
     </form>
 <br>
 {% endif %}
+</main>
 </body>
 
 <footer class="footer">
