@@ -84,7 +84,6 @@ table{
                             <div class="table-responsive">
                                 <table class="table">
                                         <tr>
-                                            <th scope="col"></th>
                                             <th scope="col">Name</th>
                                             <th scope="col">Quantity</th>
                                             <th scope="col">Amount</th>
@@ -93,9 +92,6 @@ table{
     {%  for item in receipt.items %}
 
                                         <tr>
-                                            <td>
-                                                <img src="\media\templates\videogame_imgs\receipt.png" alt="receipt image" width="80">
-                                            </td>
                                             <td>{{ item |myfunc }}</td>
                                             <td>${{item|price}} X {{ item|quantity }}</td>
                                             <td><strong>${{item|total}}</strong></td>
