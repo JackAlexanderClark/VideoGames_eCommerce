@@ -31,6 +31,12 @@ table{
     justify-content: center;
     display: flex;
 }
+/* fix mobile devices */
+.table-responsive {
+    overflow-x: auto;
+    width: 100%;
+}
+
 
 .card{
     justify-content: center;
@@ -75,6 +81,7 @@ table{
                                 <div class="card-body p-0 table-responsive" style  ='color:white ; width: max-content'>
                                 <h4 class="p-3 mb-0">Product Description --- <b>Receipt {{ forloop.counter }}</b></h4>
 
+                            <div class="table-responsive">
                                 <table class="table">
                                         <tr>
                                             <th scope="col"></th>
@@ -122,6 +129,7 @@ table{
                                                     <strong>{{ receipt.items| total_quantity }}</strong>
                                                 </td>
                                             </tr></table>
+                                        </div>
 
 {% endfor %}
 </div></div></div>

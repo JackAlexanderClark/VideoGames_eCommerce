@@ -91,8 +91,12 @@
             <tbody>
                 {% for item in items %}
                     <tr>
-                    {% for prop in item %}
-                    <td>{{ prop }}</td>
+                        {% for prop in item %}
+                            {% if forloop.counter == 3 %}
+                                <td>${{ prop }}</td>
+                            {% else %}
+                                <td>{{ prop }}</td>
+                            {% endif %}
                         {% endfor %}
                     </tr>
                 {% endfor %}
